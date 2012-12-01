@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+       	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"      
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:cf="http://vangent.com/engine/customfacescomponents"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:security="http://www.springframework.org/security/tags"
+	    contentType="text/html" encoding="UTF-8">
+     <ui:param name="hs" value="http://java.sun.com/jsf/html"/>
+    <html>
+		<h:head>
+			<title>CECIIC MOBILE</title>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta http-equiv="pragma" content="no-cache"/>
+			<meta http-equiv="expires" content="-1"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+			<!--  <t:stylesheet path="/css/ceciic/ceciic-mobile.css" />-->
+			<link rel="stylesheet" type="text/css" href="/css/ceciic/ceciic-mobile.css"  />	
+			<!--[if IE 6]>
+			<style type="text/css">
+			@import url(../stylesheet/ie-fix.css);
+			</style>
+			<![endif]-->
+		
+			<f:loadBundle basename="resources.application" var="bundle"/>
+			<f:loadBundle basename="resources.messages" var="msgbundle"/>
+			
+			 <ui:insert name="headContent">
+        	</ui:insert>
+        	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+        	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+        	
+        	<script>
+        	  	//twitter follow
+	    		!function(d,s,id){
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if(!d.getElementById(id)){
+						js=d.createElement(s);js.id=id;
+						js.src="//platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);
+					}
+				}
+				(document,"script","twitter-wjs");
+				//end of twitter follow
+			
+        	    setInterval(callServer, 40000);
+        	    
+        	    //$( document ).delegate("#home", "pageinit", function() {
+      			  //alert('A page  was just LOADED by jQuery Mobile!');
+      			//});
+				
+				function callServer(event){  
+				  var activePageName = $(".ui-page-active").attr("id");
+				  if(activePageName=="home"){
+			    		
+			      }
+				  else if(activePageName=="tweets"){
+					  $("#refreshBtn").click();
+				  }
+			 	} 
+				
+				function checkStatus(event){  
+					    if (event.status == "begin") {  
+					    	//alert("ajax begin");
+					    }  else if (event.status == "success") {  
+						    var activePageName = $(".ui-page-active").attr("id");
+					    	//$('#blogList').listview('refresh');
+					    	if(activePageName=="home"){
+					    		
+					    	}
+					    	else if(activePageName=="tweets"){
+					    		$.mobile.changePage("#tweets", { 
+						    		transition: "fade",
+						    		allowSamePageTransition: true,
+						    		reloadPage: true
+						    		} );
+					    	}
+					     }  
+				 } 
+			</script>
+		</h:head>
+		<body>
+			<h:form id="ajaxForm">
+			 	<t:commandLink id="refreshBtn" forceId="true" value="" >
+					 <f:ajax event="click" listener="#{mobileHandler.initPage}" onevent="checkStatus" /> 
+				</t:commandLink>
+			</h:form>
+			<div data-role="page" id="home" data-theme="a" data-content-theme="a" >
+					<div data-role="header">
+						<div data-role="navbar" data-iconpos="top">
+							<ul>
+								<li><a href="#home" class="ui-btn-active ui-state-persist" data-icon="home">HOME</a></li>
+								<li><a href="Tweets.faces" data-icon="ceciic-tweet">TWEETS</a></li>
+								<li><a href="#facebook" data-icon="ceciic-facebook">FACEBOOK</a></li>
+								<li><a href="#kids" data-icon="ceciic-boy">KIDS' PLAYGROUND</a></li>
+								<security:authorize ifNotGranted="ROLE_ADMIN">
+									<li><a href="../Login.faces" data-ajax="false" data-icon="ceciic-login">LOGIN</a></li>
+								</security:authorize>
+								<security:authorize ifAnyGranted="ROLE_ADMIN">
+									<li><a href="/j_spring_security_logout" data-ajax="false" data-icon="ceciic-logout">Logout</a></li>
+								</security:authorize>
+							</ul>
+						</div><!-- /navbar -->
+					</div>
+					<div data-role="content" >
+						<h:message id="errors" for="blogText" showDetail="true" style="color:red" showSummary="false"/>
+						<div data-role="collapsible-set">
+							<f:metadata>  
+								<f:event type="preRenderView" listener="#{mobileHandler.initPage}"></f:event>
+							</f:metadata>  
+							<div data-role="collapsible" data-collapsed="false">
+								<h3>最新消息:</h3>
+								<ul data-role="listview" data-inset="true" data-filter="true">
+									<security:authorize ifNotGranted="ROLE_ADMIN">
+										<ui:repeat value="#{blogListBean.allBlogs}" var="blog">
+									  		<li><h:outputText value="#{blog.text}--By #{blog.author}:#{blog.postDate}" /></li>
+										</ui:repeat>
+									</security:authorize>
+									<security:authorize ifAnyGranted="ROLE_ADMIN">
+										<ui:repeat value="#{blogListBean.allBlogs}" var="blog">
+									  		<li>
+									  			<h:outputText value="#{blog.text}--By #{blog.author}:#{blog.postDate}" />
+									  			<a href="/rest/blogs/delete/#{blog.id}" target="new">Delete-#{blog.id}</a>
+									  		
+									  		</li>
+										</ui:repeat>
+									</security:authorize>
+								</ul>
+							</div>
+							<security:authorize ifAnyGranted="ROLE_ADMIN">
+								<div data-role="collapsible" >
+										<h3>Post Announcement</h3>
+										<h:form id="blogForm">
+											<fieldset >	
+												<h:outputLabel for="author" value="Author:"></h:outputLabel>
+											    <h:inputText id="author" forceId="true" value="#{blogBean.author}"/>
+												<h:outputLabel for="blogText" value="Blog Text (required):"></h:outputLabel>
+											    <h:inputText id="blogText" forceId="true" maxlength="140" value="#{blogBean.text}" required="true" />
+											</fieldset>
+											<h:commandButton id="postbtn" action="#{mobileHandler.postAnnouncement}" value="Post" type="submit"/>
+											<p></p>
+											<h:outputLabel for="author" value="This will permanently remove all announcements posted before!!"></h:outputLabel>		
+										</h:form>
+										<h:form id="blogDeleteForm">
+											<t:commandButton id="deleteBtn" forceId="true" action="#{mobileHandler.deleteAllBlogs}" value="Delete ALL Announcements" type="submit"/>
+										</h:form>
+									
+								</div>
+							</security:authorize>
+							<div data-role="collapsible" >
+									<h3>热门连接</h3>
+									<ul data-role="listview" data-inset="true" data-filter="false">
+										<li><a href="http://www.wordpocket.com/gb/index.htm" data-icon="ceciic-bible" rel="external" target="new">网上读经 (mobile version)</a></li>
+									</ul>
+							</div>
+							<div data-role="collapsible" data-collapsed="true">
+								<h3><a href="https://twitter.com/ceciic" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @ceciic</a></h3>
+								By signing and follow @ceciic, your tweets will be automatically included in our alumni tweets.
+							</div>
+						</div><!-- /collapsible-set-->
+					</div><!-- /content --> 
+					<div data-role="footer">
+						
+					</div>
+			</div>
+			
+			<div data-role="page" id="facebook">
+				  <div data-role="header">
+						<div data-role="navbar" data-iconpos="top">
+							<ul>
+								<li><a href="#home" data-icon="home">HOME</a></li>
+								<li><a href="Tweets.faces" data-icon="ceciic-tweet">TWEETS</a></li>
+								<li><a href="#facebook" data-icon="ceciic-facebook"  class="ui-btn-active ui-state-persist">FACEBOOK</a></li>
+								<li><a href="#kids" data-icon="ceciic-boy">KIDS' PLAYGROUND</a></li>
+								<security:authorize ifNotGranted="ROLE_ADMIN">
+									<li><a href="../admin" data-icon="ceciic-login">LOGIN</a></li>
+								</security:authorize>
+								<security:authorize ifAnyGranted="ROLE_ADMIN">
+									<li><a href="../j_spring_security_logout" data-icon="ceciic-logout">Logout</a></li>
+								</security:authorize>
+							</ul>
+						</div><!-- /navbar -->
+					</div>
+					<div data-role="content" >
+						 Under constrution ......
+					</div>
+					<div data-role="footer">
+						
+					</div>
+			</div>
+			<div data-role="page" id="kids">
+				  <div data-role="header">
+						<div data-role="navbar" data-iconpos="top">
+							<ul>
+								<li><a href="#home" data-icon="home">HOME</a></li>
+								<li><a href="Tweets.faces" data-icon="ceciic-tweet">TWEETS</a></li>
+								<li><a href="#facebook" data-icon="ceciic-facebook">FACEBOOK</a></li>
+								<li><a href="#kids" data-icon="ceciic-boy"  class="ui-btn-active ui-state-persist">KIDS' PLAYGROUND</a></li>
+								<security:authorize ifNotGranted="ROLE_ADMIN">
+									<li><a href="../admin" data-icon="ceciic-login">LOGIN</a></li>
+								</security:authorize>
+								<security:authorize ifAnyGranted="ROLE_ADMIN">
+									<li><a href="../j_spring_security_logout" data-icon="ceciic-logout">Logout</a></li>
+								</security:authorize>
+							</ul>
+						</div><!-- /navbar -->
+					</div>
+					<div data-role="content" >
+						  Coming son.....
+					</div>
+					<div data-role="footer">
+						
+					</div>
+			</div>
+		</body>
+	</html>
+</f:view>
+
+

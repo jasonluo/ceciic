@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Page Title</title>
+
+	
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta http-equiv="pragma" content="no-cache"/>
+			<meta http-equiv="expires" content="-1"/>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$.getJSON("http://ceciic.cloudfoundry.com/rest/blogs?callback=?", 
+				function(data) {
+				   alert("vcvc");
+				});
+
+	})
+		
+		
+	</script>
+</head>
+<body>
+<!-- Start of first page -->
+<div data-role="page" id="foo" data-theme="a" data-content-theme="a" >
+
+	<div data-role="header">
+		<h1>Foo</h1>
+	</div><!-- /header -->
+
+	<div id="contentDiv" data-role="content" >
+	
+	</div>
+	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		
+	</div><!-- /footer -->
+</div><!-- /page -->
+</html>

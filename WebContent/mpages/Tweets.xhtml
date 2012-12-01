@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+       	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"      
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:cf="http://vangent.com/engine/customfacescomponents"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:security="http://www.springframework.org/security/tags"
+	    contentType="text/html" encoding="UTF-8">
+     <ui:param name="hs" value="http://java.sun.com/jsf/html"/>
+    <html>
+		<h:head>
+			<!-- reload, changePage etc. use ajax to load the page body.  Page header never gets reloaded. 
+				If the page has multiple page-role div, only the first one gets loaded, the rest never gets loaded/refreshed.
+				This page has tweet section whose content needs periodically refreshed, so it needs to be separated form Home.xhtml.
+				
+				If we want to keep them in one xhtml file, we have to use jsf ajax to re-render the page (losing style) and then jquery changePage to 
+				adds back the mobile style.
+			-->
+		</h:head>
+		<body>
+			<div data-role="page" id="tweets" data-theme="a" data-content-theme="a" >
+				  <div data-role="header">
+						<div data-role="navbar" data-iconpos="top">
+							<ul>
+								<li><a href="#home" data-icon="home" class="ui-state-persist">HOME</a></li>
+								<li><a href="#tweets" data-icon="ceciic-tweet"  class="ui-btn-active ui-state-persist">TWEETS</a></li>
+								<li><a href="#facebook"  data-icon="ceciic-facebook" class="ui-state-persist">FACEBOOK</a></li>
+								<li><a href="#kids"  data-icon="ceciic-boy" class="ui-state-persist">KIDS' PLAYGROUND</a></li>
+								<security:authorize ifNotGranted="ROLE_ADMIN">
+									<li><a href="../Login.faces" data-ajax="false" data-icon="ceciic-login">LOGIN</a></li>
+								</security:authorize>
+								<security:authorize ifAnyGranted="ROLE_ADMIN">
+									<li><a href="/j_spring_security_logout" data-ajax="false" data-icon="ceciic-logout">Logout</a></li>
+								</security:authorize>
+							</ul>
+						</div><!-- /navbar -->
+					</div>
+					<div data-role="content" >
+						<div data-role="collapsible-set">
+							<div data-role="collapsible" data-collapsed="true">
+								<h3>CECIIC Tweets</h3>
+								<ul data-role="listview" data-inset="true" data-filter="true">
+									<ui:repeat value="#{tweetsBean.ceciicTweets}" var="tweet">
+									  <li><h:outputText value="#{tweet.text}" /></li>
+									</ui:repeat>
+								</ul>
+							</div>
+								
+							<div data-role="collapsible" data-collapsed="true">
+								<h3>CECIIC Alumni</h3>
+								<ul data-role="listview" data-inset="true" data-filter="true">
+									<ui:repeat value="#{tweetsBean.alumniTweets}" var="tweet">
+									  <li><h:outputText value="#{tweet.text}-#{tweet.createdAt}" /></li>
+									</ui:repeat>
+								</ul>
+							</div>
+							
+							<div data-role="collapsible" data-collapsed="false">
+								<h3>Twitter Trends</h3>
+								<ul data-role="listview" data-inset="true" data-filter="true">
+									<ui:repeat value="#{tweetsBean.trendTweets.tweets}" var="tweet">
+									  <li><h:outputText value="#{tweet.text}" /></li>
+									</ui:repeat>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div data-role="footer">
+						
+					</div>
+			</div>
+		</body>
+	</html>
+</f:view>
+
+

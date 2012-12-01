@@ -1,0 +1,183 @@
+.pin-list{
+		text-indent: -2em; padding-left:2em; 
+		list-style-image:url(images/pin15.gif);
+}
+
+.small-font{
+	font-size: 0.8em;
+	text-decoration: none;
+	font-family: "Trebuchet MS",Verdana,sans-serif;
+}
+
+
+.icon-font-1{
+	color: rgb(255, 0, 0); letter-spacing: -2px; font: italic bold 76px/78px Georgia,'Times New Roman',Times,serif;
+	height="100";
+}
+
+.icon-font-2{
+	color: rgb(0, 0, 0); letter-spacing: -2px; font: bold 56px/58px Arial,Helvetica,sans-serif;
+	height="100";
+}
+
+.icon-font-3{
+	color: #285c00; letter-spacing: -2px; font: bold 26px/28px Arial,Helvetica,sans-serif;
+	height="100";
+}
+
+.title-text
+{
+	position:relative;
+	left:280px;
+}
+.title-img{
+	position:absolute;
+	width="250";
+	height="100"; 
+	left:70px;
+	top: 10px;
+	background: url("images/title-bg.png")  repeat transparent;
+}
+
+.icon-ceciic-home {
+	background: url("images/home.png")  no-repeat left top transparent;
+}
+
+.icon-ceciic-twitter {
+	background: url("images/twitter.gif")  no-repeat left top transparent;
+}
+
+.blank-spacer{
+	 height: 15px;
+	 width: 100%;
+	 z-index: 1;
+}
+.ceciic-accordion{
+	height: 300px;
+}
+.ceciic-accordion-inner{
+	height: 150px;
+}
+.ceciic-accordion-inner-inner{
+	height: 80px;
+}
+
+#footer {
+    height: 45px;
+    padding: 10px 0;
+    position: relative;
+    background-color:#437C17;
+}
+
+#footer .bg {
+    height: 65px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+#footer .inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.left-div{
+	width:50%; Text-align:left;
+}
+
+.right-div{
+	Width:50%; Text-align:right; float:right; margin-top: -200px
+}
+
+.right-div-2{
+	Width:50%; Text-align:right; float:right; margin-top: -500px
+}
+
+.leftmost-div{
+	position:absolute;
+	left:10px;
+	top:30px;
+	width:33%; 
+	Text-align:left;
+}
+
+.middle-div{
+	position:relative;
+	left:10px;
+	top:30px;
+	width:33%; 
+	Text-align:left;
+}
+
+.rightmost-div{
+	position:relative;
+	left:10px;
+	top:30px;
+	width:33%; 
+	Text-align:left;
+}
+
+.content-div{
+	height: 600px;
+}
+body {
+	margin-top: 10px;
+	margin-right: 70px;
+	margin-bottom: 10px;
+	margin-left: 70px;
+}
+
+.rotate-20 {
+
+/* Safari */
+-webkit-transform: rotate(-20deg);
+
+/* Firefox */
+-moz-transform: rotate(-20deg);
+
+/* IE */
+-ms-transform: rotate(-20deg);
+
+/* Opera */
+-o-transform: rotate(-20deg);
+
+/* Internet Explorer */
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+}
+
+.rotate-90 {
+
+/* Safari */
+-webkit-transform: rotate(-90deg);
+
+/* Firefox */
+-moz-transform: rotate(-90deg);
+
+/* IE */
+-ms-transform: rotate(-90deg);
+
+/* Opera */
+-o-transform: rotate(-90deg);
+
+/* Internet Explorer */
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+}
+
+
+/** 
+  these are for twitter widgets 
+*/
+
+.twtr-ft{
+	display: none;
+}
+
+#jtw_widget1 div:first-child {
+	display: none;
+}

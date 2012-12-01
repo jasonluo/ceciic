@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Page Title</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="pragma" content="no-cache"/>
+	<meta http-equiv="expires" content="-1"/>
+	<link type="text/css" href="/css/le-frog/jquery-ui-1.8.17.custom.css" rel="Stylesheet" />
+	<link type="text/css" href="/css/ceciic/ceciic.css" rel="Stylesheet" />		
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui-1.8.17.custom.min.js"></script>
+	<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+	<script type="text/javascript" src="/js/ceciic.js"></script>
+	<script type="text/javascript" src="/js/jShowOff.js"></script>
+	<script type="text/javascript">
+		$( document ).delegate("#photo", "pagecreate", function() {
+		  alert('A page with an ID of "aboutPage" was just created by jQuery Mobile!');
+		});
+
+		$(function() {
+			$( "#datepicker" ).datepicker();
+		});
+		
+		/** 
+		$(function() {
+			$( "#tabs" ).tabs();
+		});
+		*/
+
+		
+		$(document).ready(function(){
+			$.getJSON("http://ceciic.cloudfoundry.com/rest/blogs?callback=?", 
+				function(data) {
+				var items = [];
+				 $.each(data, function(key, val) {
+					  for(var i=0; i<val.length; i++){
+					  	items.push('<li class=pin-list id="' + val[i].author + '">' + val[i].text + '</li>');
+					  }
+				  });
+
+				  $('<ul/>', {
+				    'class': 'pin-list',
+				    html: items.join('')
+				  }).appendTo('#latest_news');
+			});
+			
+			//rotater plugin
+			$('#features').jshowoff({links: false, speed: 6000, changeSpeed: 5000, cssClass: false, controls: false});
+			
+			//$('#tabs').tabs();
+			//follow a tab's URL instead of loading its content via ajax
+			$('#tabs').tabs({
+			    select: function(event, ui) {
+			        var url = $.data(ui.tab, 'load.tabs');
+			        if( url && url !="/pages/Weibo.html") {
+			            //location.href = url;
+			            //window.open(url,'_newtab','location=1,status=1,scrollbars=1, width=800,height=800')
+			            window.open(url,'_newtab');
+			            return false;
+			        }
+			        return true;
+			    }
+			});
+			
+			$(function() {
+				$( "#accordion" ).accordion();
+			});
+			$(function() {
+				$( ".ceciic-accordion-inner" ).accordion();
+			});
+
+		})
+		
+		//twitter follow
+	    		!function(d,s,id){
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if(!d.getElementById(id)){
+						js=d.createElement(s);js.id=id;
+						js.src="//platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);
+					}
+				}
+				(document,"script","twitter-wjs");
+		//end of twitter follow
+	</script>
+	</head>
+<body>
+<div >
+<span class="title-img"></span>
+<!-- <span class="title-img"><img class="title-img" alt="CECIIC" title="爱城华人福音教会" src="/images/lamb.jpg"/></span> -->
+<span class="icon-font-1 title-text">爱</span>
+<span class="icon-font-2 title-text rotate-20">城华人</span>
+<span class="icon-font-2 title-text">福音教会</span>
+<span class="icon-font-3 title-text" >C</span>
+<span class="icon-font-3 title-text rotate-20" >E</span>
+<span class="icon-font-3 title-text" >CIIC</span>
+</div>
+<div class="blank-spacer"></div>
+
+<div class="small-font">
+
+<div id="tabs" class="content-div">
+	<ul>
+		<li><a href="#tabs-1" class="icon-ceciic-home">首页 </a></li>
+		<li><a href="#tabs-2">活动简介</a></li>
+		<li><a href="#tabs-3" class="icon-ceciic-twitter">微博</a></li>
+		<li><a href="http://ceciic.org/cgi-bin/service.cgi">教会服事</a></li>
+		<li><a href="http://ceciic.org/cgi-bin/sundayworship.php">主日崇拜</a></li>
+		<li><a href="http://ceciic.org/statement.html">信仰申明</a></li>
+		<li><a href="http://ceciic.org/cgi-bin/hotlinks.cgi">热门连接</a></li>
+		<li><a href="#tabs-7">教会菜谱</a></li>
+		<li><a href="http://ceciic.org/cgi-bin/naddress.php">地址查询</a></li>
+		<li><a href="http://ceciic.org/cgi-bin/sharing.cgi">分享见证</a></li>
+		<li><a href="http://ceciic.org/PHP/BibleQuiz.php">圣经测验</a></li>
+		<li><a href="http://ceciic.org/contact.html" target="_blank">联系我们</a></li>
+		<li><a href="/pages/Weibo.html" target="_blank">微博2</a></li>
+	</ul>
+	<div id="tabs-1">
+		<div class="left-div">
+			<p>最新消息： </p>
+			<span id="latest_news"></span>
+		</div>
+		<div class="right-div">
+			<span id="features">
+				<span><img src="/photos/pic-1.jpg" width="500" height="400" alt="ceciic" /></span>
+				<span><img src="/photos/pic-2.jpg" width="500" height="400" alt="ceciic" /></span>
+				<span><img src="/photos/pic-3.jpg" width="500" height="400" alt="ceciic" /></span>
+				<span><img src="/photos/pic-4.jpg" width="500" height="400" alt="ceciic" /></span>
+			</span>
+		</div>
+	</div>
+	<div id="tabs-2">
+		<h2>Introduction to Programs： </h2>
+		<div>
+				<h3>Friday Night Fellowship:</h3>
+				<span>[<a title="check serving list" href="http://ceciic.org/cgi-bin/service.cgi">Serving List</a>]
+					Location: Usually at Gloria Dei Lutheran Church, 123 E. Market St., sometimes, at Parkview Church 15 Foster Rd.
+				</span>
+				<br/>
+				<span>
+					5:30 - 6:15 Dinner, $1 each person to support those who cook for material.
+				</span>
+				<br/>
+				<span>
+					6:20 - 6:45 Hymns - beautiful songs to praise the Lord!
+				</span>
+				<br/>
+				<span>
+					6:50 - 8:30 Bible Study - learn God's words through discussion. 
+				</span>
+				
+				<ul>
+					<li>
+						<h4>JIA(鹰眼园)学生团契</h4>
+						<span>
+			    			这是为青年学生准备的聚会。我们的目标是让学生在忙碌了一周之后，有一个放松的享受。我们会一起吃喝，一起唱歌，并一起探讨生命的执着。时间是5:30-8:00 on each Friday ，地点在 Gloria Dei Lutheran Church, 123 E. Market St. (map) 。
+						</span>
+					</li>
+					<li>
+						<h4>五月花学生团契</h4>
+						<span>
+							我们当中的都是具冒险犯难精神的青年学生（如当年乘坐五月花到美国的先贤），在历经一周的忙碌学习之后，我们能坐下来一起交流一起分享不管是在生活中的点滴、学习上的甘苦，或生命中片断的滋味；借着圣经的学习，让我们不仅成为至交好友，也能在异乡的岁月中经历神、认识神。时间是5:30-8:00 on each Friday ，地点在 Gloria Dei Lutheran Church, 123 E. Market St. (map) 。聚会结束后，我们会一起去shopping 。 (Contact: 瀚威, <a target="_blank" href="mailto:hanweic@hotmail.com">hanweic@hotmail.com</a>) 
+						</span>
+					</li>
+				</ul>
+				
+	     </div>
+	     <div>
+	     	<h3>Sunday Worship</h3>
+			<span>[<a title="check schedule" href="http://ceciic.org/cgi-bin/sundayworship.php">Worship schedule</a>]
+			  Sunday Worship is from 1:30 PM -- 3:00 PM in Room 108 at Parkview Church 15 Foster Rd., Iowa City. You are welcome to join us! 
+	     	</span>
+	     </div>
+	     <div>
+	     	<h3>Prayer Meeting:</h3>
+	     	<span>
+            	Prayer Meeting is from 7:30 to 9:00 every Tuesday night at 46 donegal PL Iowa City (Luo Yi & Xiaohong's home). Everyone is welcome. You may also send us your prayer requests and we will pray for you. Please contact <a href="mailto:dong-liang@uiowa.edu?subject=Prayer_Requests"><b>Dong Liang</b></a> for your prayer requests.
+	     	</span>
+	     </div>
+	</div>
+	<div id="tabs-3">
+		<div class="left-div">
+			<script>
+			new TWTR.Widget({
+			  version: 2,
+			  type: 'search',
+			  search: 'ceciic OR CECIIC',
+			  interval: 3000,
+			  title: 'what\'s happening?',
+			  subject: 'CECIIC 微博',
+			  width: 350,
+			  height: 450,
+			  theme: {
+			    shell: {
+			      background: '#285c00',
+			      color: '#000000'
+			    },
+			    tweets: {
+			      background: '#73b42d',
+			      color: '#ffffff',
+			      links: '#f9db34'
+			    }
+			  },
+			  features: {
+			    scrollbar: false,
+			    loop: true,
+			    live: true,
+			    behavior: 'default'
+			  }
+			}).render().start();
+			</script>
+		</div>
+		<div class="right-div-2">
+		  <span>
+			<script>
+			new TWTR.Widget({
+			  version: 2,
+			  type: 'search',
+			  search: '耶稣 OR 基督 OR 圣经 OR 圣灵 -基督徒余 -つ -い -て -ま -で',
+			  interval: 3000,
+			  title: 'what\'s trending?',
+			  subject: '中文微博',
+			  width: 350,
+			  height: 450,
+			  theme: {
+			    shell: {
+			      background: '#285c00',
+			      color: '#000000'
+			    },
+			    tweets: {
+			      background: '#73b42d',
+			      color: '#ffffff',
+			      links: '#f9db34'
+			    }
+			  },
+			  features: {
+			    scrollbar: false,
+			    loop: true,
+			    live: true,
+			    behavior: 'default'
+			  }
+			}).render().start();
+			</script>
+			</span>
+		</div>
+	</div>	
+	<div id="tabs-7">
+		<h3>大锅菜菜谱</h3>
+		<div id="accordion">
+		    <h3><a href="#">肉类</a></h3>
+		    <div class="ceciic-accordion">
+		    	<div id="rou" class="ceciic-accordion-inner">
+		    		<h3><a href="#">西坡肘子</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			西坡肘子：
+						1． 肘子十五磅 （Walmart Super Center 有售， 一般需买两个）。
+						2． 在肘子无皮的一面，用刀划十字以进味儿。
+						3． 糖、料酒、生抽、老抽各一杯（1 cup），姜片、花椒、大料、葱、蒜各适量。混在一起，做成调料。
+						4． 先将调料放入盆中，再把肘子放入调料中滚一下，然后将皮面朝上。加盖浸泡十小时左右。
+						5． 放入烤箱烤两小时于250°C。
+						6． 将烤箱温度调至200°C，再烤五、六个小时。
+						7． 开吃。
+		    		</div>
+		    		<h3><a href="#">猪肉炖粉丝</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			菜名： 猪肉炖粉丝
+						材料： 1个10磅左右的猪腿，2包粉丝
+						调料： 酱油，料酒，盐，糖，葱，姜，大料
+						做法： (1) 将猪腿用热水煮一下去血。(2) 猪腿放入锅中，加入各种调料适量，加水淹没猪腿，375F烤90分钟，加入粉丝再烤20分钟
+		    		</div>
+		    		<h3><a href="#">土豆炖牛肉</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			菜名： 土豆炖牛肉
+						材料： 10磅牛肉，10磅土豆
+						调料： 卤包， 酱油，盐，糖（少许，可选）
+						做法： (1) 将牛肉切块后用热水煮一下去血水，或浸泡一会儿去血水。 (2) 将牛肉加水烧开后加入卤包，酱油，盐小火炖1小时，将土豆削皮切块加入牛肉再一起炖30分钟。
+		    		</div>
+		    		
+		    		<h3><a href="#">白斩鸡</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 20磅1/4(quarter)鸡
+						调料： 酱油，麻油，辣椒油，盐，糖，葱
+						做法： 将鸡用水煮开后小火炖40分钟，放凉，斩成小块。将调料调在一起，洒在鸡块上。
+						要诀： 辣椒油可自制。将油烧热，不要烧滚，放入辣椒粉。
+		    		</div>
+		    		<h3><a href="#">可乐鸡翅</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 15磅鸡翅
+						调料： 1瓶可口可乐，6~8瓣八角，5个小干辣椒，生姜适量，盐
+						做法： 将鸡翅洗净（注意拔去残留的鸡毛）放入深锅，倒入可乐，加八角，辣椒，生姜，煮40分钟（筷子可轻易插入），加盐再煮约20 分钟。
+						特点： 简单易行，肉质细嫩可口。
+		    		</div>
+		    		<h3><a href="#">狮子头</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 5磅肉末,1颗白菜,1包粉丝,3个鸡蛋
+						调料： 半把葱，适量姜，酱油，糖，盐，香油，黑胡椒（可选）
+						做法： 将葱、姜切末与肉末拌在一起，加酱油，糖，放少许盐，少许黑胡椒，适量油；将鸡蛋打好与肉末拌在一起。用手捏鸡蛋大小的狮子头40-50个。将烤箱预热到350-400F，将狮子头放入烤盘烤 10-15分钟（可能要分几次烤），烤出的汁一定保留。将白菜切好，白菜根部炒一下，一层白菜，一层狮子头，一层粉丝一起炖，趁热食用
+		    		</div>
+				</div>
+		    </div>
+		    <h3><a href="#">蔬菜（热）</a></h3>
+		    <div class="ceciic-accordion">
+	    		<div id="cai-hot" class="ceciic-accordion-inner">
+	    			<h3><a href="#">麻辣豆腐</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 12盒豆腐，1瓶同志牌辣椒豆酱(一大匙，共用半瓶)。
+						调料： 酱油，盐，淀粉，葱，香油（可选）
+						做法： 自家炒锅放入少许油，烧热，加入一大匙辣酱，加入3-4盒切好的豆腐（根据炒锅的大小），加入盐，酱油，烧开，小火炖10分钟。加入葱、淀粉起锅。
+		    		</div>
+		    		<h3><a href="#">肉末豆腐</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 12盒豆腐，2磅肉沫，蘑菇（可选），虾皮（可选）。
+						调料： 酱油，盐，葱，胡椒粉，五香粉
+						做法： 自家炒锅先将肉末炒熟，根据炒锅的大小，将豆腐分几次炒，炒时加肉末，各样调料，一起炖10分钟。加入葱起锅。
+		    		</div>
+		    		<h3><a href="#">鸡汤蛋羹</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 48个鸡蛋，8盒鸡汤（chicken broth）,1盒玉米（可选），少许香菇(可选)
+						调料： 无。
+						做法： 将鸡蛋打入锅中，打匀，加入鸡汤打匀。盖上盖子，放入烤箱用250-275F烤50-60分钟,玉米和香菇可在烤了40分钟后加入。
+		    		</div>
+		    		<h3><a href="#">茶叶蛋</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 6-8打鸡蛋（72-96个），越小越好
+						调料： 酱油，花椒，绿茶
+						做法： 将鸡蛋煮熟，浸入冷水后，将鸡蛋敲裂，将茶叶、花椒、酱油加水煮滚。鸡蛋放在锅中，煮好后的调料浸过鸡蛋，放置1天，倒去调料。
+		    		</div>
+		    		<h3><a href="#">番茄炒蛋</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 3打鸡蛋（36个），12~15个大番茄。
+						调料： 盐，糖
+						做法： 自家炒锅倒油，炒鸡蛋，加入切块的西红柿，加盐，糖同炒。根据自家炒锅的大小分几次。
+		    		</div>
+		    		<h3><a href="#">红烧茄子</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+			    		材料： 12条大茄子，1个大青椒，1瓶油
+						调料： 糖，盐，辣椒酱，蒜
+						做法： 将茄子切块，用油（油几乎淹没茄块）煎至焦黄盛出来。用少许油炒辣椒酱，加入茄子，青椒片，盐适量，糖足量，用铲搅拌均匀，约1分钟后加入蒜末出锅。
+						特点： 好吃便宜但做来费事，糖要较多，蒜不能少。
+		    		</div>
+	    		</div>
+		    </div>
+			<h3><a href="#">蔬菜（冷）</a></h3>
+		    <div class="ceciic-accordion">
+		    	<div id="cai-cold" class="ceciic-accordion-inner">
+	    			<h3><a href="#">绿白菜花</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 6棵绿菜花（Broccoli），4棵白菜花
+						调料： 盐，香油
+						做法： 将菜花放入滚开的水中，水一沸腾，将菜花捞出，加入盐，香油即可
+		    		</div>
+		    		<h3><a href="#">蒜香海带</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 4包海带丝，1包豆芽
+						调料： 糖，醋，料酒，香油，葱，蒜
+						做法： 将海带丝泡干净，加盐煮熟，将豆芽用水煮沸，拌入各样调料
+		    		</div>
+		    		<h3><a href="#">蛋皮粉丝</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 3包粉丝，12个鸡蛋，一棵白菜
+						调料： 糖，醋，料酒，香油，盐，葱
+						做法： 将粉丝加盐煮熟，用凉水冲凉，将白菜切条状，加少许盐煮熟。用鸡蛋摊成蛋皮，或炒鸡蛋，加调料拌入
+		    		</div>
+		    		<h3><a href="#">糖番茄</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 20个大番茄
+						调料： 糖
+						做法： 将番茄洗净，切成圆片，将糖洒在上面
+		    		</div>
+		    		<h3><a href="#">凉拌芹菜</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 4棵芹菜，40根小肉肠或2袋花生米，2袋腐竹
+						调料： 香油，盐
+						做法： 将各种调料切丁，用盐水一一煮熟，倒入香油。
+		    		</div>
+		    		<h3><a href="#">凉拌黄瓜</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 20~25条黄瓜
+						调料： 糖，香油，盐
+						做法： 将黄瓜去皮，去瓤，用盐腌一下，去水，切成条，加糖和香油调味
+		    		</div>
+		    	</div>
+		    </div>
+		    <h3><a href="#">面类</a></h3>
+		    <div class="ceciic-accordion">
+		    	<div id="mian" class="ceciic-accordion-inner">
+	    			<h3><a href="#">简易凉面</a></h3>
+		    		<div class="ceciic-accordion-inner-inner">
+		    			材料： 4磅Spagatti， 1包绿豆芽，1瓶哈哈豆瓣（不辣）
+						调料： 葱，香油，盐
+						做法： 将Spagatti煮熟，用冷水冲凉，将绿豆芽煮沸，加入葱，盐，香油，豆瓣酱调味
+		    		</div>
+		    	</div>
+		    </div>
+		</div>
+	</div>
+	
+</div>
+
+</div><!-- End demo -->
+
+<div class="blank-spacer"></div>
+<div id="footer" class="ui-corner-all">
+	<div class="bg"></div>
+	<div class="inner small-font">
+		<span> 
+			<a href="https://twitter.com/ceciic" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @ceciic</a>
+		</span>
+		</p>
+	</div>
+</div>
+	
+</body>
+</html>
