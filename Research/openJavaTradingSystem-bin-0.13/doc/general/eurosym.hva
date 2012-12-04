@@ -1,0 +1,134 @@
+\newcommand{\pdfbookmark}[3][n]{}
+\newcommand{\www}  [1]{\texttt{\ahref{#1}{#1}}}
+\newcommand{\email}[1]{$<$\texttt{\ahref{mailto:#1}{#1}}$>$}
+\newenvironment{thecontent}{\begin{rawhtml}<H2>Table of Contents</H2>
+<table CELLSPACING=2 CELLPADDING=0 width=600px>\end{rawhtml}}{\begin{rawhtml}</table>\end{rawhtml}}
+
+%\newcommand{\cntline}[4]{
+%\begin{rawhtml}<tr><td><span style="margin-left:10px;"></span></td><td>\end{rawhtml}
+%\ahrefloc{#4}{#2}
+%\begin{rawhtml}</td></tr>\end{rawhtml}
+%}
+%\renewcommand{\contentsline}[4]{
+%\begin{rawhtml}<tr><td><span style="margin-left:10px;"></span></td><td>\end{rawhtml}
+%\ahrefloc{#4}{#2}
+%\begin{rawhtml}</td></tr>\end{rawhtml}
+%}
+%\renewcommand{\numberline}[1]{\begin{rawhtml}<div style="float: left; width: 80px; margin: 0 0.2em 0 0;">\end{rawhtml}#1\begin{rawhtml}</div>\end{rawhtml}}
+
+\newcommand{\vref}[1]{\pageref{#1}}
+
+\renewenvironment{document}{%
+\@end{document}
+\@atbegindocument
+\@restartoutput\unskip
+\@print{<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+}\@print{<HTML>
+}%
+\@print{<HEAD><TITLE>}%
+\@notags{\usebox{\@title}}%
+\@print{</TITLE>
+<LINK REL=StyleSheet TYPE="text/css"  HREF="style.css">
+}\@meta%
+\ifmathml\@print{<STYLE type="text/css">
+  math.centered { text-align: center}
+</STYLE>
+}%
+\fi
+\@print{</HEAD>
+}%
+\@print{<BODY }\@notags{\@bodyargs}\@print{>
+}%
+\@print{<!--HEVEA command line is: }\usebox{\@heveacomline}\@print{-->
+}%
+\iffrench\@print{<!--FRENCH-->
+}\fi
+{\@nostyle\@print{<!--HTMLHEAD-->
+}}%
+\usebox{\@htmlhead}%
+{\@nostyle\@print{<!--ENDHTML-->
+}}%
+\@printnostyle{<!--PREFIX }%
+\@hacha@arg{}{\usebox{\@htmlprefix}}%
+\@printnostyle{-->
+}%
+\usebox{\@toplinks}%
+\cutdef[\thecuttingdepth]{\cuttingunit}%
+}{%
+\@clearstyle\@footnoteflush{document}%
+\@atenddocument%
+\@final@footer%
+\@clearstyle%
+\@print{</BODY>
+</HTML>
+}\@raise@enddocument}
+
+% -----------------------
+
+\newcommand{\GLX@entry}{}
+\newcommand{\GLX@newterm}[3]{%
+ \ifthenelse{\@commandexists\csname GLX@term@#1\endcsname}{}{
+    \expandafter\gdef\csname GLX@term@#1\endcsname{#2}%
+    \expandafter\gdef\csname GLX@term@@#1\endcsname{#3}}}
+\newcommand{\mac}[2][]{\ahrefloc{#2}{\csname GLX@term@#2\endcsname}}
+\newcommand{\macs}[2][]{\csname GLX@term@#2\endcsname}
+\newcommand{\macl}[2][]{\csname GLX@term@@#2\endcsname}
+\newcommand{\macf}[2][]{\ifthenelse{\equal{#1}{<lt>}}{
+\csname GLX@term@#2\endcsname\/ (\csname GLX@term@@#2\endcsname)%
+}{\ahrefloc{#2}{\csname GLX@term@#2\endcsname}}}
+\newcommand{\mgls}[2][]{\ahrefloc{#2}{\csname GLX@term@#2\endcsname}}
+\newcommand{\seeindex}[1]{%
+\csname PUTINDEX@term@#1\endcsname%
+}%
+\newcommand{\seeindexq}[1]{%
+\csname PUTINDEX@termq@#1\endcsname%
+}%
+\newcommand{\PUTINDEX@newterm}[2]{%
+  \ifthenelse{\@commandexists\csname PUTINDEX@term@#1\endcsname}{}{
+    \expandafter\gdef\csname PUTINDEX@term@#1\endcsname{#2}}}%
+\newcommand{\PUTINDEX@newtermq}[2]{%
+  \ifthenelse{\@commandexists\csname PUTINDEX@termq@#1\endcsname}{}{
+  \expandafter\gdef\csname PUTINDEX@termq@#1\endcsname{#2}}}%
+
+\newcommand{\putindex}[3][]{%
+\ifthenelse{\equal{#1}{}}{%
+{\it #2}\index{#2}\label{#3}%
+}{%
+{\it #2}\index{#1}\label{#3}%
+}%
+}%
+\newcommand{\putindexq}[3][]{%
+\ifthenelse{\equal{#1}{}}{%
+\index{#2}\label{#3}%
+}{%
+\index{#1}\label{#3}%
+}%
+}
+
+\newcommand{\listacronymname}{List of Acronyms}
+\newcommand{\glossaryname}{Glossary}
+
+% ----------------------------
+
+\newenvironment{theglossary}[1]{\newcommand\whichglossary{#1}\begin{rawhtml}<table CELLSPACING=2 CELLPADDING=0 width=500><!-- cut-br -->\end{rawhtml}}
+{\begin{rawhtml}</table>\end{rawhtml}}
+
+\newcommand{\GlossTeXEntry}[7]{
+\ifthenelse{\equal{#5}{\whichglossary}}{\begin{rawhtml}<tr><td valign=top width=23%>\end{rawhtml}
+{\bf #2\label{#1}}
+\begin{rawhtml}</td><td>\end{rawhtml}
+\ifthenelse{\equal{#3}{}}{}{#3}\ifthenelse{\equal{glo}{\whichglossary}}{\ifthenelse{\equal{#3}{}}{}{. }#4}{}
+\begin{rawhtml}</td></tr><!-- cut-br -->\end{rawhtml}}{}}
+\newcommand{\GlossTeXNull}[1]{}
+
+%\remakesection {\section}{0}{section} {\@open{H2}{}}{\thesection\label{section.\thesection}\quad}{\@close{H2}}%
+
+\renewcommand{\@figrule}{}
+
+\newenvironment{labelfigure}[1]{\begin{figure}[htbp]\label{#1}}{\end{figure}}
+
+\renewcommand{\@writefile}[2]{}
+
+
+\newcommand{\euro}[1]{{#1\begin{rawhtml}&euro;\end{rawhtml}}}

@@ -1,0 +1,13 @@
+
+;;;on windows the path has to look similar like this one:
+;;;(defvar *lisp-devel-root*   "c:/tmp/ojts/OpenJavaTradingSystem-bin-0.13/project-workspace/lisp/")
+(defvar *lisp-devel-root*   "/home/cs/project-workspace/lisp/")
+(load (concatenate 'string *lisp-devel-root* "/src/extlib/asdf.lisp"))
+;;;because windows does not know how to handle links i have to add every single source project direcotry :(
+(pushnew (concatenate 'string *lisp-devel-root* "src/extlib/") asdf:*central-registry* :test #'equal)
+(pushnew (concatenate 'string *lisp-devel-root* "src/util/") asdf:*central-registry* :test #'equal)
+(pushnew (concatenate 'string *lisp-devel-root* "src/data-compression/") asdf:*central-registry* :test #'equal)
+(pushnew (concatenate 'string *lisp-devel-root* "src/production-memory-monitoring/") asdf:*central-registry* :test #'equal)
+(pushnew (concatenate 'string *lisp-devel-root* "src/solitaer/") asdf:*central-registry* :test #'equal)
+(pushnew (concatenate 'string *lisp-devel-root* "src/ojts/") asdf:*central-registry* :test #'equal)
+(pushnew (concatenate 'string *lisp-devel-root* "src/ojts/jfli/") asdf:*central-registry* :test #'equal)

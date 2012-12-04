@@ -1,0 +1,42 @@
+http://narolainfotech.blogspot.com/2009/07/install-multiple-tomcat-instance-or-two.html
+
+http://techwheel.blogspot.com/2010/03/tomcat-as-windows-service.html
+
+
+Go To tomcat installation directory
+
+C:\Program Files\Apache Software Foundation\
+
+2)      Select Tomcat 5.0 and Do copy paste
+
+3)      Rename "Copy of Tomcat 5.0" to "Tomcat2"
+
+4)      Edit Service.bat according to below at Tomcat2/bin/ Note: This is required for Tomcat 5.x
+
+Change DisplayName as %SERVICE_NAME% same as below
+
+:doInstall
+
+rem Install the service
+
+"%EXECUTABLE%" //IS//%SERVICE_NAME% --DisplayName %SERVICE_NAME% --Description "Apache Tomcat Server - http://jakarta.apache.org/tomcat/"  --Install "%EXECUTABLE%" --ImagePath "%CATALINA_HOME%\bin\bootstrap.jar" --StartupClass org.apache.catalina.startup.Bootstrap;main;start --ShutdownClass org.apache.catalina.startup.Bootstrap;main;stop --Java java --Startup manual
+
+5)      Change all port in Tomcat2/conf/server.xml
+
+start, shutdown and ajp
+
+6)      Run below command to install service
+
+C:\Program Files\Apache Software Foundation\Tomcat2\bin>service.bat install ApacheTomcat2
+
+ 
+
+Note: Here ApacheTomcat2 is service name. You can keep whatever you like. Make sure it’s unique for all instance of tomcat.
+
+ 
+
+7)      Run below command to remove service
+
+C:\Program Files\Apache Software Foundation\Tomcat2\bin>service.bat remove ApacheTomcat2
+
+

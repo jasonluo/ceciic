@@ -1,0 +1,132 @@
+CREATE USER SA PASSWORD "" ADMIN
+/*C1*/CONNECT USER SA
+DROP TABLE PropertyType IF EXISTS
+\u000a\u000aDROP TABLE Unit IF EXISTS
+\u000a\u000aDROP TABLE Subject IF EXISTS
+\u000a\u000aDROP TABLE Observer IF EXISTS
+\u000a\u000aDROP TABLE DataSourceType IF EXISTS
+\u000a\u000aDROP TABLE DataSource IF EXISTS
+\u000a\u000aDROP TABLE MarketPlace IF EXISTS
+\u000a\u000aDROP TABLE Property IF EXISTS
+\u000a\u000aDROP TABLE ObserverDataSourceConfiguration IF EXISTS
+\u000a\u000aDROP TABLE DataItem IF EXISTS
+\u000a\u000aDROP TABLE TimeDataItem IF EXISTS
+\u000a\u000aDROP TABLE StringDataItem IF EXISTS
+\u000a\u000aDROP TABLE IntDataItem IF EXISTS
+\u000a\u000aDROP TABLE DoubleDataItem IF EXISTS
+\u000a\u000aDROP TABLE DataInputRegistry IF EXISTS
+\u000a\u000aDROP TABLE BooleanDataItem IF EXISTS
+\u000a\u000aDROP TABLE AliasType IF EXISTS
+\u000a\u000aDROP TABLE Alias IF EXISTS
+\u000a\u000aDROP TABLE TypeConversion IF EXISTS
+\u000a\u000aDROP TABLE SecurityPaper IF EXISTS
+\u000a\u000aDROP TABLE CurrencyPair IF EXISTS
+\u000a\u000aDROP TABLE CurConversion IF EXISTS
+\u000a\u000aDROP TABLE ConstantConversion IF EXISTS
+\u000a\u000aDROP TABLE PPosition IF EXISTS
+\u000a\u000aDROP TABLE RCDataItem IF EXISTS
+\u000a\u000aDROP TABLE RCDoubleDataItem IF EXISTS
+\u000a\u000aDROP TABLE RCDataItemContainer IF EXISTS
+\u000a\u000aDROP TABLE RCCacheFile IF EXISTS
+\u000a\u000aDROP TABLE Share IF EXISTS
+\u000a\u000aDROP TABLE Portfolio IF EXISTS
+\u000a\u000aDROP TABLE PorPos IF EXISTS
+\u000a\u000aDROP TABLE Fund IF EXISTS
+\u000a\u000aCREATE TABLE PropertyType(\u000aid INT NOT NULL,\u000aname VARCHAR ,\u000adescription VARCHAR \u000a, CONSTRAINT PK_PropertyType PRIMARY KEY (id)\u000a)
+\u000a\u000a\u000aCREATE TABLE Unit(\u000aid INT NOT NULL,\u000aname VARCHAR ,\u000aPropertyType_id INT \u000a, CONSTRAINT PK_Unit PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE Unit ADD CONSTRAINT FK_Unit_PropertyTy FOREIGN KEY (PropertyType_id) REFERENCES PropertyType(id)\u000a
+\u000a\u000a\u000aCREATE TABLE Subject(\u000aid INT NOT NULL,\u000aname VARCHAR ,\u000adescription VARCHAR ,\u000aurlSources VARCHAR ,\u000atypeId VARCHAR \u000a, CONSTRAINT PK_Subject PRIMARY KEY (id)\u000a)
+\u000a\u000aCREATE UNIQUE INDEX IDX_Subject_name ON Subject (name)\u000a
+\u000a\u000a\u000aCREATE TABLE Observer(\u000aid INT NOT NULL\u000a, CONSTRAINT PK_Observer PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE Observer ADD CONSTRAINT FK_Observer_id FOREIGN KEY (id) REFERENCES Subject(id)\u000a
+\u000a\u000a\u000aCREATE TABLE DataSourceType(\u000aid INT NOT NULL,\u000aname VARCHAR ,\u000adescription VARCHAR \u000a, CONSTRAINT PK_DataSourceType PRIMARY KEY (id)\u000a)
+\u000a\u000a\u000aCREATE TABLE DataSource(\u000aid INT NOT NULL,\u000aDataSourceType_id INT ,\u000aurl VARCHAR ,\u000adescription VARCHAR ,\u000aObserver_id INT ,\u000ahandlerClassName VARCHAR ,\u000adataLagInDays INT \u000a, CONSTRAINT PK_DataSource PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE DataSource ADD CONSTRAINT FK_DataSour_DataSo FOREIGN KEY (DataSourceType_id) REFERENCES DataSourceType(id)\u000a
+\u000a\u000aCREATE INDEX IDX_DataSource_DataSourceType_id ON DataSource (DataSourceType_id)\u000a
+\u000a\u000aALTER TABLE DataSource ADD CONSTRAINT FK_DataSour_Observ FOREIGN KEY (Observer_id) REFERENCES Observer(id)\u000a
+\u000a\u000aCREATE INDEX IDX_DataSource_Observer_id ON DataSource (Observer_id)\u000a
+\u000a\u000a\u000aCREATE TABLE MarketPlace(\u000aid INT NOT NULL\u000a, CONSTRAINT PK_MarketPlace PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE MarketPlace ADD CONSTRAINT FK_MarketPl_id FOREIGN KEY (id) REFERENCES Subject(id)\u000a
+\u000a\u000a\u000aCREATE TABLE Property(\u000aid INT NOT NULL,\u000aPropertyType_id INT ,\u000aname VARCHAR ,\u000adescription VARCHAR \u000a, CONSTRAINT PK_Property PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE Property ADD CONSTRAINT FK_Property_Proper FOREIGN KEY (PropertyType_id) REFERENCES PropertyType(id)\u000a
+\u000a\u000a\u000aCREATE TABLE ObserverDataSourceConfiguration(\u000aid INT NOT NULL,\u000aProperty_id INT ,\u000aMarketPlace_id INT ,\u000aDataSource_id INT ,\u000aUnit_id INT ,\u000acolu VARCHAR \u000a, CONSTRAINT PK_ObserverDataSourceConfiguration PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE ObserverDataSourceConfiguration ADD CONSTRAINT FK_Observer_Proper FOREIGN KEY (Property_id) REFERENCES Property(id)\u000a
+\u000a\u000aCREATE UNIQUE INDEX IDX_ODSC_IDT ON ObserverDataSourceConfiguration (Property_id,MarketPlace_id,DataSource_id)\u000a
+\u000a\u000aALTER TABLE ObserverDataSourceConfiguration ADD CONSTRAINT FK_Observer_Market FOREIGN KEY (MarketPlace_id) REFERENCES MarketPlace(id)\u000a
+\u000a\u000aCREATE INDEX IDX_ObserverDataSourceConfiguration_MarketPlace_id ON ObserverDataSourceConfiguration (MarketPlace_id)\u000a
+\u000a\u000aALTER TABLE ObserverDataSourceConfiguration ADD CONSTRAINT FK_Observer_DataSo FOREIGN KEY (DataSource_id) REFERENCES DataSource(id)\u000a
+\u000a\u000aCREATE INDEX IDX_ObserverDataSourceConfiguration_DataSource_id ON ObserverDataSourceConfiguration (DataSource_id)\u000a
+\u000a\u000aALTER TABLE ObserverDataSourceConfiguration ADD CONSTRAINT FK_Observer_Unit_i FOREIGN KEY (Unit_id) REFERENCES Unit(id)\u000a
+\u000a\u000aCREATE INDEX IDX_ObserverDataSourceConfiguration_Unit_id ON ObserverDataSourceConfiguration (Unit_id)\u000a
+\u000a\u000a\u000aCREATE TABLE DataItem(\u000aid INT NOT NULL,\u000atime TIMESTAMP ,\u000aSubject_id INT ,\u000aObserverDataSourceConfiguration_id INT \u000a, CONSTRAINT PK_DataItem PRIMARY KEY (id)\u000a)
+\u000a\u000aCREATE INDEX IDX_DataItem_time ON DataItem (time)\u000a
+\u000a\u000aCREATE UNIQUE INDEX IDX_DataItem_IDT ON DataItem (time,Subject_id,ObserverDataSourceConfiguration_id)\u000a
+\u000a\u000aALTER TABLE DataItem ADD CONSTRAINT FK_DataItem_Subjec FOREIGN KEY (Subject_id) REFERENCES Subject(id)\u000a
+\u000a\u000aCREATE INDEX IDX_DataItem_Subject_id ON DataItem (Subject_id)\u000a
+\u000a\u000aALTER TABLE DataItem ADD CONSTRAINT FK_DataItem_Observ FOREIGN KEY (ObserverDataSourceConfiguration_id) REFERENCES ObserverDataSourceConfiguration(id)\u000a
+\u000a\u000aCREATE INDEX IDX_DataItem_ObserverDataSourceConfiguration_id ON DataItem (ObserverDataSourceConfiguration_id)\u000a
+\u000a\u000a\u000aCREATE TABLE TimeDataItem(\u000aid INT NOT NULL,\u000atime TIMESTAMP \u000a, CONSTRAINT PK_TimeDataItem PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE TimeDataItem ADD CONSTRAINT FK_TimeData_id FOREIGN KEY (id) REFERENCES DataItem(id)\u000a
+\u000a\u000a\u000aCREATE TABLE StringDataItem(\u000aid INT NOT NULL,\u000avalue VARCHAR \u000a, CONSTRAINT PK_StringDataItem PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE StringDataItem ADD CONSTRAINT FK_StringDa_id FOREIGN KEY (id) REFERENCES DataItem(id)\u000a
+\u000a\u000a\u000aCREATE TABLE IntDataItem(\u000aid INT NOT NULL,\u000avalue INT \u000a, CONSTRAINT PK_IntDataItem PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE IntDataItem ADD CONSTRAINT FK_IntDataI_id FOREIGN KEY (id) REFERENCES DataItem(id)\u000a
+\u000a\u000a\u000aCREATE TABLE DoubleDataItem(\u000aid INT NOT NULL,\u000avalue DOUBLE \u000a, CONSTRAINT PK_DoubleDataItem PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE DoubleDataItem ADD CONSTRAINT FK_DoubleDa_id FOREIGN KEY (id) REFERENCES DataItem(id)\u000a
+\u000a\u000a\u000aCREATE TABLE DataInputRegistry(\u000aid INT NOT NULL,\u000aobserver VARCHAR ,\u000astartDate TIMESTAMP ,\u000aendDate TIMESTAMP ,\u000asubject VARCHAR ,\u000amarket VARCHAR ,\u000awhenDate TIMESTAMP \u000a, CONSTRAINT PK_DataInputRegistry PRIMARY KEY (id)\u000a)
+\u000a\u000a\u000aCREATE TABLE BooleanDataItem(\u000aid INT NOT NULL,\u000avalue BIT \u000a, CONSTRAINT PK_BooleanDataItem PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE BooleanDataItem ADD CONSTRAINT FK_BooleanD_id FOREIGN KEY (id) REFERENCES DataItem(id)\u000a
+\u000a\u000a\u000aCREATE TABLE AliasType(\u000aid INT NOT NULL,\u000aname VARCHAR ,\u000aObserver_id INT ,\u000adescription VARCHAR ,\u000aurlSource VARCHAR \u000a, CONSTRAINT PK_AliasType PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE AliasType ADD CONSTRAINT FK_AliasTyp_Observ FOREIGN KEY (Observer_id) REFERENCES Observer(id)\u000a
+\u000a\u000aCREATE UNIQUE INDEX IDX_AliasType_Observer_id ON AliasType (Observer_id)\u000a
+\u000a\u000a\u000aCREATE TABLE Alias(\u000aid INT NOT NULL,\u000aSubject_id INT ,\u000aAliasType_id INT ,\u000aMarketPlace_id INT ,\u000aalias VARCHAR \u000a, CONSTRAINT PK_Alias PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE Alias ADD CONSTRAINT FK_Alias_Subject_i FOREIGN KEY (Subject_id) REFERENCES Subject(id)\u000a
+\u000a\u000aCREATE UNIQUE INDEX IDX_Alias_IDT ON Alias (Subject_id,AliasType_id,MarketPlace_id)\u000a
+\u000a\u000aALTER TABLE Alias ADD CONSTRAINT FK_Alias_AliasType FOREIGN KEY (AliasType_id) REFERENCES AliasType(id)\u000a
+\u000a\u000aCREATE INDEX IDX_Alias_AliasType_id ON Alias (AliasType_id)\u000a
+\u000a\u000aALTER TABLE Alias ADD CONSTRAINT FK_Alias_MarketPla FOREIGN KEY (MarketPlace_id) REFERENCES MarketPlace(id)\u000a
+\u000a\u000aCREATE INDEX IDX_Alias_MarketPlace_id ON Alias (MarketPlace_id)\u000a
+\u000a\u000a\u000aCREATE TABLE TypeConversion(\u000aid INT NOT NULL,\u000aUnit_from INT ,\u000aUnit_to INT ,\u000atypeId VARCHAR \u000a, CONSTRAINT PK_TypeConversion PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE TypeConversion ADD CONSTRAINT FK_TypeConv_Unit_f FOREIGN KEY (Unit_from) REFERENCES Unit(id)\u000a
+\u000a\u000aCREATE INDEX IDX_TypeConversion_Unit_from ON TypeConversion (Unit_from)\u000a
+\u000a\u000aCREATE UNIQUE INDEX IDX_TypeConversion_IDT ON TypeConversion (Unit_from,Unit_to)\u000a
+\u000a\u000aALTER TABLE TypeConversion ADD CONSTRAINT FK_TypeConv_Unit_t FOREIGN KEY (Unit_to) REFERENCES Unit(id)\u000a
+\u000a\u000aCREATE INDEX IDX_TypeConversion_Unit_to ON TypeConversion (Unit_to)\u000a
+\u000a\u000a\u000aCREATE TABLE SecurityPaper(\u000aid INT NOT NULL,\u000aUnit_id INT \u000a, CONSTRAINT PK_SecurityPaper PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE SecurityPaper ADD CONSTRAINT FK_Security_id FOREIGN KEY (id) REFERENCES Subject(id)\u000a
+\u000a\u000aALTER TABLE SecurityPaper ADD CONSTRAINT FK_Security_Unit_i FOREIGN KEY (Unit_id) REFERENCES Unit(id)\u000a
+\u000a\u000a\u000aCREATE TABLE CurrencyPair(\u000aid INT NOT NULL,\u000aUnit_from INT ,\u000aUnit_to INT \u000a, CONSTRAINT PK_CurrencyPair PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE CurrencyPair ADD CONSTRAINT FK_Currency_id FOREIGN KEY (id) REFERENCES SecurityPaper(id)\u000a
+\u000a\u000aALTER TABLE CurrencyPair ADD CONSTRAINT FK_Currency_Unit_f FOREIGN KEY (Unit_from) REFERENCES Unit(id)\u000a
+\u000a\u000aCREATE INDEX IDX_CurrencyPair_Unit_from ON CurrencyPair (Unit_from)\u000a
+\u000a\u000aCREATE UNIQUE INDEX IDX_CurrencyPair_IDT ON CurrencyPair (Unit_from,Unit_to)\u000a
+\u000a\u000aALTER TABLE CurrencyPair ADD CONSTRAINT FK_Currency_Unit_t FOREIGN KEY (Unit_to) REFERENCES Unit(id)\u000a
+\u000a\u000aCREATE INDEX IDX_CurrencyPair_Unit_to ON CurrencyPair (Unit_to)\u000a
+\u000a\u000a\u000aCREATE TABLE CurConversion(\u000aid INT NOT NULL,\u000aCurPair_id INT \u000a, CONSTRAINT PK_CurConversion PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE CurConversion ADD CONSTRAINT FK_CurConve_id FOREIGN KEY (id) REFERENCES TypeConversion(id)\u000a
+\u000a\u000aALTER TABLE CurConversion ADD CONSTRAINT FK_CurConve_CurPai FOREIGN KEY (CurPair_id) REFERENCES CurrencyPair(id)\u000a
+\u000a\u000a\u000aCREATE TABLE ConstantConversion(\u000aid INT NOT NULL,\u000afactor DOUBLE \u000a, CONSTRAINT PK_ConstantConversion PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE ConstantConversion ADD CONSTRAINT FK_Constant_id FOREIGN KEY (id) REFERENCES TypeConversion(id)\u000a
+\u000a\u000a\u000aCREATE TABLE PPosition(\u000aid INT NOT NULL,\u000aSecurityPaper_id INT ,\u000aquantity DOUBLE ,\u000acomment VARCHAR ,\u000aMP_buy INT ,\u000aopenDate TIMESTAMP ,\u000aopenPrice DOUBLE ,\u000aopenCharges DOUBLE ,\u000aUT_buy INT ,\u000aMP_sell INT ,\u000acloseDate TIMESTAMP ,\u000aclosePrice DOUBLE ,\u000acloseCharges DOUBLE ,\u000aUT_sell INT ,\u000aDataSource_id INT \u000a, CONSTRAINT PK_PPosition PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE PPosition ADD CONSTRAINT FK_PPositio_Securi FOREIGN KEY (SecurityPaper_id) REFERENCES SecurityPaper(id)\u000a
+\u000a\u000aCREATE INDEX IDX_PPosition_SecurityPaper_id ON PPosition (SecurityPaper_id)\u000a
+\u000a\u000aALTER TABLE PPosition ADD CONSTRAINT FK_PPositio_MP_buy FOREIGN KEY (MP_buy) REFERENCES MarketPlace(id)\u000a
+\u000a\u000aALTER TABLE PPosition ADD CONSTRAINT FK_PPositio_UT_buy FOREIGN KEY (UT_buy) REFERENCES Unit(id)\u000a
+\u000a\u000aALTER TABLE PPosition ADD CONSTRAINT FK_PPositio_MP_sel FOREIGN KEY (MP_sell) REFERENCES MarketPlace(id)\u000a
+\u000a\u000aALTER TABLE PPosition ADD CONSTRAINT FK_PPositio_UT_sel FOREIGN KEY (UT_sell) REFERENCES Unit(id)\u000a
+\u000a\u000aALTER TABLE PPosition ADD CONSTRAINT FK_PPositio_DataSo FOREIGN KEY (DataSource_id) REFERENCES DataSource(id)\u000a
+\u000a\u000a\u000aCREATE TABLE RCDataItem(\u000aid INT NOT NULL,\u000adate TIMESTAMP \u000a, CONSTRAINT PK_RCDataItem PRIMARY KEY (id)\u000a)
+\u000a\u000a\u000aCREATE TABLE RCDoubleDataItem(\u000aid INT NOT NULL,\u000avalue DOUBLE \u000a, CONSTRAINT PK_RCDoubleDataItem PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE RCDoubleDataItem ADD CONSTRAINT FK_RCDouble_id FOREIGN KEY (id) REFERENCES RCDataItem(id)\u000a
+\u000a\u000a\u000aCREATE TABLE RCDataItemContainer(\u000aid INT NOT NULL,\u000asecurityPaperISIN VARCHAR ,\u000amarketPlaceName VARCHAR ,\u000apropertyName VARCHAR ,\u000aunit VARCHAR \u000a, CONSTRAINT PK_RCDataItemContainer PRIMARY KEY (id)\u000a)
+\u000a\u000a\u000aCREATE TABLE RCCacheFile(\u000aid INT NOT NULL,\u000asubjectName VARCHAR ,\u000aobserverName VARCHAR ,\u000adataSourceTypeName VARCHAR ,\u000amarketPlaceName VARCHAR ,\u000afrom TIMESTAMP ,\u000ato TIMESTAMP ,\u000areaddate TIMESTAMP \u000a, CONSTRAINT PK_RCCacheFile PRIMARY KEY (id)\u000a)
+\u000a\u000a\u000aCREATE TABLE Share(\u000aid INT NOT NULL\u000a, CONSTRAINT PK_Share PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE Share ADD CONSTRAINT FK_Share_id FOREIGN KEY (id) REFERENCES SecurityPaper(id)\u000a
+\u000a\u000a\u000aCREATE TABLE Portfolio(\u000aid INT NOT NULL\u000a, CONSTRAINT PK_Portfolio PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE Portfolio ADD CONSTRAINT FK_Portfoli_id FOREIGN KEY (id) REFERENCES SecurityPaper(id)\u000a
+\u000a\u000a\u000aCREATE TABLE PorPos(\u000aPPosition_id INT NOT NULL,\u000aPortfolio_id INT NOT NULL\u000a, CONSTRAINT PK_PorPos PRIMARY KEY (PPosition_id,Portfolio_id)\u000a)
+\u000a\u000aALTER TABLE PorPos ADD CONSTRAINT FK_PorPos_PPositio FOREIGN KEY (PPosition_id) REFERENCES PPosition(id)\u000a
+\u000a\u000aALTER TABLE PorPos ADD CONSTRAINT FK_PorPos_Portfoli FOREIGN KEY (Portfolio_id) REFERENCES Portfolio(id)\u000a
+\u000a\u000a\u000aCREATE TABLE Fund(\u000aid INT NOT NULL\u000a, CONSTRAINT PK_Fund PRIMARY KEY (id)\u000a)
+\u000a\u000aALTER TABLE Fund ADD CONSTRAINT FK_Fund_id FOREIGN KEY (id) REFERENCES SecurityPaper(id)\u000a
+DISCONNECT

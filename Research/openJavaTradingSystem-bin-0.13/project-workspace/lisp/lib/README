@@ -1,0 +1,5 @@
+unpack the following packages into this directory:
+
+tar -xzvf ~/download/asdf-install.tar.gz
+tar -xzvf ~/download/clocc-01-22-05.tgz
+tar -xzvf ~/download/ltk-0.8.7.tgz

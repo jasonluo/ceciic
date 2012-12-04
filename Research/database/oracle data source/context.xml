@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- 
+	========== Development Build ============
+	
+	The contents of this file will be loaded for each web application 
+-->
+
+  
+<Context reloadable="true">
+   <Resource name="jdbc/TAPDS" 
+    	type="javax.sql.DataSource"
+    	factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" 
+    	driverClassName="oracle.jdbc.driver.OracleDriver"
+    	url="jdbc:oracle:thin:@10.24.10.154:1521:e2predev"
+    	username="tapowner"
+    	password="tapowner"/>  
+</Context>
+
+<!-- 
+http://marc.info/?l=geronimo-user&m=118183995318536
+
+>>>>>         <Resource
+>>>>>                 auth="Container"
+>>>>>                 description="My Oracle Datasource"
+>>>>>                 name="jdbc/myOracleDataSource"
+>>>>>                 type="oracle.jdbc.pool.OracleDataSource"
+>>>>>                 factory="oracle.jdbc.pool.OracleDataSourceFactory"
+>>>>>                 driverClassName="oracle.jdbc.OracleDriver"
+>>>>> 			
+>>>>> url="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)
+>>>>> (HOST=oraclehost1)(PORT=1529))(ADDRESS=(PROTOCOL=TCP)
+>>>>> (HOST=oraclehost2)(PORT=1529))(LOAD_BALANCE=yes)(CONNECT_DATA=
+>>>>> (SERVER=DEDICATED)(SERVICE_NAME=TESTDB)))"
+>>>>>                 user="devapp"
+>>>>>                 password="devapp"
+>>>>>                 maxIdle="20"
+>>>>>                 minIdle="10"
+>>>>>                 maxWait="5000"
+>>>>>                 maxActive="100"
+>>>>>                 connectionCachingEnabled="true"
+>>>>>                 fastConnectionFailoverEnabled="true"
+>>>>>                 connectionCacheName="myOracleDatasourceCache"
+>>>>>
+>>>>> onsConfigStr="nodes=oraclehost1:6200,oraclehost2:6200"
+>>>>>
+>>>>> connectionProperties="oracle.jdbc.ReadTimeout=30000"/>
+
+
+ -->
+ <!--  
+<Context reloadable="true">
+	<Resource
+                auth="Container"
+                description="My Oracle Datasource"
+                name="jdbc/TAPDS"
+                type="oracle.jdbc.pool.OracleDataSource"
+                factory="oracle.jdbc.pool.OracleDataSourceFactory"
+                driverClassName="oracle.jdbc.OracleDriver"
+				url="jdbc:oracle:thin:tapowner/tapowner@10.24.10.154:1521:e2predev"
+                user="tapowner"
+                password="tapowner"
+                maxIdle="20"
+                minIdle="10"
+                maxWait="5000"
+                maxActive="100"
+                connectionCachingEnabled="true"
+                fastConnectionFailoverEnabled="false"
+                connectionCacheName="TAPDSCache"
+				connectionProperties="oracle.jdbc.ReadTimeout=30000"/> 
+</Context>
+-->

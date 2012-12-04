@@ -1,0 +1,696 @@
+package com.vangent.tap.sys.service.encrypt.service;
+
+//Java imports
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.security.NoSuchProviderException;
+import java.security.SecureRandom;
+import java.security.Security;
+import java.security.SignatureException;
+import java.util.Iterator;
+import sun.misc.BASE64Encoder;
+import sun.misc.BASE64Decoder;
+//Bouncy castle imports
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.openpgp.PGPCompressedData;
+import org.bouncycastle.openpgp.PGPCompressedDataGenerator;
+import org.bouncycastle.openpgp.PGPEncryptedDataGenerator;
+import org.bouncycastle.openpgp.PGPEncryptedDataList;
+import org.bouncycastle.openpgp.PGPException;
+import org.bouncycastle.openpgp.PGPLiteralData;
+import org.bouncycastle.openpgp.PGPObjectFactory;
+import org.bouncycastle.openpgp.PGPOnePassSignature;
+import org.bouncycastle.openpgp.PGPOnePassSignatureList;
+import org.bouncycastle.openpgp.PGPPrivateKey;
+import org.bouncycastle.openpgp.PGPPublicKey;
+import org.bouncycastle.openpgp.PGPPublicKeyEncryptedData;
+import org.bouncycastle.openpgp.PGPPublicKeyRing;
+import org.bouncycastle.openpgp.PGPPublicKeyRingCollection;
+import org.bouncycastle.openpgp.PGPSecretKey;
+import org.bouncycastle.openpgp.PGPSecretKeyRingCollection;
+import org.bouncycastle.openpgp.PGPSignature;
+import org.bouncycastle.openpgp.PGPSignatureList;
+import org.bouncycastle.openpgp.PGPUtil;
+
+
+/*
+ * //http://wiki.service-now.com/index.php?title=Sample_Java_BouncyCastle_Algorithm_for_Encryption
+ * 
+ * http://bouncy-castle.1462172.n4.nabble.com/PGP-decryption-failing-Unexpected-end-of-ZIP-input-stream-td1836953.html
+ * 
+ * http://www.bouncycastle.org/devmailarchive/msg03087.html
+ * 
+ * 
+ */
+public class SingleSignOnTest {
+     private static File publicKeyFile = new File("C:\\Documents and Settings\\luoxja\\Desktop\\PGP Test keys\\pubring.pgp");
+     private static File privateKeyFile = new File("C:\\Documents and Settings\\luoxja\\Desktop\\PGP Test keys\\secring.pgp");
+     private static String privateKeyPassword = "PGS-date:120103-LHW";
+
+   
+     //
+     // Public class method encrypt
+     //
+     public static byte[] encrypt(byte[] data) {
+             try
+             {
+                     // ----- Read in the public key
+                     FileInputStream publicKeyIn = new FileInputStream(publicKeyFile);
+                     
+                     System.out.println("publicKeyInt "+publicKeyIn.available());
+                     InputStream decodedpublicKeyIn = PGPUtil.getDecoderStream(publicKeyIn);
+                     
+                     PGPPublicKey key = readPublicKeyFromCol(decodedpublicKeyIn);
+                     System.out.println("Creating a temp file...");
+                     // create a file and write the string to it
+                     File tempfile = File.createTempFile("pgp", null);
+                     FileOutputStream fos = new FileOutputStream(tempfile);
+                     fos.write(data);
+                     fos.close();
+                     System.out.println("Temp file created at ");
+                     System.out.println(tempfile.getAbsolutePath());
+                     System.out.println("Reading the temp file to make sure that the bits were written\n--------------");
+                     BufferedReader isr = new BufferedReader(new FileReader(tempfile));
+                     String line = "";
+                     while ( (line = isr.readLine())!= null )
+                     {
+                             System.out.println(line + "\n");
+                     }
+                     // find out a little about the keys in the public key ring
+                     System.out.println("Key Strength = " + key.getBitStrength());
+                     System.out.println("Algorithm = " + key.getAlgorithm());
+                     System.out.println("Bit strength = " + key.getBitStrength());
+                     System.out.println("Version = " + key.getVersion());
+                     System.out.println("Encryption key = " + key.isEncryptionKey()+ ", Master key = " + key.isMasterKey());
+                     int count = 0;
+                     for ( java.util.Iterator iterator = key.getUserIDs(); iterator.hasNext(); )
+                     {
+                             count++;
+                             System.out.println((String) iterator.next());
+                     }
+                     System.out.println("Key Count = " + count);
+                     // create an armored ascii file
+                     // FileOutputStream out = new FileOutputStream(outputfile);
+                     // encrypt the file
+                     // encryptFile(tempfile.getAbsolutePath(), out, key);
+                     // Encrypt the data
+                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                     _encrypt(tempfile.getAbsolutePath(), baos, key);
+                     System.out.println("encrypted text length=" + baos.size());           
+                     tempfile.delete();
+                     return baos.toByteArray();
+             }
+             catch (PGPException e)
+             {
+                     // System.out.println(e.toString());
+                     System.out.println(e.getUnderlyingException().toString());
+                     e.printStackTrace();
+             }
+             catch (Exception e)
+             {
+                     e.printStackTrace();
+             }
+             return null;
+     }
+     //
+     // Private class method readPublicKeyFromCol
+     //
+     private static PGPPublicKey readPublicKeyFromCol(InputStream in)
+                    throws Exception {
+             PGPPublicKeyRing pkRing = null;
+             PGPPublicKeyRingCollection pkCol = new PGPPublicKeyRingCollection(in);
+             System.out.println("key ring size=" + pkCol.size());
+             Iterator it = pkCol.getKeyRings();
+             while (it.hasNext()) {
+                     pkRing = (PGPPublicKeyRing) it.next();
+                     Iterator pkIt = pkRing.getPublicKeys();
+                     while (pkIt.hasNext()) {
+                             PGPPublicKey key = (PGPPublicKey) pkIt.next();
+                             System.out.println("Encryption key = " + key.isEncryptionKey() + ", Master key = " + 
+                                                key.isMasterKey());
+                             if (key.isEncryptionKey())
+                                     return key;
+                     }
+             }
+             return null;
+     }
+     //
+     // Private class method _encrypt
+     //
+     public static void _encrypt(String fileName, OutputStream out, PGPPublicKey encKey)
+                         throws IOException, NoSuchProviderException, PGPException
+     {
+             out = new DataOutputStream(out);
+             ByteArrayOutputStream bOut = new ByteArrayOutputStream();
+             System.out.println("creating comData...");
+             // get the data from the original file
+             PGPCompressedDataGenerator comData = new PGPCompressedDataGenerator(PGPCompressedDataGenerator.ZIP);
+             PGPUtil.writeFileToLiteralData(comData.open(bOut), PGPLiteralData.BINARY, new File(fileName));
+             comData.close();
+             System.out.println("comData created...");
+             System.out.println("using PGPEncryptedDataGenerator...");
+             // object that encrypts the data
+             PGPEncryptedDataGenerator cPk = new PGPEncryptedDataGenerator(PGPEncryptedDataGenerator.TRIPLE_DES, 
+                                             new SecureRandom(), "BC");
+             cPk.addMethod(encKey);
+             System.out.println("used PGPEncryptedDataGenerator...");
+             // take the outputstream of the original file and turn it into a byte
+             // array
+             byte[] bytes = bOut.toByteArray();
+             System.out.println("wrote bOut to byte array...");
+             // write the plain text bytes to the armored outputstream
+             OutputStream cOut = cPk.open(out, bytes.length);
+             cOut.write(bytes);
+             cPk.close();
+             out.close();
+     }
+     
+     //
+     // Public class method decrypt
+     //
+     public static String decrypt(byte[] encdata) {
+             System.out.println("decrypt(): data length=" + encdata.length);
+             // ----- Decrypt the file
+             try {
+                     ByteArrayInputStream bais = new ByteArrayInputStream(encdata);
+                     FileInputStream privKey = new FileInputStream(privateKeyFile);
+                     return _decrypt(bais, privKey, privateKeyPassword.toCharArray(), true);
+             } catch (Exception e) {
+                     System.out.println(e.getMessage());
+                     e.printStackTrace();
+             }
+             return null;
+     }
+     //
+     // Private class method _decrypt
+     //
+     private static String _decrypt(InputStream in, InputStream keyIn,
+                     char[] passwd, boolean verify) throws Exception {
+         
+             PGPOnePassSignature calculatedSignature = null; 
+             boolean verificationResult = true;
+           
+             PGPPublicKey pgpPubKey = null; 
+             
+         
+             in = PGPUtil.getDecoderStream(in);
+             System.out.println("in avail==="+in.available());
+             try {
+                     PGPObjectFactory pgpF = new PGPObjectFactory(in);
+                     PGPEncryptedDataList enc;
+                     Object o = pgpF.nextObject();
+                     
+                     // the first object might be a PGP marker packet.
+                     if (o instanceof PGPEncryptedDataList) 
+                     {
+                             enc = (PGPEncryptedDataList) o;
+                     } else 
+                     {
+                             enc = (PGPEncryptedDataList) pgpF.nextObject();
+                     }
+       
+                     System.out.println("enc=="+enc);
+                     // find the secret key
+                     InputStream decodedSecretKeyIn = PGPUtil.getDecoderStream(keyIn);
+                     
+                     Iterator it = enc.getEncryptedDataObjects();
+                     PGPPrivateKey privateKey = null;
+                     PGPPublicKeyEncryptedData pbe = null;
+                     while (privateKey == null&&it.hasNext()) 
+                     {
+                         pbe = (PGPPublicKeyEncryptedData) it.next();
+                         System.out.println("pbe id=" + pbe.getKeyID());
+                         privateKey = findPrivateKey(decodedSecretKeyIn, pbe.getKeyID(), passwd);
+                     }
+                     if (privateKey == null) 
+                     {
+                         throw new IllegalArgumentException("private key for message not found.");
+                     }
+                     
+                     InputStream clear = pbe.getDataStream(privateKey, "BC");
+                     
+                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                     PGPObjectFactory plainFact = new PGPObjectFactory(clear);
+                     Object message = plainFact.nextObject();
+                     if (message instanceof PGPCompressedData) 
+                     {
+                         PGPCompressedData cData = (PGPCompressedData) message;
+                         PGPObjectFactory pgpFact = new PGPObjectFactory(cData.getDataStream());
+                         message = pgpFact.nextObject();
+                     }
+                    
+                     while (message!= null)
+                     {
+                         if (message instanceof PGPLiteralData) 
+                         {
+                             PGPLiteralData ld = (PGPLiteralData) message;
+                             InputStream unc = ld.getInputStream();
+                             int ch;
+                             while ((ch = unc.read())>= 0) {
+                                     baos.write(ch);
+                             }
+                             // if verify is checked and signature is present then
+                             // update the data for signature verification
+                             if (verify && calculatedSignature != null)
+                             {
+                                 calculatedSignature.update(baos.toByteArray());
+                             }
+                         } 
+                         else if (message instanceof PGPOnePassSignatureList) 
+                         {
+                             
+                             //throw new PGPException("encrypted message contains a signed message - not literal data.");
+                             // Signature is present
+                             boolean isVerificationDone = true;
+                             PGPOnePassSignatureList sigList = (PGPOnePassSignatureList) message;
+                             calculatedSignature = sigList.get(0);
+                             FileInputStream publicKeyIn = new FileInputStream(publicKeyFile);
+                             
+                             System.out.println("publicKeyInt "+publicKeyIn.available());
+                             InputStream decodedpublicKeyIn = PGPUtil.getDecoderStream(publicKeyIn);
+                             
+                             PGPPublicKeyRingCollection publicKeyRingCollection = new PGPPublicKeyRingCollection(decodedpublicKeyIn);
+                             
+                             if (publicKeyRingCollection != null)
+                             {
+                                 pgpPubKey = publicKeyRingCollection.getPublicKey(calculatedSignature.getKeyID());                               
+                             }
+                           
+                             if (pgpPubKey == null)
+                             {
+                                 System.out.println("Signer's public key not found. Verification failed.");
+                                 calculatedSignature = null;
+                                 verificationResult = false;
+                             }
+                             else
+                             {
+                                 // initialize the signature verification logic
+                                calculatedSignature.initVerify(pgpPubKey, "BC");
+                                long verificationKeyID = pgpPubKey.getKeyID();
+                                System.out.println("The message is signed with the key:"+ verificationKeyID);
+                             } 
+                             
+                         } 
+                         else if(message instanceof PGPSignatureList)
+                         {
+                             if (calculatedSignature != null)
+                             {
+                                 PGPSignatureList sigList = (PGPSignatureList) message;
+                                 PGPSignature sig = sigList.get(0);
+                                 if (!calculatedSignature.verify(sig))
+                                 {
+                                     verificationResult = false;
+                                     System.out.println("verifcation failed in decryptDataStream()");
+                                 }
+                                 else
+                                 {
+                                     verificationResult = verificationResult && true;
+                                 }
+                             }
+                         }
+                         else 
+                         {
+                                 throw new PGPException("message is not a simple encrypted file - type unknown.");
+                         }
+                         message = plainFact.nextObject();
+                     }
+                     
+                     if (pbe.isIntegrityProtected()) 
+                     {
+                         if (!pbe.verify()) 
+                         {
+                             System.err.println("message failed integrity check");
+                         } 
+                         else 
+                         {
+                             System.err.println("message integrity check passed");
+                         }
+                     } 
+                     else 
+                     {
+                         System.err.println("no message integrity check");
+                     }
+                     return baos.toString();
+             } 
+             catch (PGPException e) 
+             {
+                 System.err.println(e);
+                 if (e.getUnderlyingException()!= null) 
+                 {
+                     e.getUnderlyingException().printStackTrace();
+                 }
+             }
+             return null;
+     }
+     //
+     // Private class method findSecretKey
+     //
+     private static PGPPrivateKey findPrivateKey(InputStream keyIn, long keyID,
+                     char[] pass) throws IOException, PGPException,
+                     NoSuchProviderException {
+             PGPSecretKeyRingCollection pgpSec = new PGPSecretKeyRingCollection(PGPUtil.getDecoderStream(keyIn));
+             PGPSecretKey pgpSecKey = pgpSec.getSecretKey(keyID);
+             if (pgpSecKey == null) {
+                     return null;
+             }
+             return pgpSecKey.extractPrivateKey(pass, "BC");
+     }
+     //
+     // Public class method readFile
+     //
+     public byte[] readFile(File file) throws IOException {
+             FileInputStream fis = new FileInputStream(file);
+             byte[] buf = new byte[4096];
+             int numRead = 0;
+             ByteArrayOutputStream baos = new ByteArrayOutputStream();
+             while ((numRead = fis.read(buf)) > 0) {
+                     baos.write(buf, 0, numRead);
+             }
+             fis.close();
+             byte[] returnVal = baos.toByteArray();
+             baos.close();
+             return returnVal;
+     }
+     
+     public static void decryptFile(String fileName) throws IOException, PGPException, NoSuchProviderException
+     {
+         
+         FileInputStream bais = new FileInputStream(fileName);
+         FileInputStream privKey = new FileInputStream(privateKeyFile);
+         try
+        {
+            String s = _decrypt(bais, privKey, privateKeyPassword.toCharArray(), true);
+            
+            FileOutputStream fout = new FileOutputStream(fileName+".clear");
+        
+            fout.write(s.getBytes());
+            fout.flush();
+            fout.close();
+            
+            bais.close();
+            
+        }
+        catch (Exception e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+     }
+     
+     public static void decrypt(String dataInputFile, String dataOutputFile, String secretKeyFile, String publicKeyFile, String password)
+     {
+         Security.addProvider(new BouncyCastleProvider());
+         try
+         {
+             InputStream dataInputStream = new FileInputStream(dataInputFile);
+             OutputStream dataOutputStream = new FileOutputStream(dataOutputFile);
+             
+             decryptDataStream(dataInputStream, dataOutputStream, secretKeyFile, publicKeyFile, privateKeyPassword.toCharArray(),true); 
+             
+         }
+         catch(Exception e)
+         {
+             e.printStackTrace();
+         }
+     }
+     
+     public static ByteArrayOutputStream decryptDataStream(
+             InputStream dataInputStream, OutputStream dataOutputStream, String secretKeyFile, 
+             String publicKeyFile, char [] password, boolean verify) throws IOException,
+             NoSuchProviderException, PGPException, SignatureException
+         {
+         
+             FileInputStream publicKeyIn = new FileInputStream(publicKeyFile);
+             InputStream decodedPublicKeyIn = PGPUtil.getDecoderStream(publicKeyIn);
+             PGPPublicKeyRingCollection publicKeyRingCollection = new PGPPublicKeyRingCollection(decodedPublicKeyIn);
+             
+             FileInputStream secretKeyIn = new FileInputStream(secretKeyFile);
+             InputStream decodedSecretKeyIn = PGPUtil.getDecoderStream(secretKeyIn);
+         
+             ByteArrayOutputStream returnValue = new ByteArrayOutputStream();
+             
+             dataInputStream = PGPUtil.getDecoderStream(dataInputStream);
+             PGPObjectFactory pgpF = new PGPObjectFactory(dataInputStream);
+             PGPEncryptedDataList enc;
+             PGPPublicKey pgpPubKey = null;
+             PGPOnePassSignature calculatedSignature = null;
+             
+             boolean isVerificationDone = false;
+             boolean verificationResult = false;
+             long verificationKeyID;
+            
+
+             Object o = pgpF.nextObject();
+             // the first object might be a PGP marker packet.
+             if (o instanceof PGPEncryptedDataList)
+             {
+                 enc = (PGPEncryptedDataList) o;
+             }
+             else
+             {
+                 enc = (PGPEncryptedDataList) pgpF.nextObject();
+             }
+             
+             
+            
+             Iterator it = enc.getEncryptedDataObjects();
+             
+             PGPPublicKeyEncryptedData pbe = null;
+
+             PGPPrivateKey privateKey = null;
+             
+             while (privateKey == null&&it.hasNext()) {
+                     pbe = (PGPPublicKeyEncryptedData) it.next();
+                     System.out.println("pbe id=" + pbe.getKeyID());
+                     privateKey = findPrivateKey(decodedSecretKeyIn, pbe.getKeyID(), password);
+             }
+             
+            
+           
+             // decrypt
+             InputStream clear = pbe.getDataStream(privateKey, "BC");
+            
+             if (clear == null)
+             {
+                 throw new PGPException("Could not decrypt encrypted message.");
+             }
+            
+
+             PGPObjectFactory plainFact = new PGPObjectFactory(clear);
+             PGPObjectFactory processFact = plainFact;
+             Object message = plainFact.nextObject();
+             if (message instanceof PGPCompressedData)
+             {
+                 PGPCompressedData cData = (PGPCompressedData) message;
+                 PGPObjectFactory pgpFact = new PGPObjectFactory(cData
+                         .getDataStream());
+                 processFact = pgpFact;
+                 System.out.println("compessed data");
+                 message = pgpFact.nextObject();
+             }
+
+             while (message != null)
+             {
+                 System.out.println("here..."+message.getClass());
+                 // Currently only handle literal data
+                 if (message instanceof PGPLiteralData)
+                 {
+                     PGPLiteralData ld = (PGPLiteralData) message;
+                     InputStream unc = ld.getInputStream();
+                     int ch;
+                     while ((ch = unc.read()) >= 0)
+                     {
+                         //returnValue.write(ch);
+                         dataOutputStream.write(ch);
+                     }
+
+                     // if verify is checked and signature is present then
+                     // update the data for signature verification
+                     if (verify && calculatedSignature != null)
+                     {
+                         System.out.println("update steam......");
+                         //calculatedSignature.update(returnValue.toByteArray());
+                     }
+                 }
+                 else if (verify && message instanceof PGPOnePassSignatureList)
+                 {
+                     // Signature is present
+                     isVerificationDone = true;
+                     PGPOnePassSignatureList sigList = (PGPOnePassSignatureList) message;
+                     calculatedSignature = sigList.get(0);
+
+                     if (publicKeyRingCollection != null)
+                     {
+                             // get the corresponding public key
+//                     pgpPubKey = PostXPGPUtil.readVerificationKey(
+//                         calculatedSignature, publicKeyRingCollection);
+                             pgpPubKey = publicKeyRingCollection.getPublicKey
+                                             (calculatedSignature.getKeyID());
+//                             setPGPPublicKeyRing(publicKeyRingCollection.getPublicKeyRing
+//                                             (calculatedSignature.getKeyID()));
+                     }
+                     System.out.println("one pass key id=========="+calculatedSignature.getKeyID());
+                     if (pgpPubKey == null)
+                     {
+                         System.out.println("Signer's public key not found. Verification failed.");
+                         calculatedSignature = null;
+                         verificationResult = false;
+                     }
+                     else
+                     {
+                         // initialize the signature verification logic
+                         calculatedSignature.initVerify(pgpPubKey, "BC");
+                         verificationKeyID = pgpPubKey.getKeyID();
+                         System.out.println("The message is signed with the key:"+ verificationKeyID);
+                     }
+                 }
+                 else if (verify && message instanceof PGPSignatureList)
+                 {
+                     if (calculatedSignature != null)
+                     {
+                         PGPSignatureList sigList = (PGPSignatureList) message;
+                         PGPSignature sig = sigList.get(0);
+                         if (!calculatedSignature.verify(sig))
+                         {
+                             verificationResult = false;
+                             System.out.println("verifcation failed in decryptDataStream()");
+                         }
+                         else
+                         {
+                             verificationResult = verificationResult && true;
+                         }
+                     }
+                 }
+                    
+             /* Here we are getting the exception*/
+                 message = processFact.nextObject();
+             }
+             return returnValue;
+         }
+
+     
+     
+     public static void main(String [] args)
+     {
+          String dataInputFile = "C:\\apps\\hesc\\tap\\jobManager\\cycle11\\ackExtract\\TA403205.gpg";
+          String dataOutputFile = "C:\\apps\\hesc\\tap\\jobManager\\cycle11\\ackExtract\\TA403205.gpg.clear";
+          String secretKeyFile = "C:\\Documents and Settings\\luoxja\\Desktop\\PGP Test keys\\secring.pgp";
+          String publicKeyFile = "C:\\Documents and Settings\\luoxja\\Desktop\\PGP Test keys\\pubring.pgp";
+          String password= "PGS-date:120103-LHW";
+          decrypt(dataInputFile,dataOutputFile, secretKeyFile, publicKeyFile, password); 
+         
+     }
+     
+     
+     public static void mainX(String[] args) {
+             Security.addProvider(new BouncyCastleProvider());
+//             String TOKEN = "aamine";
+//             // ----- Encrypt the message to a file
+//             // them
+//             byte[] encdata = encrypt(TOKEN.getBytes());
+//             System.out.println("Encrypted: " + encdata);
+//             // Encode the byte array to a string
+//             BASE64Encoder en = new BASE64Encoder();       
+//             String temp = en.encode(encdata);
+//             System.out.println("Temp: " + temp);
+//             // us
+//             byte[] newB=null;     
+//             BASE64Decoder en1 = new BASE64Decoder();
+//             try {
+//                     newB = en1.decodeBuffer(temp);
+//             } catch (Exception e) {
+//                     System.out.println("Exception: " + e);
+//             }
+//             System.out.println("byte array" + newB.length);
+//             // ----- Decrypt the token that
+//             String result = decrypt(newB);
+//             System.out.println("Decrypted: " + result);
+             
+
+             try
+            {
+//                FileInputStream fin = new FileInputStream("C:\\apps\\hesc\\tap\\jobManager\\cycle11\\ackExtract\\HE8346Y11.1.txt");
+//                byte [] b = new byte [4096];
+//                fin.read(b);
+//                
+//                byte[] endata = encrypt(b);
+                
+              
+                
+//                String result2 = decrypt(endata);
+//                System.out.println("result2: " + result2);
+                
+                
+               
+                
+                FileInputStream publicKeyIn = new FileInputStream(publicKeyFile);
+                
+                System.out.println("publicKeyInt "+publicKeyIn.available());
+                InputStream decodedpublicKeyIn = PGPUtil.getDecoderStream(publicKeyIn);
+                
+                PGPPublicKey key = readPublicKeyFromCol(decodedpublicKeyIn);
+                
+                FileOutputStream fout = new FileOutputStream("C:\\apps\\hesc\\tap\\jobManager\\cycle11\\ackExtract\\WC872781.gpg");
+                _encrypt("C:\\apps\\hesc\\tap\\jobManager\\cycle11\\ackExtract\\HE8346Y11.1.txt", fout, key);
+               
+                
+               
+                
+                //decryptFile("C:\\apps\\hesc\\tap\\jobManager\\cycle11\\ackExtract\\HE8346Y11.1.txt"+".gpg");
+                
+                //decryptFile("C:\\apps\\hesc\\tap\\jobManager\\cycle11\\ackExtract\\TA403205.gpg");
+                
+            }
+            catch (Exception e)
+            {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+     }
+     
+//     public static void main(String[] args) {
+//         Security.addProvider(new BouncyCastleProvider());
+//         try
+//        {
+//            SingleSignOnTest.decryptFile();
+//        }
+//        catch (NoSuchProviderException e)
+//        {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//        catch (IOException e)
+//        {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//        catch (PGPException e)
+//        {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//     }
+     
+//     public static void main(String[] args) {
+//         Security.addProvider(new BouncyCastleProvider());
+//         String TOKEN = "aamine";
+//         // ----- Encrypt the message to a file
+//         // them
+//         byte[] encdata = encrypt(TOKEN.getBytes());
+//        
+//         // ----- Decrypt the token that
+//         String result = decrypt(encdata);
+//         System.out.println("Decrypted: " + result);
+// }
+}

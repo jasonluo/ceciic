@@ -1,0 +1,62 @@
+body,td {
+  font-family: Verdana, Helvetica, Gill Sans, Verdana, arial, sans-serif;
+  font-size: 10pt;
+}
+
+DIV.codefragment {
+  width: 90%;
+  background-color: yellow;
+  border: 1px dashed olive;
+  font-family: monospace;
+}
+
+DIV.explanationbox {
+  background-color: orange;
+  border: 1px solid black;
+}
+
+DIV.navbar {
+  background-color: #ccddff;
+  border: 1px  solid #8888cc;
+}
+
+DIV.quicknav {
+  background-color: #ddddee;
+  border: 1px  solid #8888cc;
+}
+
+DIV.quicknav * {
+  font-size: 10px;
+}
+
+DIV.searchbox {
+  background-color: #ccffff;
+  border: 1px solid black;
+}
+
+DT {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+  padding-left: 0.5em;
+}
+
+ul {
+  padding-left: 0.75em;
+}
+
+* div.topfloater {
+  float: right;
+  border: 1px solid black;
+}
+
+* div.search {
+  padding: 0px;
+}
+
+* table.banner * {
+  border-style: hidden;
+  padding: 0px;
+}

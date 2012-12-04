@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+	<bean id="isirLoadCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="isirJobDetail"/>
+		</property>	
+		<property name="cronExpression">
+			<value>${batch.job.cron.expression.isirLoad}</value>
+		</property>
+	</bean>
+	
+	<bean id="isirJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="com.vangent.tap.sys.domain.batch.util.JobLauncherDetails" />
+		<property name="group" value="quartz-batch" />
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="jobName" value="isirLoadJob"/>
+				<entry key="jobLocator" value-ref="jobRegistry"/>
+				<entry key="jobLauncher" value-ref="jobLauncher"/>
+				<entry key="batchJobService" value-ref="batchJobService"/>
+				<entry key="jobType" value="isirLoadJob"/>
+			</map>
+		</property>
+	</bean>
+		
+	<bean id="isirLoadJobFactory" class="org.springframework.batch.core.configuration.support.ReferenceJobFactory">
+		<constructor-arg ref="isirLoadJob"/>
+	</bean>
+	<bean id="isirLoadJob" parent="simpleJob">
+		<property name="steps">
+			<list>
+				<bean id="step2"  class="org.springframework.batch.core.step.item.FaultTolerantStepFactoryBean">
+				<property name="itemReader">
+					<bean id="itemReader" class="org.springframework.batch.item.xml.StaxEventItemReader">
+						<property name="fragmentRootElementName" value="customer" />
+						<property name="resource">
+							<bean  class="org.springframework.core.io.UrlResource" scope="step">
+							  <constructor-arg type="java.lang.String" value="#{jobParameters[file.uri]}" />
+							</bean>
+							<!--
+								<bean class="org.springframework.core.io.FileSystemResource">
+									<constructor-arg value="C:/apps/hesc/tap/jobManager/school/tblColladdCurrent11182009.txt" />
+								</bean>
+							-->
+						</property>
+						<property name="unmarshaller" ref="customerCreditMarshaller" />
+					</bean>
+				</property>
+				<property name="itemWriter" ref="itemWriter"/>
+			
+				<property name="retryLimit" value="2" />
+				<property name="backOffPolicy" ref="backOffPolicy"/>
+				<property name="retryableExceptionClasses" value="com.vangent.formengine.sys.exception.SystemException" />
+				<property name="transactionManager" ref="transactionManager" />
+				<property name="jobRepository" ref="jobRepository" />
+				<property name="startLimit" value="3" />
+				<property name="commitInterval" value="1" />
+				<property name="allowStartIfComplete" value="false" />
+				<property name="skipLimit" value="0"/>
+			</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="backOffPolicy" class="org.springframework.batch.retry.backoff.ExponentialBackOffPolicy">
+		<property name="initialInterval" value="10000"/>
+		<property name="maxInterval" value="18000000"/>
+		<property name="multiplier" value="50"/>	
+	</bean>
+
+	<bean id="itemWriter" class="org.springframework.batch.item.xml.StaxEventItemWriter" >
+		<property name="resource" ref="outputResource" />
+		<property name="marshaller" ref="customerCreditMarshaller" />
+		<property name="rootTagName" value="customers" />
+		<property name="overwriteOutput" value="true" />
+	</bean>
+	
+	<bean id="customerCreditMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
+		<property name="aliases">
+			<util:map id="aliases">
+				<entry key="customer"
+					value="com.vangent.tap.sys.domain.studentapp.model.CustomerCredit" />
+				<entry key="price" value="java.math.BigDecimal" />
+				<entry key="name" value="java.lang.String" />
+			</util:map>
+		</property>
+	</bean>
+
+	<bean id="outputResource" class="org.springframework.core.io.FileSystemResource">
+		<constructor-arg value="C:/apps/hesc/tap/isir/output.xml" />
+	</bean>
+	
+</beans>

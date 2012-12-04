@@ -1,0 +1,11 @@
+big table --> BigTable is a fast and extremely large-scale DBMS.  "a sparse, distributed multi-dimensional sorted map"
+
+map reduce --> MapReduce is a patented software framework introduced by Google to support distributed computing on large data sets on clusters of computers.
+
+hadoop--> The Apache Hadoop project develops open-source software for reliable, scalable, distributed computing. Hadoop includes these subprojects
+
+column-oriented DBMS --> online transaction processing (OLTP)-focused RDBMS 
+
+row-oriented DBMS --> online transaction processing (OLTP)-focused RDBMS
+
+Cassadra- facebook

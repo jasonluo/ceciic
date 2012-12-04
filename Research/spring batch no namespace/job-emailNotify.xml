@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+	<bean id="emailNotifyCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref local="emailNotifyJobDetail"/>
+		</property>	
+		<property name="cronExpression">
+			<value>${batch.job.cron.expression.emailNotify}</value>
+		</property>
+	</bean>
+	
+	<bean id="emailNotifyJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="com.vangent.tap.app.batch.util.JobLauncherDetails" />
+		<property name="group" value="quartz-batch" />
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="jobName" value="emailNotifyJob"/>
+				<entry key="jobLocator" value-ref="jobRegistry"/>
+				<entry key="jobLauncher" value-ref="jobLauncher"/>
+				<entry key="jobParametersConstructor" value-ref="jobParametersConstructor"/> 
+				<entry key="jobType" value="emailNotifyJob"/>
+			</map>
+		</property>
+	</bean>
+		
+	<bean id="emailNotifyJobFactory" class="org.springframework.batch.core.configuration.support.ReferenceJobFactory">
+		<constructor-arg>
+			<ref local="emailNotifyJob"/>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="emailNotifyJob" parent="simpleJob">
+		<property name="steps">
+			<list>
+				<bean id="step1" parent="taskletStep">
+					<property name="tasklet">
+						<ref local="emailNotifier"/>
+					</property>
+					<property name="startLimit" value="2" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="emailNotifier" class="com.vangent.tap.app.batch11.EmailNotifyTasklet">
+		<property name="facadeService" ref="systemFacadeService11"/>
+	</bean>
+</beans>

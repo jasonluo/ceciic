@@ -1,0 +1,2018 @@
+ 
+
+
+
+
+
+/* --------------------------------------------- */
+/*  Global Jive Forums 5.x Stylesheet            */
+/* --------------------------------------------- */
+
+/* ---------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------- */
+/*  Styles for HTML elements                                                                      */
+/* ---------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------- */
+
+BODY {
+    background-color : #ffffff;
+    font-size : 100%;
+}
+BODY, DIV, P, TD, TH {
+    font-family : arial,helvetica,sans-serif;
+    font-size : 10pt;
+    color : #000000;
+}
+PRE {
+    font-size : 10pt;
+    font-family : courier new, monospaced;
+    margin : 0px;
+}
+FIELDSET LEGEND {
+    color : #000000;
+}
+A {}
+A:link {
+    color : #000;
+}
+A:visited {
+    color : #000;
+}
+A:hover {
+    color : #000;
+    text-decoration : none;
+}
+A:active {
+    color : #000;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------- */
+/*  Custom styles - used in many pages                                                            */
+/* ---------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------- */
+
+.jive-page-title {
+    font-size : 12pt;
+    font-weight : bold;
+}
+.jive-guest {
+    font-style : italic !important;
+}
+.nobreak {
+    white-space: nowrap;
+}
+
+/* --------------------------------------------- */
+/*  Account Box                                  */
+/* --------------------------------------------- */
+
+.jive-accountbox-old {
+    display : none;
+}
+
+#jive-accountbox {
+	width: 100%;
+}
+
+#jive-accountbox STRONG {
+	color: #333;
+}
+
+#jive-accountbox .account-box-wrapper {
+	padding: 0px 10px 0px 0px;
+}
+
+#jive-accountbox td {
+    font-size: .67em;
+	padding: 3px 0 3px 18px;
+}
+
+#jive-accountbox td A {
+	padding: 3px 0 3px 0px;
+	background-position: 0 50%;
+}
+
+.jive-acc-cp {padding-left: 18px !important; background: url(../images/preferences-16x16.gif) no-repeat;}
+.jive-acc-mail {padding-left: 18px !important; background: url(../images/mail-16x16.gif) no-repeat;}
+.jive-new-pm {font-weight : bold; background: url(../images/mail-new-ani-16x16.gif) no-repeat;}
+.jive-acc-history {padding-left: 18px !important; background: url(../images/history.gif) no-repeat;}
+.jive-acc-login {padding-left: 18px !important; background: url(../images/login-16x16.gif) no-repeat;}
+.jive-acc-logout {padding-left: 18px !important; background: url(../images/logout-16x16.gif) no-repeat;}
+.jive-acc-help {padding-left: 0 !important; background:none;}
+
+/* --------------------------------------------- */
+/*  Buttons                                      */
+/* --------------------------------------------- */
+
+.jive-buttons .jive-icon {
+    padding : 3px;
+}
+.jive-buttons .jive-icon-label {
+    padding : 3px;
+    white-space : nowrap;
+    padding-right : 1em;
+    font-size : 8pt;
+    font-family : verdana,arial,sans-serif;
+}
+#jive-categorypage .jive-buttons {
+    padding-bottom : 3px;
+}
+
+/* --------------------------------------------- */
+/*  Search Forms                                 */
+/* --------------------------------------------- */
+
+.jive-search-form TR {
+    vertical-align : top;
+}
+.jive-search-form .jive-search-label {
+    padding-top : 4px;
+}
+.jive-search-form LABEL, .jive-search-form INPUT, .jive-search-form SELECT {
+    font-size : 8pt;
+    font-family : verdana,arial,sans-serif;
+}
+.jive-search-form TD {
+    padding : 3px;
+}
+#jive-searchpage .jive-search-form TD {
+    padding : 5px;
+}
+.jive-search-results .jive-table THEAD TH {
+    text-align : left;
+}
+.jive-search-results {
+    margin-bottom : 3px;
+}
+.jive-search-results .jive-search-noresults {
+    padding : 1em;
+    font-style : italic;
+}
+#jive-searchpage OL {
+    padding-left : 2em;
+    margin-left : 0px;
+}
+#jive-searchpage .jive-result-info {
+    font-size : 8pt;
+    font-family : verdana,arial,sans-serif;
+    color : #666;
+}
+#jive-searchpage .jive-body {
+    padding : 0em 0em 0em 0.5em;
+    margin-bottom : 1.5em;
+}
+#jive-searchpage .jive-result-link {
+    font-weight : bold;
+}
+.jive-search-results .jive-table SELECT {
+    font-size : 8pt;
+    font-family : verdana,arial,sans-serif;
+    font-weight : normal;
+}
+
+/* --------------------------------------------- */
+/*  Jive User Search                             */
+/* --------------------------------------------- */
+
+#jive-usersearchpage .querybox {
+    background-color : #EEE;
+    border : 1px #CCC solid;
+    padding : 6px 6px 6px 6px;
+}
+#jive-usersearchpage .filterbox {
+    background-color : #EEE;
+    border : 1px #CCC solid;
+    vertical-align : top;
+    padding : 6px 6px 6px 6px;
+}
+#jive-usersearchpage .filterbox .filterOption {
+    width : 100%;
+    font-family : verdana, arial, helvetica, sans-serif;
+    font-size : 8pt;
+}
+#jive-usersearchpage .querybox label, .filterbox label {
+    font-weight : bold;
+}
+#jive-usersearchpage .resultbox {
+    vertical-align : top;
+}
+#jive-usersearchpage .resultbox .user-table {
+    border : 1px #CCC solid;
+}
+#jive-usersearchpage .resultbox .user-table thead {
+    background-color : #EEE;
+    text-align : left;
+    height : 30px;
+}
+#jive-usersearchpage .resultbox .user-table .header-table {
+    font-weight : bold;
+}
+#jive-usersearchpage .resultbox .user-table .user-column {
+    border-top : 1px #CCC solid;
+}
+#jive-usersearchpage .resultbox-odd {
+    background-color : #FFF;
+}
+#jive-usersearchpage .resultbox-even {
+    background-color : #EEE;
+}
+#jive-usersearchpage #profile tr td {
+    font-weight : bold;
+}
+#jive-usersearchpage #profile-details tr td {
+    color : #666;
+}
+
+#jive-searchpage div#searchtabs,
+#jive-usersearchpage div#searchtabs {
+    background-color : transparent;
+    border : 0px;
+}
+
+#jive-searchpage div#searchtabs A,
+#jive-usersearchpage div#searchtabs A {
+    text-decoration : none;
+}
+
+/* --------------------------------------------- */
+/*  Error styles                                 */
+/* --------------------------------------------- */
+.jive-error-message {
+    display: block;
+    color: #900;
+    font-weight: bold;
+}
+.jive-error-message .jive-icon {
+    padding-right : 6px;
+}
+.jive-error-message .jive-icon-label, .jive-error-text {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+    color : #f00;
+}
+.jive-error-message .jive-icon-label {
+    padding-top : 1px;
+}
+
+/* --------------------------------------------- */
+/*  Success styles                               */
+/* --------------------------------------------- */
+
+.jive-success-message .jive-icon {
+    padding-right : 6px;
+}
+.jive-success-message .jive-icon-label, .jive-success-text {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+    color : #090;
+}
+.jive-success-message .jive-icon-label {
+    padding-top : 1px;
+}
+
+/* --------------------------------------------- */
+/*  Info styles                                  */
+/* --------------------------------------------- */
+
+.jive-infobox TABLE {
+    border : 1px #ccc solid;
+    background-color : #eee;
+}
+.jive-infobox LI {
+    list-style-image : url('/forums/images/arrow-bullet-10x10.gif');
+    margin-left : 2em;
+}
+.jive-infobox TD, .jive-infobox TH {
+    font-size : 8pt;
+    font-family : verdana,arial,sans-serif;
+    padding : 3px;
+}
+.jive-infobox UL {
+    padding : 0px;
+    margin : 0px;
+    padding-top : 0.2em;
+}
+.jive-infobox .unans, .jive-infobox .callout, .unans {
+    font-weight : bold;
+    color : #f00;
+}
+.jive-infobox .ans, .ans {
+    font-weight : bold;
+    color : #060;
+}
+
+/* --------------------------------------------- */
+/*  Footer                                       */
+/* --------------------------------------------- */
+
+#jive-footer TD {
+    font-size : 0.7em;
+    font-weight : bold;
+    text-align : center;
+    border-top : 1px #cccccc solid;
+    padding-top : 5px;
+}
+#jive-footer TD A {
+    color : #666;
+    text-decoration : none;
+}
+#jive-footer TD A:hover {
+    text-decoration : underline;
+}
+
+/* --------------------------------------------- */
+/*  Header                                       */
+/* --------------------------------------------- */
+
+#jive-header {
+	padding: 15px 0 0 15px;
+	background: url(../images/header-right.png) 100% 0 no-repeat;
+}
+#jive-header H1 {
+	display: block;
+	margin: -15px 0 0 -15px;
+	padding: 15px 15px 0;
+	font: bold 1.5em Arial, sans-serif;
+	color: #fff;
+	text-decoration: none;
+	background: url(../images/header-left.png) 0 0 no-repeat;
+}
+#jive-header P {
+	display: block;
+	margin: 0 0 0 -15px;
+	padding: 0 0 0 15px;
+	background: url(../images/header-left.png) 0 100% no-repeat;
+}
+#jive-header EM {
+	display: block;
+	padding: 4px 15px 15px 0;
+	font-style: normal;
+	background: url(../images/header-right.png) 100% 100% no-repeat;
+}
+
+/* --------------------------------------------- */
+/*  Breadcrumbs                                  */
+/* --------------------------------------------- */
+
+#jive-breadcrumbs EM {
+    font-style : normal;
+}
+#jive-breadcrumbs {
+    font-size: .86em;
+    color : #000;
+}
+#jive-header #jive-breadcrumbs {
+	padding-top: 4px;
+}
+#jive-header #jive-breadcrumbs A {
+    color : #000;
+	text-decoration: none;
+}
+#jive-header #jive-breadcrumbs A:hover {
+    color : #000;
+}
+#jive-header #jive-breadcrumbs IMG {
+	margin: 0.25em;
+}
+
+/* --------------------------------------------- */
+/*  Paginators                                   */
+/* --------------------------------------------- */
+
+.jive-paginator {
+}
+.jive-paginator, .jive-paginator A {
+    font-family : arial,helvetica,sans-serif;
+    font-size : 10pt;
+}
+.jive-paginator, .jive-paginator A {
+    font-weight : bold;
+}
+.jive-message-list .jive-paginator, .jive-message-list .jive-paginator A {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+    font-weight : bold;
+}
+.jive-paginator A {
+    text-decoration : none;
+    border : 1px #fff solid;
+}
+.jive-paginator A:hover {
+    border : 1px #ccc solid;
+    color : #000;
+    background-color : #ffc;
+    text-decoration : none;
+}
+.jive-paginator .jive-current {
+    color : #000;
+    background-color : #eee;
+    border : 1px #ccc solid;
+    text-decoration : none;
+}
+.jive-message-list-footer, .jive-message-list-footer TD, .jive-message-list-footer A,
+.jive-message-list-footer .jive-paginator-bottom, .jive-message-list-footer .jive-paginator-bottom A
+{
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+    font-weight : normal;
+}
+.jive-thread-row-paginator, .jive-thread-row-paginator A {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+    font-weight : normal;
+}
+.jive-thread-row-paginator {
+    padding-left : 1em;
+}
+
+/* --------------------------------------------- */
+/*  Descriptions, legends                        */
+/* --------------------------------------------- */
+
+.jive-description, .jive-legend .jive-icon-label {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+}
+.jive-legend .jive-icon-label {
+    padding-left : 5px;
+}
+.jive-legend .jive-icon {
+    padding-top : 2px;
+    padding-bottom : 2px;
+}
+
+/* --------------------------------------------- */
+/*  Tables                                       */
+/* --------------------------------------------- */
+
+.jive-table {
+    width : 100%;
+}
+.jive-table TD, .jive-table TH {
+    padding : 3px;
+}
+.jive-table TD {
+    padding : 3px;
+    border-width : 0px 1px 1px 0px;
+    border-style : solid;
+    border-color : #cccccc;
+}
+.jive-table TABLE TABLE, .jive-table TABLE TABLE TD, .jive-table TABLE TABLE TH {
+    border-width : 0px;
+}
+.jive-table THEAD TH {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+    font-weight : bold;
+    text-align : center;
+    background-color : #888;
+    color : #ffffff;
+    border-top : 1px #336699 solid;
+    border-bottom : 1px #336699 solid;
+}
+.jive-table THEAD .jive-first {
+    border-left : 1px #666 solid;
+}
+.jive-table THEAD .jive-last {
+    border-right : 1px #666 solid;
+}
+.jive-table THEAD .jive-first {
+    border-left : 1px #666 solid;
+}
+.jive-table THEAD .jive-last {
+    border-right : 1px #666 solid;
+}
+.jive-table THEAD .jive-first-last {
+    border-left : 1px #666 solid;
+    border-right : 1px #666 solid;
+}
+.jive-table TBODY .jive-first-last, .jive-table TFOOT .jive-first-last {
+    border-left : 1px #cccccc solid;
+    border-right : 1px #cccccc solid;
+}
+.jive-table TBODY .jive-first, .jive-table TBODY .jive-category-name, .jive-table TFOOT .jive-first,
+#jive-usersettingspage .jive-table TBODY .jive-label,
+#jive-guestsettingspage .jive-table TBODY .jive-label,
+#jive-profilepage .jive-table TBODY .jive-label,
+.jive-watchlist .jive-watch-message
+{
+    border-left : 1px #cccccc solid;
+}
+.jive-table TFOOT TD {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+    background-color : #dddddd;
+    border-top : 1px #aaa solid;
+}
+.jive-table .jive-odd {
+    background-color : #eeeeee;
+}
+.jive-table .jive-even {
+    background-color : #ffffff;
+}
+.jive-table TFOOT INPUT, .jive-table TFOOT SELECT {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+}
+.jive-table .jive-active {
+    background-color : #ffc;
+}
+.jive-table .jive-active TD, .jive-table .jive-active TH {
+    border-bottom : 1px #999 solid;
+}
+.jive-form-table TH, .jive-form-table TD {
+    padding : 3px;
+}
+.jive-table .jive-messagebox {
+    border-top : 1px #cccccc solid;
+}
+.jive-messagebox-this {
+    background-color: #ffe;
+}
+.jive-messagebox-parent {
+    background-color: #fee;
+}
+.jive-messagebox-child {
+    background-color: #efe;
+}
+#jive-reply-tree .jive-table .jive-current TD {
+    background-color : #ffffcc;
+    vertical-align : middle;
+}
+#jive-reply-tree .jive-table .jive-current A {
+    font-weight : bold;
+}
+.jive-message-body-wrapper {
+	table-layout : fixed;
+}
+.jive-message-body {
+    border-top: 1px #ccc solid;
+    padding-top : 1em;
+    padding-bottom : 2em;
+    overflow-x : auto;
+	width : 100%;
+}
+
+/* --------------------------------------------- */
+/*  Portlet Boxes                                */
+/* --------------------------------------------- */
+
+.jive-portlet-box {
+    border : 1px #cccccc solid;
+    margin-bottom : 1em;
+}
+.jive-portlet-box THEAD {
+    padding : 0px;
+}
+.jive-portlet-box THEAD TH, .jive-portlet-box TBODY TD {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+    padding : 3px;
+}
+.jive-portlet-box THEAD TH {
+    text-align : left;
+    font-weight : bold;
+    background-color : #eeeeee;
+    color : #000000;
+    border-bottom : 1px #cccccc solid;
+}
+.jive-portlet-box TBODY TD {
+    vertical-align : top;
+}
+.jive-portlet-box LABEL {
+    padding-top : 2px;
+}
+.jive-portlet-box .jive-status-legend-groups .jive-first-row,
+.jive-portlet-box .jive-status-legend-points .jive-first-row {
+    border-top : 1px #cccccc solid;
+}
+
+/* --------------------------------------------- */
+/*  Category, Forum and Thread lists             */
+/* --------------------------------------------- */
+
+.jive-forum-list .jive-table .jive-category-name {
+    font-family : arial, helvetica, sans-serif;
+    font-size : 10pt;
+    font-weight : bold;
+    background-color : #eee;
+    color : #000;
+}
+.jive-category-name .jive-description {
+    font-weight : normal;
+}
+.jive-forum-list .jive-forum-name A {
+    font-weight : bold;
+}
+.jive-forum-list .jive-forum-name .jive-description A {
+    font-weight : normal;
+}
+.jive-forum-list .jive-table .jive-category-name A {
+    color : #000;
+    text-decoration : none;
+}
+.jive-forum-list .jive-table .jive-category-name A:hover {
+    text-decoration : underline;
+}
+.jive-forum-list .jive-table .jive-even, .jive-forum-list .jive-table .jive-odd {
+    background-color : #ffffff;
+}
+.jive-forum-list .jive-table .jive-view-count,
+.jive-forum-list .jive-table .jive-msg-count,
+.jive-thread-list .jive-table .jive-view-count,
+.jive-thread-list .jive-table .jive-msg-count {
+    text-align : center;
+}
+.jive-author {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+}
+.jive-author-pageuser {
+    font-weight : bold;
+}
+.jive-author-fullname {
+    color : #666;
+}
+.jive-thread-list THEAD .jive-forum-name, .jive-thread-list THEAD .jive-date {
+    color : #fff;
+}
+.jive-forum-list .jive-table .jive-last-post,
+.jive-thread-list .jive-table .jive-last-post,
+.jive-table .jive-date {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+}
+.jive-thread-list .jive-forum-name {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+    padding-left : 0.5em;
+    padding-right : 0.5em;
+}
+
+/* --------------------------------------------- */
+/*  Message list                                 */
+/* --------------------------------------------- */
+
+.jive-message-list {
+    margin-bottom : 0.5em;
+}
+.jive-message-list .jive-table THEAD TH {
+    text-align : left;
+    font-weight : normal;
+}
+.jive-message-list .jive-table THEAD TH A {
+    color : #ffffff;
+    font-weight : normal;
+}
+.jive-message-list .jive-table .jive-paginator A {
+    border : 1px #888 solid;
+}
+.jive-message-list .jive-table .jive-paginator A:hover {
+    background-color : #ffc;
+    border : 1px #336699 solid;
+    color : #000;
+}
+.jive-message-list .jive-table .jive-paginator .jive-current {
+    border : 1px #336699 solid;
+    background-color : #eee;
+    color : #000;
+}
+.jive-message-list .jive-table .jive-subject {
+    font-weight : bold;
+}
+.jive-status-level-image {
+    padding : 1px;
+}
+
+/* --------------------------------------------- */
+/*  Info and errors                              */
+/* --------------------------------------------- */
+
+.jive-info-message {
+    margin-bottom : 1em;
+}
+.jive-info-message TBODY TD {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+}
+.jive-info-message TBODY TD A {
+    font-weight : normal;
+}
+.jive-info-message .jive-icon {
+    padding-right : 6px;
+}
+#jive-info-message {
+    border : 1px #D9B04C solid;
+    background-color : #FFE9B2;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    -moz-border-radius : 3px;
+}
+
+/* --------------------------------------------- */
+/*  Search                                       */
+/* --------------------------------------------- */
+
+.jive-search-result .jive-hilite {
+    background-color : #ff0;
+    font-weight : bold;
+}
+
+/* --------------------------------------------- */
+/*  Search                                       */
+/* --------------------------------------------- */
+
+.jive-faq-answer {
+    font-weight : bold;
+}
+
+/* --------------------------------------------- */
+/*  Login                                        */
+/* --------------------------------------------- */
+
+.jive-login-form {
+    width : 60%;
+}
+.jive-login-form .jive-table .jive-label {
+    width : 30%;
+    text-align : right;
+    padding-right : 1em;
+}
+.jive-login-form TABLE {
+    border : 1px #cccccc solid;
+}
+.jive-login-form TD {
+    border-width : 0px;
+}
+
+/* --------------------------------------------- */
+/*  Profiles                                     */
+/* --------------------------------------------- */
+
+.jive-profile .jive-table THEAD TH {
+    text-align : left;
+}
+
+/* --------------------------------------------- */
+/*  Avatars                                      */
+/* --------------------------------------------- */
+
+.jive-avatar {
+    margin-top : 1px;
+    border : 1px #cccccc solid;
+}
+.jive-avatar-box {
+    padding : 0.5em 2em 0.5em 0em;
+}
+.jive-avatar-table IMG {
+    border  : 1px #cccccc solid;
+}
+.jive-avatar-table IMG:hover {
+    border  : 1px #000 solid;
+}
+
+/* --------------------------------------------- */
+/* Polls                                         */
+/* --------------------------------------------- */
+
+#jive-pollpage .jive-table {
+    width : 400px;
+}
+#jive-pollpage .jive-table TABLE {
+    width : 100%;
+}
+.jive-poll-results .jive-total TD {
+    border-top : 1px #cccccc solid;
+}
+.jive-poll-results .jive-label {
+    font-weight : bold;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------- */
+/*  Page styles - these are styles for specific pages which extend the ones                       */
+/*  defined above.                                                                                */
+/* ---------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------- */
+
+/* --------------------------------------------- */
+/*  Extra front page styles                      */
+/* --------------------------------------------- */
+
+#jive-frontpage .jive-search-form TR {
+    vertical-align : middle;
+}
+
+/* --------------------------------------------- */
+/*  Extra post page styles                       */
+/* --------------------------------------------- */
+
+#jive-postpage .jive-fieldset DIV {
+    padding : 0.5em;
+    margin : 0px;
+}
+.jive-fieldset {
+    border : 1px #cccccc solid;
+    -moz-border-radius : 3px;
+    padding : 3px;
+}
+#jive-postpage .jive-rating-buttons {
+    white-space : nowrap;
+}
+#jive-post-helpbox {
+    padding : 0px;
+    margin-left : 1em;
+    border : 1px #cccccc solid;
+    width : 200px;
+}
+#jive-post-helpbox TH {
+    background-color : #ddd;
+    text-align : left;
+    border-bottom : 1px #cccccc solid;
+}
+#jive-post-helpbox TD, #jive-post-helpbox TH {
+    padding : 3px;
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+}
+#jive-post-bodybox {
+    border : 1px #cccccc solid;
+    -moz-border-radius : 3px;
+    padding : 3px;
+    background-color : #E0E5E9;
+}
+#editor-tabs {
+    background-color: #e8f1f8;
+}
+
+/* jive tags */
+.jive-content-snip-tags {
+	padding-left: 16px;
+	font-size: 8pt;
+	color: #666;
+	margin-right: 12px;
+	background: transparent url(../images/jive-icon-tag-12x12.gif) no-repeat left;
+	}
+
+.jive-content-tags {
+	clear: both;
+	padding-left: 16px;
+	font-size: 8pt;
+	color: #666;
+	background: transparent url(../images/jive-icon-tag-12x12.gif) no-repeat left;
+	}
+.jive-tags-edit {
+    padding-left: 10px;
+}
+
+/* jive compose - tags */
+.jive-compose-tags {
+	clear: both;
+	width: 100%;
+	margin: 0px 0px 15px 0px;
+	/*padding-top: 5px; */
+	border: 1px solid #d5e5f1;
+	background-color: #e8f1f8;
+	}
+
+.jive-compose-tags .jive-compose-tags-container {
+	display: block;
+	padding: 5px;
+}
+
+.jive-compose-tags .tag_directions {
+    padding:5px;
+    color: gray;
+}
+
+.jive-compose-tags h4 {
+	margin: 0px 5px 5px 0px;
+	padding: 0px;
+	display: inline;
+}
+
+.jive-compose-tags input {
+	width: 95%;
+	clear: both;
+	font-size: 9pt;
+	margin: 5px 0px 0px 0px;
+    /* NOTE: bottom margin must be 0px for autocomplete tag UI */
+    }
+.jive-compose-tags strong {
+	clear: both;
+	padding: 10px 0px 3px 1px;
+	margin: 0px;
+	font-size: 8pt;
+	}
+
+.jive-tag-selected {
+	background-color: #d5e5f1;
+    }
+
+
+
+.jive-messagebox .jive-compose-tags {
+	margin-top: 5px;
+	}
+
+
+/* tagset (tag) cloud styles for pretty display */
+/* default colors here, each doctype css has their respective colors */
+.jive-tagset-popularity0 a {
+	color: #8398c4;
+	font-size: 8pt;
+    }
+.jive-tagset-popularity1 a {
+	color: #6e87ba;
+	font-size: 9pt;
+	}
+.jive-tagset-popularity2 a {
+	color: #5e78ad;
+	font-size: 10pt;
+	}
+.jive-tagset-popularity3 a {
+	color: #4d6aa3;
+	font-size: 11pt;
+	}
+.jive-tagset-popularity4 a {
+	color: #3c5993;
+	font-size: 12pt;
+	}
+.jive-tagset-popularity5 a {
+	color: #34518a;
+	font-size: 14pt;
+	}
+.jive-tagset-popularity6 a {
+	color: #2a4882;
+	font-size: 15pt;
+	}
+.jive-tagset-popularity7 a {
+	color: #23427d;
+	font-size: 16pt;
+	}
+.jive-tagset-popularity8 a {
+	color: #17346c;
+	font-size: 17pt;
+	}
+.jive-tagset-popularity9 a {
+	color: #152f61;
+	font-size: 18pt;
+	}
+
+/* 'popular tags' sidebar */
+.jive-sidebar-populartags {
+	padding: 0;
+	color: #333;
+	}
+.jive-sidebar-populartags ul {
+	float: left;
+	padding: 0;
+	margin: 6px 0 0 0;
+	list-style-type: none;
+	}
+.jive-sidebar-populartags ul li {
+	display: inline !important;
+    float: none !important;
+    height: 22px;
+	padding: 0;
+	margin: 0;
+    text-decoration: none;
+    float: left;
+    }
+.jive-sidebar-populartags ul li a {
+    margin-left: 3px;
+    text-decoration: none;
+    }
+.jive-sidebar-populartags ul li a:hover {
+    text-decoration: underline;
+    }
+.jive-sidebar-populartags span {
+    float: right;
+    font-size: 8pt;
+    }
+.jive-tagset-popularity0 a,
+.jive-tagset-popularity1 a,
+.jive-tagset-popularity2 a,
+.jive-tagset-popularity3 a,
+.jive-tagset-popularity4 a,
+.jive-tagset-popularity5 a,
+.jive-tagset-popularity6 a,
+.jive-tagset-popularity7 a,
+.jive-tagset-popularity8 a,
+.jive-tagset-popularity9 a {
+	line-height: 16pt;
+    }
+
+
+#jive-postpage TEXTAREA {
+    font-family : arial,helvetica,sans-serif;
+    font-size : 10pt;
+}
+#jive-file-list {
+    width : 100%;
+    padding : 5px 0 7px 0;
+    margin: 0px;
+    display: none;
+    background : transparent;
+}
+#jive-file-list, #jive-file-list DIV {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+    font-weight : bold;
+}
+#jive-add-attachment {
+    padding: 3px;
+}
+
+.jive-post-form TABLE {
+    width: 100%;
+}
+.jive-post-form TABLE TD.jive-label {
+    width: 1%;
+}
+.jive-post-form .jive-post-form-help {
+    padding: 2px 0 2px 18px;
+    background: url(../images/help-16x16.gif) 0 0 no-repeat;
+}
+#jive-edit-by-box {
+    width : 100%;
+}
+.jive-post-form .jive-attach-text {
+    padding : 4px;
+    padding-left : 12px;
+    background-image : url(../images/attach-7x11.gif);
+    background-repeat : no-repeat;
+    background-position : left;
+}
+
+/* --------------------------------------------- */
+/*  Text area resizing styles                    */
+/* --------------------------------------------- */
+
+#textEditorResize {
+    border-left: 1px #cccccc solid;
+    border-bottom: 1px #cccccc solid;
+    border-right: 1px #cccccc solid;
+    white-space: nowrap;
+    margin: 0px;
+    height: 21px;
+}
+
+.textareaResize {
+	float: right;
+	background-image: url('/forums/images/resize-grabber.gif');
+	background-repeat: no-repeat;
+	width: 11px;
+	height: 20px;
+	cursor: se-resize;
+	border: 0px;
+}
+#textEditorResize {
+	border-top : 1px #ccc solid;
+}
+
+.textareaResizeBox {
+	width: 1px;
+	height: 1px;
+	display: none;
+	border: 1px dotted gray;
+	margin: 0px;
+	padding: 0px;
+}
+
+#jive-markup-help {
+    width : 225px;
+    margin-left : 10px;
+    border : 1px #ccc solid;
+    -moz-border-radius : 3px;
+}
+#jive-markup-help TH, #jive-markup-help TD {
+    font-family : verdana, arial, helvetica, sans-serif;
+    font-size : 8pt;
+}
+#jive-markup-help TH {
+    background-color : #eee;
+    border-bottom : 1px #ccc solid;
+    padding : 4px;
+}
+#jive-markup-help TD {
+    padding : 4px;
+}
+#jive-markup-help .jive-inner-table TH {
+    text-align : left;
+    background-color : #fff;
+    border-bottom : 1px #ccc solid;
+}
+#jive-markup-help H1,
+#jive-markup-help H2,
+#jive-markup-help H3,
+#jive-markup-help H4,
+#jive-markup-help H5,
+#jive-markup-help H6 {
+    padding : -6px;
+    margin : -7px 0 -7px 0;
+    color : #999;
+}
+#jive-markup-help HR {
+    margin : 0;
+    padding : 0;
+}
+
+
+
+/* --------------------------------------------- */
+/*  Help page styles                             */
+/* --------------------------------------------- */
+
+#jive-helppage LI {
+    padding-bottom : 0.5em;
+}
+
+/* --------------------------------------------- */
+/*  Ratings (correct/helpful)                    */
+/* --------------------------------------------- */
+
+.jive-rate-button {
+    font-size : 8pt;
+    font-family : verdana;
+    border : 1px #aaa solid;
+    font-weight : normal;
+    padding : 1px;
+    margin : 1px;
+    -moz-border-radius : 3px;
+}
+.jive-helpful-rating TD {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+}
+
+/* --------------------------------------------- */
+/*  Extra forum page styles                      */
+/* --------------------------------------------- */
+
+#jive-forumpage .jive-search-form FORM {
+    display : inline;
+}
+
+/* --------------------------------------------- */
+/*  Extra portlet styles                         */
+/* --------------------------------------------- */
+
+#jive-frontpage .jive-portlet-box,
+#jive-categorypage .jive-portlet-box,
+#jive-forumpage .jive-portlet-box,
+#jive-flatpage .jive-portlet-box,
+#jive-threadedpage .jive-portlet-box,
+#jive-treepage .jive-portlet-box,
+#jive-rsspage .jive-portlet-box,
+.jive-portlet-info-box
+{
+    margin-left : 1em;
+}
+
+/* --------------------------------------------- */
+/*  Extra thread list styles                     */
+/* --------------------------------------------- */
+
+#jive-forumpage .jive-thread-list .jive-table TR, #jive-categorypage .jive-thread-list .jive-table TR {
+    vertical-align : middle;
+}
+
+/* --------------------------------------------- */
+/*  Spell checking styles                        */
+/* --------------------------------------------- */
+
+.jive-spell-error-current, .jive-spell-error {
+    color : #f00;
+    border-bottom : #f00 2px dotted;
+}
+.jive-spell-error-current {
+    background-color : #eee;
+    font-weight : bold;
+}
+#jive-spellpage .jive-table .jive-spell-button {
+    background-color : #eee;
+    font-size : 8pt;
+    font-family : verdana,arial,helvetica,sans-serif;
+    padding : 2px 6px 2px 6px;
+}
+#jive-spell-markup-div {
+    padding : 1em;
+}
+
+/* --------------------------------------------- */
+/* Generated link styles                         */
+/* --------------------------------------------- */
+.jive-link-forum,
+.jive-link-thread,
+.jive-link-message {
+	padding: 2px 0 2px 22px;
+	}
+.jive-link-email, .jive-link-profile, .jive-link-attachment,
+.jive-link-forum, .jive-link-thread, .jive-link-message {
+    background-position: bottom right !important;
+    padding-left: 0;
+    padding-right: 20px;
+    }
+.jive-link-email {
+    background: transparent url('../images/jive-icon-email-16x16.gif') no-repeat top left;
+    }
+.jive-link-profile {
+    background: transparent url('../images/jive-icon-members-16x16.gif') no-repeat top left;
+    }
+.jive-link-attachment {
+    background: transparent url('../images/attach-7x11.gif') no-repeat top left;
+    }
+.jive-link-forum, .jive-link-thread, .jive-link-message {
+    background: transparent url(../images/jive-icon-forum-16x16.gif) no-repeat top left;
+    }
+
+/* --------------------------------------------- */
+/* Styles for code macro                         */
+/* --------------------------------------------- */
+
+CODE.jive-xml {
+    font-family: monospace;
+    }
+CODE.jive-xml .jive-xml-tag {
+    color: navy;
+    font-weight: bold;
+    }
+CODE.jive-xml .jive-xml-comment {
+    color: darkgreen;
+    }
+CODE.jive-xml .jive-xml-quote {
+    color: red;
+    }
+CODE.jive-xml .jive-xml-keyword {
+    color: navy;
+    font-weight: bold;
+    }
+
+CODE.jive-sql {
+    font-family: monospace;
+    }
+CODE.jive-sql .jive-sql-object {
+    color: navy;
+    font-weight: bold;
+    }
+CODE.jive-sql .jive-sql-comment {
+    color: darkgreen;
+    }
+CODE.jive-sql .jive-sql-quote {
+    color: red;
+    }
+CODE.jive-sql .jive-sql-keyword {
+    font-weight: bold;
+    color: navy;
+    }
+
+/* --------------------------------------------- */
+/*  Quote original styles                        */
+/* --------------------------------------------- */
+
+.jive-quote, .jive-pre {
+    overflow : auto;
+}
+
+.jive-pre {
+    padding : 10px;
+    padding-left : 1em;
+    background-color : #eee;
+    margin : 1em 2em 0.5em 2em;
+}
+
+.jive-quote {
+    padding : 10px;
+    padding-left : 1em;
+    background-color : #eee;
+    margin : 1em 2em 0.5em 2em;
+    color : #333;
+    font-style : italic;
+}
+
+.jive-quote, .jive-pre {
+    border : 1px #eee solid;
+    border-left : 2px #ccc solid;
+    background : url(../images/quote-background-1.gif);
+}
+.jive-quote .jive-quote {
+    border : 1px #eef solid;
+    border-left : 2px #ccf solid;
+    background : url(../images/quote-background-2.gif);
+}
+.jive-quote .jive-quote .jive-quote {
+    border : 1px #efe solid;
+    border-left : 2px #cfc solid;
+    background : url(../images/quote-background-3.gif);
+}
+.jive-quote .jive-quote .jive-quote .jive-quote {
+    border : 1px #fee solid;
+    border-left : 2px #fcc solid;
+    background : url(../images/quote-background-4.gif);
+}
+
+/* --------------------------------------------- */
+/*  Extra settings and watch page styles         */
+/* --------------------------------------------- */
+
+.jive-settings .jive-table TH, .jive-watchlist .jive-table TH {
+    text-align : left;
+}
+.jive-settings .jive-table .jive-label {
+    width : 30%;
+}
+.jive-watchlist .jive-watchlist-internal {
+    /*
+    margin : 10px;
+    margin-bottom : 20px;
+    */
+    width : 100%;
+}
+.jive-watchlist .jive-watchlist-internal TH {
+    background-color : #eee;
+    border-width : 1px 0px 1px 1px;
+    border-color : #cccccc;
+    border-style : solid;
+    color : #000;
+}
+.jive-watchlist .jive-watchlist-internal .cn {
+    border-right : 1px  #cccccc solid;
+}
+.jive-watchlist .jive-watchlist-internal .c1
+{
+    border-left : 1px #cccccc solid;
+}
+.jive-watchlist .jive-watchlist-internal TBODY TR {
+    background-color : #eee;
+    border-width : 0px 1px 0px 1px;
+    border-color : #cccccc;
+    border-style : solid;
+}
+.jive-watchlist .jive-watchlist-internal .jive-odd,
+.jive-watchlist .jive-watchlist-internal .jive-even
+{
+    background-color : #fff;
+}
+.jive-watchlist .jive-watchlist-internal TBODY TD {
+    border-bottom : 1px #cccccc solid;
+}
+.jive-watchlist .jive-watchlist-internal TFOOT TD {
+    background-color : #fff;
+}
+.jive-watchlist .jive-watch-message {
+    padding : 10px;
+}
+
+/* --------------------------------------------- */
+/*  Private Messages                             */
+/* --------------------------------------------- */
+
+#jive-pmpage .jive-info-message {
+    padding : 3px;
+}
+#jive-pmpage .jive-mark-buttons INPUT, #jive-pmpage .jive-mark-buttons SELECT, #jive-pmpage .jive-jump-box SELECT {
+    font-size : 8pt;
+    font-family : verdana,arial,sans-serif;
+}
+#jive-pmpage .jive-pm-msg-row TD {
+    border-bottom : 1px #cccccc solid;
+}
+#jive-pmpage .jive-pm-msg-row-sel TD {
+    border-bottom : 1px #999 solid;
+    background-color : #ffffcc;
+}
+#jive-pm-folder-box TH, #jive-pm-folder-box TD {
+    font-size : 8pt;
+    font-family : verdana;
+}
+#jive-pm-folder-box {
+    margin-right : 8px;
+}
+#jive-pm-folder-box TABLE {
+    border : 1px #cccccc solid;
+}
+#jive-pm-folder-box TH {
+    text-align : left;
+    font-weight : bold;
+    background-color : #eeeeee;
+    border-bottom : 1px #cccccc solid;
+}
+#jive-pm-folder-box .jive-pm-folder-total TD {
+    border-top : 1px #cccccc solid;
+}
+.jive-pm-folder-warn {
+    color : #c30;
+    font-weight : bold;
+}
+.jive-pm-folder-bar, .jive-pm-folder-bar TABLE {
+    border : 1px #666 solid;
+    padding : 0px;
+    margin : 0px;
+}
+#jive-pmpage .jive-pm-list TFOOT {
+    border-top : 1px #cccccc solid;
+}
+#jive-pmpage .jive-pm-list TFOOT TD {
+    background-color : #dddddd;
+}
+#jive-pmpage .jive-table .jive-paginator A {
+    border : 1px #eee solid;
+}
+#jive-pmpage .jive-table .jive-paginator A:hover {
+    background-color : #ffc;
+    border : 1px #336699 solid;
+    color : #000;
+}
+#jive-pmpage .jive-table .jive-paginator .jive-current {
+    border : 1px #666 solid;
+    background-color : #eee;
+    color : #000;
+}
+#jive-folder-form {
+    margin-right : 10px;
+}
+#jive-folder-form TABLE {
+    border : 1px #cccccc solid;
+}
+#jive-folder-form TD, #jive-folder-form TH, #jive-folder-form INPUT, #jive-folder-list INPUT {
+    font-size : 8pt;
+    font-family : verdana,arial,sans-serif;
+}
+#jive-folder-form TH {
+    background-color : #eeeeee;
+    color: #000000;
+    text-align : left;
+}
+#jive-folder-list TABLE {
+    border : 1px #cccccc solid;
+}
+#jive-folder-list TH, #jive-folder-list TD {
+    font-size : 8pt;
+    font-family : verdana,arial,sans-serif;
+}
+#jive-folder-list TH {
+    text-align : left;
+    background-color : #eeeeee;
+    color : #000000;
+}
+#jive-folder-list TD {
+    border-top : 1px #cccccc solid;
+}
+.jive-pm-box .jive-table .jive-body {
+    padding : 12px;
+}
+.jive-pm-box .jive-table .jive-label {
+    white-space : nowrap;
+    width : 75px;
+}
+.jive-pm-box .jive-table THEAD TH {
+    text-align : left;
+}
+#jive-pmviewpage .jive-nextprev {
+    text-align : right;
+    font-size : 8pt;
+    font-family : verdana,arial,sans-serif;
+}
+
+/* --------------------------------------------- */
+/*  Questions                                    */
+/* --------------------------------------------- */
+
+.jive-question-table THEAD TH {
+    border-bottom : 1px #cccccc solid;
+    text-align : left;
+    font-size : 11pt;
+}
+.jive-question-table THEAD TH .paginator {
+    font-size : 8pt;
+    font-family : verdana,arial,sans-serif;
+    font-weight : normal;
+    white-space : nowrap;
+    padding-left : 2em;
+}
+.jive-question-table .jive-thread-name A, #jive-profilepage .jive-recent-msg .jive-thread-name A {
+    font-weight : bold;
+}
+.jive-question-table .info, #jive-profilepage .jive-recent-msg .info {
+    font-size : 8pt;
+    font-family : verdana,arial,sans-serif;
+}
+.jive-question-table .info, #jive-profilepage .jive-recent-msg .info {
+    padding-bottom : 0.5em;
+}
+.jive-question-table .info A, #jive-profilepage .jive-recent-msg .info A {
+    color : #666;
+    white-space : nowrap;
+}
+
+/* --------------------------------------------- */
+/*  Announcements                                */
+/* --------------------------------------------- */
+
+.jive-announce-description {
+    color : #666;
+}
+.jive-announce .jive-announce-edit {
+    float : right;
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+}
+
+/* --------------------------------------------- */
+/*  Timer (not enabled by default)               */
+/* --------------------------------------------- */
+
+.jive-timer {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+    color : #999;
+    text-align : center;
+}
+
+
+
+/*-- -----------------------------------------------*/
+/*--  Error - Info - Success                        */
+/*-- -----------------------------------------------*/
+
+.jive-error-box {
+    border : 1px #f00 solid;
+    background-color : #fee;
+    -moz-border-radius : 3px;
+    padding : 6px;
+    margin-bottom : 1em;
+    padding-left : 30px;
+    background-image : url("/forums/images/error-16x16.gif");
+    background-repeat : no-repeat;
+    background-position : 6px 6px;
+}
+.jive-info-box {
+    border : 1px #00f solid;
+    background-color : #eef;
+    -moz-border-radius : 3px;
+    padding : 6px;
+    margin-bottom : 1em;
+    padding-left : 30px;
+    background-image : url("/forums/images/info-16x16.gif");
+    background-repeat : no-repeat;
+    background-position : 6px 6px;
+}
+.jive-success-box {
+    border : 1px #0f0 solid;
+    background-color : #efe;
+    -moz-border-radius : 3px;
+    padding : 6px;
+    margin-bottom : 1em;
+    padding-left : 30px;
+    background-image : url("/forums/images/success-16x16.gif");
+    background-repeat : no-repeat;
+    background-position : 6px 6px;
+}
+
+
+/*-- --------------------------------------------- --*/
+/*--  Settings forms                               --*/
+/*-- --------------------------------------------- --*/
+
+.jive-settings-form .jive-table THEAD TH, .jive-settings-form .jive-table TD {
+    text-align : left;
+    border-left : 1px #cccccc solid;
+}
+.jive-settings-form TD {
+    padding : 3px;
+}
+
+/*-- --------------------------------------------- --*/
+/*--  Styles for skill rows                        --*/
+/*-- --------------------------------------------- --*/
+
+.jive-skill-table TD {
+    border-left : 0px !important;
+}
+.jive-skill-row TD {
+    border-bottom : 1px #ccc dotted !important;
+}
+.jive-skill-legend UL {
+    padding : 5px;
+    margin : 0;
+    list-style : none;
+}
+.jive-skill-legend LI {
+    padding-bottom : 0.5em;
+}
+
+/*-- --------------------------------------------- --*/
+/*--  Webwork styles                               --*/
+/*-- --------------------------------------------- --*/
+
+.errorLabel {
+    color : #F00;
+    font-weight:bold;
+}
+.errorMessage {
+    color : #F00;
+    font-weight:bold;
+}
+.checkboxErrorLabel {
+    color : #F00;
+}
+.required {
+    color : #F00;
+}
+
+
+/*-- --------------------------------------------- --*/
+/*--  public profile styles                               --*/
+/*-- --------------------------------------------- --*/
+
+
+.jive-profile-box {
+    border : 1px #cccccc solid;
+    background-color : #eeeeee;
+    /*-moz-border-radius : 8px;*/
+    /*padding: 7px;*/
+}
+
+.jive-profile-box THEAD TH {
+    background-color: #cccccc;
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: left;
+}
+
+.jive-profile-box THEAD TR {
+    background-color: #cccccc;
+}
+
+.jive-profile-table {
+    border : 0px #fff none;
+    margin-bottom : 1em;
+}
+.jive-profile-table THEAD {
+    padding : 0px;
+}
+.jive-profile-table THEAD TH, .jive-profile-table TBODY TD {
+    font-family : verdana,arial,sans-serif;
+    font-size : 8pt;
+    padding : 3px;
+}
+.jive-profile-table THEAD TH {
+    text-align : left;
+    font-weight : bold;
+    background-color : #eeeeee;
+    border-bottom : 1px #cccccc solid;
+}
+.jive-profile-table TBODY TD {
+    vertical-align : top;
+}
+
+.jive-profile-table-title {
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: left;
+}
+
+tr.selectedControlPanel {
+    color : #ffffff;
+    background-color : #eeeeee;
+}
+
+/* --------------------------------------------- */
+/*  Moderation Messages                             */
+/* --------------------------------------------- */
+
+#jive-modpage .jive-info-message {
+    padding: 3px;
+}
+
+#jive-modpage .jive-mark-buttons INPUT, #jive-modpage .jive-mark-buttons SELECT, #jive-modpage .jive-jump-box SELECT {
+    font-size: 8pt;
+    font-family: verdana, arial, helvetica, sans-serif;
+}
+
+#jive-modpage .jive-mod-msg-row TD {
+    border-bottom: 1px #ccc solid;
+}
+
+#jive-modpage .jive-mod-msg-row-app TD {
+    border-bottom: 1px #999 solid;
+    background-color: #cfc;
+}
+
+#jive-modpage .jive-mod-msg-row-rej TD {
+    border-bottom: 1px #999 solid;
+    background-color: #fcc;
+}
+
+#jive-mod-forum-box TH, #jive-mod-forum-box TD {
+    font-size: 8pt;
+    font-family: verdana;
+}
+
+#jive-mod-forum-box {
+    margin-right: 8px;
+}
+
+#jive-mod-forum-box TABLE {
+    border: 1px #ccc solid;
+}
+
+#jive-mod-forum-box TH {
+    text-align: left;
+    font-weight: bold;
+    background-color: #eee;
+    border-bottom: 1px #ccc solid;
+}
+
+#jive-mod-forum-box .jive-mod-forum-all TD {
+    border-top: 1px #ccc solid;
+}
+
+#jive-mod-forum-box LABEL, #jive-mod-forum-box INPUT, #jive-mod-forum-box SELECT {
+    font-size: 8pt;
+    font-family: verdana, arial, helvetica, sans-serif;
+}
+
+
+/* --------------------------------------------- */
+/*  Styles for tabs                              */
+/* --------------------------------------------- */
+.jivetabs {
+	float: left;
+	width: 100%;
+	line-height: normal;
+	background-color : #eee;
+	background-image: url("/forums/images/tabs/tabs_bg.gif");
+	white-space : nowrap;
+	border-left: 1px #cccccc solid;
+	border-top: 1px #cccccc solid;
+	border-right: 1px #cccccc solid;
+	padding: 0px;
+	padding-top : 5px;
+}
+.jivetabs ul {
+    border: 0px;
+	margin: 0px;
+	padding: 0px 10px 0px 10px;
+	list-style: none;
+}
+.jivetabs li {
+	float: left;
+	background: url("/forums/images/tabs/tab_bg.gif") no-repeat left top;
+	margin: 0px;
+	margin-left: 0px;
+	margin-right: 2px;
+	padding: 0px 0px 0px 10px;
+	line-height: 18px;
+}
+.jivetabs li.current {
+	background: url("/forums/images/tabs/tab_sel_bg.gif") no-repeat left top;
+	margin-right: 2px;
+}
+.jivetabs span {
+	float: left;
+	display: block;
+	background: url("/forums/images/tabs/tab_end.gif") no-repeat right top;
+	padding: 0px 10px 0px 0px;
+}
+.jivetabs div.jive-preferredlink {
+    float: right;
+    display: inline;
+	white-space : nowrap;
+	visibility: hidden;
+	padding-right : 6px;
+}
+.jivetabs .current span {
+	background: url("/forums/images/tabs/tab_sel_end.gif") no-repeat right top;
+}
+.jivetabs a.jive-editor-tab {
+	text-decoration: none;
+	font-family: Verdana, Arial;
+	font-size: 10px;
+}
+.jivetabs a:link, .jivetabs a:visited, .jivetabs a:hover {
+	color: black;
+}
+.jivetabs a:hover {
+}
+.jivetabs .current {
+}
+.jivetabs .current a, .jivetabs .current a:link, .jivetabs .current a:visited {
+}
+
+div#autosave {
+    float: none;
+    display: inline;
+    font-size: 10px;
+    padding-left: 15px;
+    visibility: visible;
+    white-space : nowrap;
+}
+
+/* --------------------------------------------- */
+/*  Upload progress bar styles                   */
+/* --------------------------------------------- */
+
+#progressBar {
+    padding-top: 5px;
+}
+#progressBarBox {
+    width: 350px;
+    height: 20px;
+    border: 1px inset;
+    background: #eee;
+}
+#progressBarBoxContent {
+    width: 0px;
+    height: 20px;
+    border-right: 1px solid #444;
+    background: #69c;
+}
+
+/* --------------------------------------------- */
+/*  Editor and inline spellchecker styles        */
+/* --------------------------------------------- */
+
+.jive-spellchecker-menu {
+	border: 1px solid;
+	border-color: threedlightshadow threeddarkshadow threeddarkshadow threedlightshadow;
+	position: absolute;
+}
+
+.jive-spellchecker-menu .inner {
+	border: 1px solid;
+	border-color: threedhighlight threedshadow threedshadow threedhighlight;
+	background: threedface;
+	padding: 2px;
+}
+
+.jive-spellchecker-menu a {
+	display: block;
+	font: menu;
+	color: menutext;
+	padding: 1px 5ex 1px 3ex;
+	text-decoration: none;
+}
+
+.jive-spellchecker-menu a:hover {
+	background: highlight;
+	color: highlighttext;
+}
+
+.jive-spellchecker-menu .separator {
+	border-top: 1px solid threedshadow;
+	border-bottom: 1px solid threedhighlight;
+	overflow: hidden;
+	margin: 2px;
+}
+
+#textEditor {
+    border: 0px;
+	width: 100%;
+	height: 250px;
+	color: windowtext;
+	line-height: expression('1.2em');
+	padding-left: 1em;
+}
+
+.jive-spell-markupbox {
+    border: 0px;
+	position: absolute;
+	overflow: auto;
+	line-height: expression('1.2em');
+	padding: 1px;
+	background: white;
+	color: windowtext;
+	display: none;
+	white-space: pre-wrap;
+}
+
+.jive-editor-panel {
+    padding : 0px;
+    width: 100%;
+}
+#editor-tabs {
+    display: none;
+    width: 100%;
+    margin-right: 2px;
+}
+.jive-panel-wrapper div.panel {
+	display: none;
+}
+
+.jive-panel-wrapper div.current {
+    border: 1px #cccccc solid;
+    border-top: 0px;
+    display: block;
+	width: 100%;
+    overflow: visible; /* Should be auto but that breaks Safari */
+}
+
+.jive-panel-wrapper {
+    width: 100%;
+    margin: 0px;
+	border: 0px;
+    padding: 0px;
+    clear: both;
+	background-color: #eee;
+}
+
+.jive-panel-wrapper #text-panel {
+    border: 0px;
+    border-left: 1px #cccccc solid;
+    border-right: 1px #cccccc solid;
+    margin: 0px;
+}
+
+.jive-panel-wrapper #text-panel .text-links {
+    padding: 5px;
+    background-color: #eee;
+    font-family: Verdana, Arial;
+	font-size: 10px;
+	border-bottom : 1px #ccc solid;
+}
+
+.jive-panel-wrapper #preview-panel {
+    background-color: #fff;
+    overflow: visible; /* Should be auto but that breaks Safari */
+}
+.jive-panel-wrapper #preview-panel .inner-panel {
+    padding : 1em;
+}
+
+.jive-selbox {
+    font-size:8pt;
+    font-family:verdana;
+}
+
+/* safari hack - safari will ignore this block - http://www.ibloomstudios.com/article1/ */
+.jive-panel-wrapper #preview-panel {overflow: auto;#}
+
+TD.link_label, .error_label  {
+    padding:5px;
+    text-align:left;
+}
+TD.link_label {
+    color:#000;
+}
+.error_label {
+    color:#f00;
+    text-align:center;
+}
+
+/* --------------------------------------------- */
+/*  Text area resizing styles                    */
+/* --------------------------------------------- */
+
+.textareaResize {
+	float: right;
+	background-image: url('/forums/images/resize-grabber.gif');
+	background-repeat: no-repeat;
+	width: 11px;
+	height: 20px;
+	cursor: se-resize;
+}
+
+.textareaResizeBox {
+	width: 10px;
+	height: 10px;
+	display: none;
+	border: 1px dotted gray;
+	margin: 0;
+	padding: 0;
+}
+
+/* ------------------------------------------- */
+/*  RSS alignment styles                       */
+/* ------------------------------------------- */
+
+.jive-rss-cell {
+    float: right;
+}
+
+
+/*
+P.I.E. FLOAT CLEARING
+See http://www.positioniseverything.net/easyclearing.html
+--------------------- */
+
+.jive-clearfix:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}
+.jive-clearfix {
+  display: inline-block; /* Fixes IE/Mac */
+}
+/* Hides from IE-mac \*/
+* html .jive-clearfix {height: 1%;}
+.jive-clearfix {display: block;}
+/* End hide from IE-mac */
+
+.bidi {
+    unicode-bidi: embed;
+}

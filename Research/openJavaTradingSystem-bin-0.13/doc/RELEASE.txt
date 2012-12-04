@@ -1,0 +1,40 @@
+0) make sure that you have everything you need, e.g. you updated the ChangeLog and so on ...
+
+1) modify the build.xml file to contain the right properties:
+  <property name="dist-version"      value="0010" />
+  <property name="dist-version-name" value="0.10" />
+  the dist-version is the part used in the cvs tag. it is a four digit number
+  where the first two digits should be thougt of as being before the dot and
+  the last two digits the part after the dot as seen above.
+  the dist-version-name is used in the .tar.gz file for the release
+
+2) tag the cvs repository with the tag name TAG_${dist-version}
+  change into your locally checked-out OpenJavaTradingSystem directory
+  cvs tag TAG_0010
+
+2a) Optional: if you later find out that you need to create a branch for a release then use:
+  change into your locally checked-out OpenJavaTradingSystem directory
+  cvs rtag -r TAG_0010 -b BRANCH_0010 OpenJavaTradingSystem
+  cvs rtag -r TAG_0010 BRANCH_0010_merge_head OpenJavaTradingSystem
+
+  the first command creates a branch and the second command creates immediately a merge_head
+  tag so that later you will always be able to find out which parts still need to be merged!!
+
+3) create the source release:
+  ant dist-src
+
+4) create the binary release:
+  ant dist-bin
+
+5) read the documentation of the sourceforge file release system
+  https://sourceforge.net/docman/display_doc.php?docid=6445&group_id=1 
+
+5a) how to upload the files to the sourceforge anonymous ftp server.
+  use a real commandline ftp client!
+  > ftp upload.sourceforge.net
+  username: anonymous
+  password: cs224@users.sourceforge.net
+
+  > cd incoming
+  > put OpenJavaTradingSystem-bin-0.10.tar.gz
+  > put OpenJavaTradingSystem-src-0.10.tar.gz

@@ -1,0 +1,9 @@
+http://tomcat.apache.org/tomcat-6.0-doc/logging.html#Using_Log4j
+
+   1. Create a file called log4j.properties with the following content and save it into $CATALINA_HOME/lib.
+   2. Download Log4J (v1.2 or later) and place the log4j jar in $CATALINA_HOME/lib.
+   3. Build or download the additional logging components. See the extras components documentation for details.
+   4. Replace $CATALINA_HOME/bin/tomcat-juli.jar with output/extras/tomcat-juli.jar. (http://tomcat.apache.org/tomcat-6.0-doc/extras.html)
+   5. Place output/extras/tomcat-juli-adapters.jar in $CATALINA_HOME/lib.
+   6. Delete $CATALINA_BASE/conf/logging.properties to prevent java.util.logging generating zero length log files.
+   7. Start Tomcat

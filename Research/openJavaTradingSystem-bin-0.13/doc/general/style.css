@@ -1,0 +1,11 @@
+<!-- <LINK REL=StyleSheet TYPE="text/css"  HREF="lppedoc.css"> -->
+
+.headline {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #336699; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-VARIANT: normal
+}
+
+BODY		{FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-VARIANT: normal;font-size:10pt;text-align: justify; margin:0px 40px;}
+TABLE		{FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-VARIANT: normal;font-size:10pt;}
+A               {text-decoration: none;}
+A:link          {color: blue;}
+A:visited       {color: blue;}

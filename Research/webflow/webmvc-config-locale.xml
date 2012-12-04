@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+    			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+    			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+    			http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+		<!-- Local Developer properties file - for server properties -->
+	<bean id="serverProperties" class="com.vangent.febi.app.util.SystemPropertySet">
+        <constructor-arg value="resources/system.properties"/>
+    </bean>
+    <bean id="systemProperties" factory-bean="serverProperties" factory-method="getSystemProperties"></bean>
+	<!-- Keep as is -->
+	<context:property-placeholder properties-ref="systemProperties" />
+
+	<bean id="applicationSettings" class="com.vangent.formengine.sys.util.ApplicationSettingsImpl">
+		<property name="settings">
+			<map>
+				<entry key="app.property.path">
+					<value>${APP_PROPERTY_PATH}</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- Maps request paths to flows in the flowRegistry; e.g. a path of /hotels/booking looks for a flow with id "hotels/booking" -->
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+		<property name="flowRegistry" ref="flowRegistry" />
+		<property name="defaultHandler">
+			<!-- If no flow match, map path to a view to render; e.g. the "/intro" path would map to the view named "intro" -->
+			<bean class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+		</property>
+		<property name="interceptors">
+			<list><ref bean="localeChangeInterceptor" /></list>
+		</property>
+	</bean>
+
+	<!-- Maps logical view names to Facelet templates in /WEB-INF (e.g. 'search' to '/WEB-INF/search.xhtml' -->
+	<bean id="faceletsViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.faces.mvc.JsfView"/>
+		<property name="prefix" value="/WEB-INF/" />
+		<property name="suffix" value=".xhtml" />
+	</bean>
+
+	<!-- Dispatches requests mapped to org.springframework.web.servlet.mvc.Controller implementations -->
+	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+
+	<!-- Dispatches requests mapped to flows to FlowHandler implementations -->
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+		<property name="flowExecutor" ref="flowExecutor" />
+	</bean>
+
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+	<bean id="localeChangeInterceptor"  class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+	<bean id="applicationContextProvider" class="com.vangent.febi.app.util.ApplicationContextProvider" />
+
+</beans>

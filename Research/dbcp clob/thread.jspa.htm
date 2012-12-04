@@ -1,0 +1,3579 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+
+    
+	
+    
+    <title>OTN Discussion Forums : ClassCastException in method ...</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="thread.jspa_files/style_002.css">
+	<link rel="stylesheet" type="text/css" href="thread.jspa_files/style.css">
+	<link rel="stylesheet" type="text/css" href="thread.jspa_files/otn_new.css">
+	
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://forums.oracle.com/forums/rss/rssmessages.jspa?threadID=279238">
+        
+
+        
+        
+        
+        <script language="JavaScript" type="text/javascript" src="thread.jspa_files/prototype.js"></script>
+        <script language="JavaScript" type="text/javascript" src="thread.jspa_files/effects.js"></script>
+        <script language="JavaScript" type="text/javascript" src="thread.jspa_files/engine.js"></script>
+        <script language="JavaScript" type="text/javascript" src="thread.jspa_files/util.js"></script>
+        <script language="JavaScript" type="text/javascript" src="thread.jspa_files/TagValidator.js"></script>            
+        <script language="JavaScript" type="text/javascript" src="thread.jspa_files/tag-validator.js"></script>
+        <script type="text/javascript">
+            // i18n error message
+            tagHandlerMessage = "The was an error with one or more of your tags. Please ensure that your tags contain only alphanumeric characters and are less than 10 characters.";
+        </script>
+</head><body>
+
+<div id="banner-forum">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tbody><tr>
+	    <td rowspan="2" nowrap="nowrap" valign="middle"><br><br><a href="http://www.oracle.com/technology/index.html"><img src="thread.jspa_files/oralogo_small.gif" alt="Forums.Oracle.com" border="0" hspace="10"></a></td><td class="padMid" width="70%" align="right" nowrap="nowrap" valign="top"></td>
+	    <td width="30%" nowrap="nowrap"><br><img alt="" src="thread.jspa_files/spacer.gif" width="1" border="0" height="8"></td>
+	  </tr>
+	  <tr>
+	    <td class="padMid" align="right" nowrap="nowrap" valign="bottom"></td>
+	    <td width="30%" align="left" nowrap="nowrap" valign="bottom"></td>
+	  </tr>
+ </tbody></table>
+</div>
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+	<td width="80%">
+			<div class="jive-clearfix moreMargins">
+<p id="jive-breadcrumbs">
+    <em>
+
+   
+    
+	<a href="http://forums.oracle.com/forums/index.jspa?categoryID=84">Forum Home</a>
+
+
+            »
+            <a href="http://forums.oracle.com/forums/category.jspa?categoryID=24">Java</a>
+
+            »
+            <a href="http://forums.oracle.com/forums/forum.jspa?forumID=99&amp;start=0">SQLJ/JDBC</a>
+
+
+
+    </em>
+</p>
+			</div>
+			<p class="jive-page-title">
+					
+        Thread: ClassCastException in method CLOB.createTemporary
+    
+			</p>
+
+
+
+			<p class="jive-description">
+			</p>
+		
+   	
+        
+	</td>
+	<td width="10"></td>
+	<td valign="top">
+<div id="jive-accountbox" class="clearfix">
+    <table width="200" border="0">
+        
+            <tbody><tr><th>Welcome, Guest</th></tr>
+            <tr class="jive-acc-login"><td>
+
+
+                        <a href="http://forums.oracle.com/forums/login%21withRedirect.jspa">
+                            Sign In</a>
+                            /
+                            <a href="https://profile.oracle.com/jsp/reg/createUser.jsp?act=5&amp;src=1180588&amp;language=en&amp;tid=262&amp;owner=3&amp;nexturl=http://forums.oracle.com">
+                            	Register
+                            </a>
+
+
+            </td>
+            </tr>
+            <tr class="jive-acc-cp"><td><a href="http://forums.oracle.com/forums/guestsettings%21default.jspa">Guest Settings</a></td></tr>
+
+	
+	<tr class="jive-acc-search"><td><a href="http://forums.oracle.com/forums/search%21default.jspa" title="Search">Search</a></td></tr>
+        
+	
+            <tr class="jive-acc-help"><td><a href="http://forums.oracle.com/forums/help.jspa" title="FAQ" target="_blank">FAQ</a></td></tr>
+    </tbody></table>
+</div>
+
+	</td>
+  </tr>	
+</tbody></table>	
+<div id="jive-body-content">
+
+
+<div id="jive-flatpage">
+
+    
+
+
+
+
+    
+        
+        
+
+        
+        
+
+
+
+    
+        
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+     
+
+
+
+
+
+    
+
+    <div class="jive-buttons">
+    <table summary="Buttons" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        
+                <td class="jive-icon">
+                    <a href="http://forums.oracle.com/forums/post%21reply.jspa?threadID=279238"><img src="thread.jspa_files/reply-16x16.gif" alt="Reply to this Thread" width="16" border="0" height="16"></a></td>
+                <td class="jive-icon-label">
+                    
+                    <a id="jive-reply-thread" href="http://forums.oracle.com/forums/post%21reply.jspa?threadID=279238">Reply to this Thread</a>
+                </td>
+        
+                <td class="jive-icon">
+                     <img src="thread.jspa_files/search-16x16.gif" alt="Search Forum" width="16" border="0" height="16"></td>
+                <td class="jive-icon-label">
+                    
+                    <a href="http://forums.oracle.com/forums/search%21default.jspa?objID=f99">Search Forum</a>
+                </td>
+        
+
+        
+
+        
+
+        
+
+        <td class="jive-icon">
+            <a href="http://forums.oracle.com/forums/forum.jspa?forumID=99"><img src="thread.jspa_files/arrow-left-16x16.gif" alt="Back to Thread List" width="16" border="0" height="16"></a>
+        </td>
+        <td class="jive-icon-label">
+            
+            <a href="http://forums.oracle.com/forums/forum.jspa?forumID=99">Back to Thread List</a>
+        </td>
+
+    </tr>
+    </tbody></table>
+    </div>
+
+
+
+
+    <br>
+
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+    <tr valign="top">
+    <td width="99%">
+
+    
+    
+
+
+
+<div class="jive-message-list">
+<div class="jive-table">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<thead>
+    <tr>
+        <th class="jive-first-last">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td width="1%">
+                        <a href="http://forums.oracle.com/forums/thread.jspa?threadID=279238" title="Permlink"><img src="thread.jspa_files/permlink-16x16.gif" alt="Permlink" width="16" border="0" height="16"></a>
+                    </td>
+                    <td width="97%">
+
+                        
+                        <nobr>
+                        <span class="bidi">
+                        Replies:
+                        </span>
+                        15
+                        </nobr>
+                        
+                            -
+                            
+
+                                
+
+                                <nobr>
+                                    <span class="bidi">
+                                        Pages:
+                                    </span>
+                                    <span class="bidi">
+                                        2
+                                    </span>
+                                
+
+                                    <span class="jive-paginator bidi">
+                                    [
+                                    
+
+                                    
+                                        
+                                            <a href="http://forums.oracle.com/forums/thread.jspa?threadID=279238&amp;start=0&amp;tstart=0" class="jive-current">1</a>
+                                         
+
+                                    
+                                        
+                                            <a href="http://forums.oracle.com/forums/thread.jspa?threadID=279238&amp;start=15&amp;tstart=0" class="">2</a>
+                                         
+
+                                    
+
+                                    
+
+                                        
+                                        | <a href="http://forums.oracle.com/forums/thread.jspa?threadID=279238&amp;start=15&amp;tstart=0">Next</a>
+
+                                    
+                                    ]
+                                    </span>
+
+                                
+                                </nobr>
+
+                            
+
+                        
+
+                        
+                        
+                                -
+                                <nobr>
+                                <span class="bidi">
+                                <a href="http://forums.oracle.com/forums/thread.jspa?threadID=279238&amp;tstart=0&amp;messageID=3897805#3897805" title="Last Post By: ziggy">Last Post</a>:
+                                </span>
+                                <span class="bidi">
+                                Nov 12, 2009 6:13 AM
+                                </span>
+                                Last Post By: ziggy
+
+
+                                </nobr>
+
+                        
+                    </td>
+                    <td width="1%" nowrap="nowrap">
+                        
+                            
+                        
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </th>
+    </tr>
+</thead>
+</table>
+</div>
+</div>
+
+
+    <div id="jive-message-holder">
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-855275" class="jive-even" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=431613" title="jesper3">jesper3</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/01-bronze.gif" title="oracle.statuslevel.newbie" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            3
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                03/12/01
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="855275"></a>
+                    ClassCastException in method CLOB.createTemporary
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Dec 13, 2004 7:12 AM
+
+                    
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=855275" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=855275" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=855275" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">Hello,<br>
+<br>
+I am trying to insert a CLOB into an Oracle table with the following code:<br>
+<br>
+String data = ...;<br>
+Connection conn = ...;<br>
+<br>
+PreparedStatement ps = conn.prepareStatement("INSERT INTO BULK_REQUEST (BR_ID,NAAM,FILENAAM,REQUEST) VALUES (?,?,?,?)");<br>
+<br>
+ps.setLong(1, brId);<br>
+ps.setString(2, requestName);<br>
+ps.setString(3, filename);<br>
+<br>
+CLOB clob = CLOB.createTemporary(conn, true, CLOB.DURATION_SESSION);    // Throws ClassCastException<br>
+clob.open(CLOB.MODE_READWRITE);<br>
+<br>
+Writer clobWriter = clob.getCharacterOutputStream();<br>
+clobWriter.write(data);<br>
+clobWriter.flush();<br>
+clobWriter.close();<br>
+clob.close();<br>
+<br>
+ps.setObject(4, clob);<br>
+<br>
+ps.executeUpdate();<br>
+<p>
+When I create the temporary CLOB object using CLOB.createTemporary, I
+get a ClassCastException. This is what the stack trace shows:<br>
+<br>
+java.lang.ClassCastException<br>
+	at oracle.jdbc.driver.OracleConnection.physicalConnectionWithin(OracleConnection.java:5141)<br>
+	at oracle.sql.CLOB.createTemporary(CLOB.java:1009)<br>
+	at oracle.sql.CLOB.createTemporary(CLOB.java:956)<br>
+	at com.nuon.ict.ari.bulkconnection.DocumentUpload.doPost(DocumentUpload.java:109)<br>
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:760)<br>
+</p><p>
+The code runs inside a servlet that runs in Tomcat. The database connection is retrieved via JNDI, using a data source:<br>
+<br>
+Contect context = new InitialContext();<br>
+Connection conn = ((DataSource)context.lookup("java:comp/env/jdbc/ari")).getConnection();<br>
+</p><p>
+I've searched the forum and found that others had a similar error, but I didn't find a solution that works.<br>
+<br>
+Why does this error occur; does it have anything to do with getting the
+database connection via the JNDI lookup? Is the actual Connection
+object of a different type than what CLOB.createTemporary expects? What
+is the solution to the problem?<br>
+<br>
+I'm using Oracle version 9 with ojdbc14.jar, the thin driver.</p></div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-855366" class="jive-odd" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=431613" title="jesper3">jesper3</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/01-bronze.gif" title="oracle.statuslevel.newbie" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            3
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                03/12/01
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="855366"></a>
+                    Re: ClassCastException in method CLOB.createTemporary
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Dec 13, 2004 8:49 AM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=855275#855275" title="in response to: jesper3"><img src="thread.jspa_files/up-10x10.gif" alt="in response to: jesper3" title="in response to: jesper3" width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=855275#855275" title="Go to message">jesper3</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=855366" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=855366" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=855366" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">I have found the answer myself, and it indeed is what I suspected:<br>
+<br>
+Despite the fact that method CLOB.createTemporary takes a
+java.sql.Connection object as a parameter, it ONLY works if the
+Connection is an oracle.jdbc.driver.OracleConnection object. If it's
+not an oracle.jdbc.driver.OracleConnection, you get a
+ClassCastException.<br>
+<br>
+That is a BUG in the method CLOB.createTemporary !! (If only an
+OracleConnection object is allowed, the argument should be of type
+OracleConnection, not of type java.sql.Connection).<br>
+<br>
+The problem happens because when I run my code in Tomcat and get the
+database connection via a DataSource object that I lookup via JNDI, the
+connection is not a real OracleConnection object, but an object that
+wraps the real OracleConnection.<br>
+<br>
+In more detail:<br>
+<br>
+Tomcat uses the Apache Commons DBCP package (see <a class="jive-link-external" href="http://jakarta.apache.org/commons/dbcp/">http://jakarta.apache.org/commons/dbcp/</a>) for database connection pooling. When you lookup a DataSource object using JNDI, like this:<br>
+<br>
+Context context = new InitialContext();<br>
+DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/ari");<br>
+<br>
+the object that you get is an instance of class
+org.apache.commons.dbcp.BasicDataSource. When you call getConnection on
+this object, you get an instance of class
+org.apache.commons.dbcp.PoolingDataSource$PoolGuardConnectionWrapper
+(which obviously implements java.sql.Connection, and wraps the
+OracleConnection object).<br>
+<br>
+To be able to call CLOB.createTemporary successfully, we need to find
+the wrapped OracleConnection object. A number of steps are necessary to
+reach this:<br>
+<br>
+First of all, by default the
+PoolingDataSource$PoolGuardConnectionWrapper does not allow access to
+the wrapped Connection object (don't ask me why, but that's how the
+Apache developers decided it should be). You must enable access by
+configuring it in the &lt;Context&gt; of the web application (in
+Tomcat's server.xml configuration file), for example:<br>
+<br>
+&lt;Context path="/ariweb" docBase="ariweb.war"&gt;<br>
+    &lt;Resource name="jdbc/ari" auth="Container" type="javax.sql.DataSource"/&gt;<br>
+    &lt;ResourceParams name="jdbc/ari"&gt;<br>
+        &lt;parameter&gt;<br>
+            &lt;name&gt;driverClassName&lt;/name&gt;<br>
+            &lt;value&gt;oracle.jdbc.driver.OracleDriver&lt;/value&gt;<br>
+        &lt;/parameter&gt;<br>
+        &lt;parameter&gt;<br>
+            &lt;!-- NOTE: This is necessary to enable access to the Oracle connection object --&gt;<br>
+            &lt;name&gt;accessToUnderlyingConnectionAllowed&lt;/name&gt;<br>
+            &lt;value&gt;true&lt;/value&gt;<br>
+        &lt;/parameter&gt;<br>
+        &lt;!-- Other configuration parameters --&gt;<br>
+        ...<br>
+    &lt;/ResourceParams&gt;<br>
+&lt;/Context&gt;<br>
+<br>
+The PoolingDataSource$PoolGuardConnectionWrapper extends class
+org.apache.commons.dbcp.DelegatingConnection, which has a getDelegate
+method. We can call this method to get the wrapped connection.<br>
+<br>
+Unfortunately, the story is not yet finished. The getDelegate method of
+the PoolingDataSource$PoolGuardConnectionWrapper does not return the
+OracleConnection object - it returns an instance of class
+org.apache.commons.dbcp.PoolableConnection, which is a second wrapper
+around the OracleConnection object.<br>
+<br>
+The PoolableConnection class also extends DelegatingConnection, so we
+can call getDelegate again and finally we have the OracleConnection
+object.<br>
+<br>
+So here is the final code:<br>
+<br>
+// conn is the Connection I got from the DataSource<br>
+Connection oracleConnection = conn;<br>
+<br>
+if (conn instanceof org.apache.commons.dbcp.DelegatingConnection) {<br>
+    // This returns a org.apache.commons.dbcp.PoolableConnection<br>
+    Connection pc = ((org.apache.commons.dbcp.DelegatingConnection)conn).getDelegate();<br>
+<br>
+    // The PoolableConnection is a DelegatingConnection itself - get the delegate (the Oracle connection)<br>
+    oracleConnection = ((org.apache.commons.dbcp.DelegatingConnection)pc).getDelegate();<br>
+}<br>
+<br>
+CLOB clob = CLOB.createTemporary(oracleConnection, true, CLOB.DURATION_SESSION);<br>
+clob.open(CLOB.MODE_READWRITE);<br>
+...<br>
+<br>
+I hope this helps when you get into the same trouble!<br>
+<br>
+Is there a place on this website where I can file a bug in Oracle's driver?</div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-856061" class="jive-even" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=431613" title="jesper3">jesper3</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/01-bronze.gif" title="oracle.statuslevel.newbie" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            3
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                03/12/01
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="856061"></a>
+                    Re: ClassCastException in method CLOB.createTemporary
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Dec 14, 2004 6:55 AM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=855366#855366" title="in response to: jesper3"><img src="thread.jspa_files/up-10x10.gif" alt="in response to: jesper3" title="in response to: jesper3" width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=855366#855366" title="Go to message">jesper3</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=856061" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=856061" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=856061" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">I
+noticed that class org.apache.commons.dbcp.DelegatingConnection has a
+method called getInnermostDelegate, which returns the innermost wrapped
+connection, so you could also use the following code:<br>
+<br>
+// conn is the Connection I got from the DataSource<br>
+Connection oracleConnection = conn;<br>
+<br>
+if (conn instanceof org.apache.commons.dbcp.DelegatingConnection) {<br>
+oracleConnection = ((org.apache.commons.dbcp.DelegatingConnection)conn).getInnermostDelegate();<br>
+}<br>
+<br>
+CLOB clob = CLOB.createTemporary(oracleConnection, true, CLOB.DURATION_SESSION);<br>
+clob.open(CLOB.MODE_READWRITE);<br>
+...</div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-869634" class="jive-odd" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=432994" title="aristim1">aristim1</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/01-bronze.gif" title="oracle.statuslevel.newbie" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            1
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                02/12/02
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="869634"></a>
+                    Re: ClassCastException in method CLOB.createTemporary
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Jan 7, 2005 12:17 PM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=856061#856061" title="in response to: jesper3"><img src="thread.jspa_files/up-10x10.gif" alt="in response to: jesper3" title="in response to: jesper3" width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=856061#856061" title="Go to message">jesper3</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=869634" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=869634" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=869634" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">Hello ****:<br>
+<br>
+Thanks for posting the answer to your own question. Unfortunately I'm
+still a little stuck and I thought you might know something we don't.
+The thing is, i need to get the actual Oracle connection or statement,
+because I'm trying to use an oracle-specific feature
+(registerIndexTableOutParameter()), but I cannot cast the underlying
+connection even after the getInnermostDelegate().<br>
+<br>
+This is what I'm doing:<br>
+OracleConnection oc = (OracleConnection) ((DelegatingConnection) c).getInnermostDelegate(); <br>
+<br>
+If i break on that line my debugger shows the previous statement to return:<br>
+oracle.jdbc.driver.OracleConnection@185e90f<br>
+<br>
+but I still get this exception when I continue:<br>
+java.lang.ClassCastException: oracle.jdbc.driver.OracleConnection<br>
+<p>
+I've also tried to get innermost and cast statement itself:<br>
+(oracle.jdbc.driver.OracleCallableStatement)((DelegatingCallableStatement) stmt).getInnermostDelegate()<br>
+<br>
+and again, debugger indicate I have what i want:<br>
+oracle.jdbc.driver.OracleCallableStatement@16e1782<br>
+<br>
+but still exception is thrown:<br>
+java.lang.ClassCastException: oracle.jdbc.driver.OracleCallableStatement<br>
+</p><p>
+This is what I want to do with the OracleStatement (works fine on Weblogic):<br>
+ostmt.registerIndexTableOutParameter(3,1000, Types.VARCHAR, 300);<br>
+<br>
+Here's my context setup:<br>
+&lt;Context path="/OfferCode" docBase="OfferCode"<br>
+debug="5" reloadable="true" crossContext="true"&gt;<br>
+<br>
+&lt;Resource name="jdbc/devdb1b" auth="Container"<br>
+type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"<br>
+url="jdbc:oracle:thin:@10.176.50.65:1521:SERV"<br>
+username="asdfasdf" password="asdf" maxActive="20" maxIdle="10"<br>
+maxWait="-1" accessToUnderlyingConnectionAllowed="true"/&gt;<br>
+&lt;ResourceParams name="jdbc/devdb1b"&gt;<br>
+&lt;parameter&gt;<br>
+&lt;name&gt;accessToUnderlyingConnectionAllowed&lt;/name&gt;<br>
+&lt;value&gt;true&lt;/value&gt;<br>
+&lt;/parameter&gt;<br>
+&lt;/ResourceParams&gt;<br>
+&lt;/Context&gt;<br>
+<br>
+Thanks in advance for lending us a hand.<br>
+<br>
+-Mauricio</p></div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-870348" class="jive-even" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=389569" title="daramcg">daramcg</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/01-bronze.gif" title="oracle.statuslevel.newbie" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            13
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                04/30/99
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="870348"></a>
+                    Re: ClassCastException in method CLOB.createTemporary
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Jan 10, 2005 12:29 AM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=855275#855275" title="in response to: jesper3"><img src="thread.jspa_files/up-10x10.gif" alt="in response to: jesper3" title="in response to: jesper3" width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=855275#855275" title="Go to message">jesper3</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=870348" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=870348" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=870348" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">Hi ****,<br>
+<br>
+ looks like we've got the same problem (although mine is with BLOB - <a class="jive-link-external" href="http://forums.oracle.com/forums/thread.jsp?forum=99&amp;thread=282602&amp;tstart=0&amp;trange=15">http://forums.oracle.com/forums/thread.jsp?forum=99&amp;thread=282602&amp;tstart=0&amp;trange=15</a>).
+It's exactly as you say - even though the method accepts the
+java.sql.Connection interface as an input parameter it seems to try to
+cast it to an Oracle specific connection at some point. Of course this
+then doesn't work if used with a datasource (ironically not even with
+the Orion datasource shipped with OracleIAS!) I'll have a look on other
+forums and post here if I manage to crack it.<br>
+<br>
+regards,<br>
+Dara</div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-894337" class="jive-odd" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=191566" title="petereindeer">petereindeer</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/01-bronze.gif" title="oracle.statuslevel.newbie" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            1
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                11/22/01
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="894337"></a>
+                    Re: ClassCastException in method CLOB.createTemporary
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Feb 10, 2005 3:12 AM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=855275#855275" title="in response to: jesper3"><img src="thread.jspa_files/up-10x10.gif" alt="in response to: jesper3" title="in response to: jesper3" width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=855275#855275" title="Go to message">jesper3</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=894337" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=894337" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=894337" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">sorry my english <img class="jive-emoticon" src="thread.jspa_files/happy.gif" alt=":)" border="0"> hope it help!!<br>
+<br>
+..to obtain a oracle connection object from jndi you should use an
+oracle data source. in this case, the method getConnection directly
+instantiate an oracle connection on which you can call oracle methods
+via cast.<br>
+i think is incorrect to try to unwrap a wrapper.<br>
+<br>
+code example that works:<br>
+<p>
+...to obtain jndi oracle connection from code java <br>
+try {            <br>
+	Context initContext = new InitialContext();<br>
+	Context envContext = (Context) initContext.lookup("java:/comp/env");<br>
+	oracle.jdbc.pool.OracleDataSource ds = (oracle.jdbc.pool.OracleDataSource) envContext.lookup("jdbc/Montagna");<br>
+	conn = ds.getConnection();<br>
+  }<br>
+	catch (Exception ex) {<br>
+		ex.printStackTrace();<br>
+  }<br>
+.............<br>
+<br>
+...configure web.xml<br>
+&lt;resource-ref&gt;<br>
+    &lt;description&gt;Oracle Datasource example&lt;/description&gt;<br>
+    &lt;res-ref-name&gt;jdbc/mydatasource&lt;/res-ref-name&gt;<br>
+    &lt;res-type&gt;oracle.jdbc.pool.OracleDataSource&lt;/res-type&gt;<br>
+    &lt;res-auth&gt;Container&lt;/res-auth&gt;<br>
+  &lt;/resource-ref&gt;<br>
+...configure del web.xml <br>
+<br>
+...configure context<br>
+&lt;Context displayName="..." docBase="..." path="/..." workDir="work\Catalina\localhost\..."&gt;<br>
+</p><p>
+  &lt;Resource name="jdbc/mydatasource" auth="Container" scope="Shareable" type="oracle.jdbc.pool.OracleDataSource"/&gt;<br>
+  &lt;ResourceParams name="jdbc/mydatasource"&gt;<br>
+<br>
+    &lt;parameter&gt;<br>
+      &lt;name&gt;factory&lt;/name&gt;<br>
+      &lt;value&gt;oracle.jdbc.pool.OracleDataSourceFactory&lt;/value&gt;<br>
+    &lt;/parameter&gt;<br>
+<br>
+    &lt;parameter&gt;<br>
+      &lt;name&gt;maxWait&lt;/name&gt;<br>
+      &lt;value&gt;5000&lt;/value&gt;<br>
+    &lt;/parameter&gt;<br>
+    &lt;parameter&gt;<br>
+      &lt;name&gt;maxActive&lt;/name&gt;<br>
+      &lt;value&gt;20&lt;/value&gt;<br>
+    &lt;/parameter&gt;<br>
+    &lt;parameter&gt;<br>
+      &lt;name&gt;password&lt;/name&gt;<br>
+      &lt;value&gt;dgm&lt;/value&gt;<br>
+    &lt;/parameter&gt;<br>
+    &lt;parameter&gt;<br>
+      &lt;name&gt;url&lt;/name&gt;<br>
+      &lt;value&gt;jdbc:oracle:thin:@...:1521:...&lt;/value&gt;<br>
+    &lt;/parameter&gt;<br>
+    &lt;parameter&gt;<br>
+      &lt;name&gt;driverClassName&lt;/name&gt;<br>
+      &lt;value&gt;oracle.jdbc.driver.OracleDriver&lt;/value&gt;<br>
+    &lt;/parameter&gt;<br>
+    &lt;parameter&gt;<br>
+      &lt;name&gt;maxIdle&lt;/name&gt;<br>
+      &lt;value&gt;2&lt;/value&gt;<br>
+    &lt;/parameter&gt;<br>
+    &lt;parameter&gt;<br>
+      &lt;name&gt;user&lt;/name&gt;<br>
+      &lt;value&gt;dgm&lt;/value&gt;<br>
+    &lt;/parameter&gt;<br>
+  &lt;/ResourceParams&gt;<br>
+&lt;/Context&gt;<br>
+... configurazione del context<br>
+<br>
+piero/antonio</p></div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-1038619" class="jive-even" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=448012" title="user448012">user448012</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/01-bronze.gif" title="oracle.statuslevel.newbie" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            2
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                08/23/05
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="1038619"></a>
+                    Re: ClassCastException in method CLOB.createTemporary
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Aug 23, 2005 1:38 AM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=894337#894337" title="in response to: petereindeer"><img src="thread.jspa_files/up-10x10.gif" alt="in response to: petereindeer" title="in response to: petereindeer" width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=894337#894337" title="Go to message">petereindeer</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=1038619" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=1038619" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=1038619" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">我顶!</div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-1038621" class="jive-odd" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=448012" title="user448012">user448012</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/01-bronze.gif" title="oracle.statuslevel.newbie" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            2
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                08/23/05
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="1038621"></a>
+                    Re: ClassCastException in method CLOB.createTemporary
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Aug 23, 2005 1:41 AM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=1038619#1038619" title="in response to: user448012"><img src="thread.jspa_files/up-10x10.gif" alt="in response to: user448012" title="in response to: user448012" width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=1038619#1038619" title="Go to message">user448012</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=1038621" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=1038621" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=1038621" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">It is a good solution.But please note the following :<br>
+  &lt;name&gt;url&lt;/name&gt;<br>
+&lt;value&gt;jdbc:oracle:thin:@...:1521:...&lt;/value&gt;<br>
+&lt;/parameter&gt;<br>
+ shuld be <br>
+&lt;name&gt;url&lt;/name&gt;<br>
+&lt;value&gt;jdbc:oracle:thin:yourusename/yourpassword@...:1521:...&lt;/value&gt;<br>
+&lt;/parameter&gt;<br>
+ Otherwise when excute "conn = ds.getConnection();",error occurs.</div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-1080722" class="jive-even" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=107566" title="arifbutt">arifbutt</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/01-bronze.gif" title="oracle.statuslevel.newbie" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            1
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                08/08/00
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="1080722"></a>
+                    Re: ClassCastException in method CLOB.createTemporary
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Oct 10, 2005 10:43 AM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=855275#855275" title="in response to: jesper3"><img src="thread.jspa_files/up-10x10.gif" alt="in response to: jesper3" title="in response to: jesper3" width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=855275#855275" title="Go to message">jesper3</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=1080722" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=1080722" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=1080722" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">Just
+in case the last solution doesn't work for everyone, the first solution
+does work but be sure to remove the oracle jar from your web app lib if
+you have it also defined in Tomcat. If that is the case you will get
+the class cast exception - it's a class loader issue.</div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-1085184" class="jive-odd" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=457406" title="user457406">user457406</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/01-bronze.gif" title="oracle.statuslevel.newbie" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            2
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                10/15/05
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="1085184"></a>
+                    Re: ClassCastException in while dealing with BLOBs  JBOSS
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Oct 15, 2005 5:12 AM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=855366#855366" title="in response to: jesper3"><img src="thread.jspa_files/up-10x10.gif" alt="in response to: jesper3" title="in response to: jesper3" width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=855366#855366" title="Go to message">jesper3</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=1085184" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=1085184" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=1085184" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">jesper3
+thx for posting your solution (while to trying to use BLOB's) I got
+inspired and found my solution for JBOSS with your solution<br>
+<br>
+My problem was the same and I am using JBOSS,<br>
+For those who are using JBOSS to connect to Oracle here is the solution to get a working OracleConnection<br>
+<br>
+///////////////////////Code Snippet<br>
+DataSource auroraDataSource = (DataSource) context.lookup(DATA_SOURCE_NAME);<br>
+Connection conn=auroraDataSource.getConnection();<br>
+<p>
+//depending on the type of Connection <br>
+//(this is very platform dependant JBOSS,SunOne...) because of the <br>
+//OracleConnection when using BLOB's		<br>
+<br>
+//get the wrapped JBOSS connection <br>
+if(conn instanceof org.jboss.resource.adapter.jdbc.WrappedConnection){<br>
+   WrappedConnection wc=(WrappedConnection)conn;<br>
+   //with getUnderlying connection method , cast it to Oracle Connection<br>
+   Connection oracleConnection=wc.getUnderlyingConnection();<br>
+}<br>
+<br>
+//Do your BLOB operation<br>
+<br>
+//create an empty blob (this is must)<br>
+stmt = conn.prepareStatement("INSERT INTO INFRA.UTL_OUTER_SYS_RAW_FILE VALUES ('myFile', empty_blob())");<br>
+stmt.execute();			<br>
+<br>
+//select the previously added blob for update (SELECT FOR UPDATE)<br>
+stmt = conn.prepareStatement("SELECT FILE_CONTENT FROM INFRA.UTL_OUTER_SYS_RAW_FILE WHERE FILE_ID = 'myFile' FOR UPDATE");			<br>
+rs =  stmt.executeQuery();<br>
+</p><p>
+//write to BLOB <br>
+if(rs.next()) {<br>
+  OracleResultSet resultSet = (OracleResultSet) rs;<br>
+  fout = resultSet.getBLOB("FILE_CONTENT").getBinaryOutputStream();<br>
+  fout.write(content);								<br>
+}<br>
+<br>
+//close connections...<br>
+//////////////////////////////End of Code Snippet</p></div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-1085186" class="jive-even" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=457406" title="user457406">user457406</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/01-bronze.gif" title="oracle.statuslevel.newbie" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            2
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                10/15/05
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="1085186"></a>
+                    Re: ClassCastException in while dealing with BLOBs  JBOSS
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Oct 15, 2005 5:14 AM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=1085184#1085184" title="in response to: user457406"><img src="thread.jspa_files/up-10x10.gif" alt="in response to: user457406" title="in response to: user457406" width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=1085184#1085184" title="Go to message">user457406</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=1085186" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=1085186" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=1085186" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">There is missings in the code forgive me about that,<br>
+we are using the connection that we obtained after .getUnderlyingConnection method.</div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-3850775" class="jive-odd" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=569276" title="ziggy">ziggy</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/01-bronze.gif" title="oracle.statuslevel.newbie" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            62
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                04/13/07
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="3850775"></a>
+                    Re: ClassCastException in while dealing with BLOBs  JBOSS
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Oct 23, 2009 8:10 AM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=1085186#1085186" title="in response to: user457406"><img src="thread.jspa_files/up-10x10.gif" alt="in response to: user457406" title="in response to: user457406" width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=1085186#1085186" title="Go to message">user457406</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=3850775" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=3850775" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=3850775" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">Hi, <br>
+<br>
+This thread was very helpfull. I tried this solution and i managed to solve it as shown below<br>
+<br>
+<pre class="jive-pre"><code class="jive-code jive-java"><font color="navy"><b>if</b></font> (innerConn <font color="navy"><b>instanceof</b></font> DelegatingConnection)<font color="navy">{</font>
+			    	innerConn = ((DelegatingConnection)innerConn).getDelegate();
+			    	conn = ((DelegatingConnection)innerConn).getDelegate();
+			    <font color="navy">}</font>
+</code></pre><br>
+<p>
+I realise this is an old thread but any advice on the following
+questions which are related to the above issue will be appreciated. <br>
+<br>
+- If i use the DelegatingConnection to retrieve the underlying
+connection, does that mean that the connection that i retrieve will no
+longer be managed by the Tomcat conneciton pool?<br>
+- If i issue the close() command on the connection will it close the connection or remove it from the connection pool? <br>
+<br>
+Thanks</p></div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-3850974" class="jive-even" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=639682" title="joe.weinstein@oracle.com">joe.weinstein@o...</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/02-double-bronze.gif" title="oracle.statuslevel.journeyman" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            560
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                06/02/08
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="3850974"></a>
+                    Re: ClassCastException in while dealing with BLOBs  JBOSS
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Oct 23, 2009 9:14 AM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=3850775#3850775" title="in response to: ziggy"><img src="thread.jspa_files/up-10x10.gif" alt="in response to: ziggy" title="in response to: ziggy" width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=3850775#3850775" title="Go to message">ziggy</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=3850974" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=3850974" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=3850974" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">Those are wise questions. Once you gain direct access to the actual<br>
+connection, you can certainly circumvent any pooling function. If<br>
+you close the original wrapper you got, the pooling system will<br>
+think it can give out the real connection to someone else, with a<br>
+new wrapper, but you still have a direct reference to it, so you can<br>
+interfere with the other thread. If you close the actual connection,<br>
+the pool won't necessarily even know, and might give it out to the<br>
+next user, with a new wrapper, but dead-on-arrival.<br>
+  The lesson is to access the actual connection only when absolutely<br>
+necessary, and then <b>don't close it</b>, and don't keep a reference to<br>
+it any longer than you need it for the immediate purpose.<br>
+HTH,<br>
+Joe Weinstein<br>
+<br>
+PS: In fact this is such a serious potential breach of pool integrity that<br>
+the WebLogic pooling system will by default prevent any such exposed<br>
+connection from ever being re-used. There has to be an explicit pool<br>
+configuration setting chosen to allow that connection to be re-used,<br>
+with the admin accepting the risk, and declaring that the application(s)<br>
+making the exposing calls are written safely.<br>
+<br>
+Edited by: joe.weinstein@oracle.com on Oct 23, 2009 9:15 AM</div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-3854102" class="jive-odd" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=569276" title="ziggy">ziggy</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/01-bronze.gif" title="oracle.statuslevel.newbie" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            62
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                04/13/07
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="3854102"></a>
+                    Re: ClassCastException in while dealing with BLOBs  JBOSS
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Oct 26, 2009 12:43 AM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=3850974#3850974" title="in response to: joe.weinstein@o..."><img src="thread.jspa_files/up-10x10.gif" alt="in response to: joe.weinstein@o..." title="in response to: joe.weinstein@o..." width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=3850974#3850974" title="Go to message">joe.weinstein@o...</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=3854102" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=3854102" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=3854102" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">Hi,
+with the Tomcat connection pool, if i issue the close() command on the
+connection the connection does not close but it is put back in the
+queue. <br>
+<br>
+Just so that i understood you correctly, if i retrieve a conneciton
+from the pool, i should then retrieve the underlying connection from
+it. Once i have finished with the underlying connection i shouldnt
+close it but i should still close the original connection i retrieved
+from the Tomcat pool? Something like this<br>
+<br>
+<pre class="jive-pre"><code class="jive-code jive-java">Context initCtx = <font color="navy"><b>new</b></font> InitialContext();
+Context envCtx = (Context) initCtx.lookup(<font color="red">"java:comp/env"</font>);
+DataSource ds = (DataSource)
+  envCtx.lookup(<font color="red">"jdbc/EmployeeDB"</font>);
+&nbsp;
+Connection conn = ds.getConnection();
+Connection underlyingConn = <font color="navy"><b>null</b></font>;
+&nbsp;
+<font color="navy"><b>if</b></font> (conn <font color="navy"><b>instanceof</b></font> DelegatingConnection)<font color="navy">{</font>
+			    	underlyingConn = ((DelegatingConnection)underlyingConn).getDelegate();
+			    	underlyingConn = ((DelegatingConnection)underlyingConn ).getDelegate();
+			    <font color="navy">}</font>
+&nbsp;
+&nbsp;
+<font color="darkgreen">//Do the oracle stuff here</font>
+&nbsp;
+conn.close();
+underlyingConn = <font color="navy"><b>null</b></font>;
+</code></pre><br>
+<br>
+Will the above be safe then as i am not closing the underlying
+connection and i am only closing the original connection which should
+put the connection back in to the pool instead of physically closing
+it. I am setting the reference to the underlying connection reference
+to null. is this correct?<br>
+<br>
+Edited by: ziggy on Oct 26, 2009 7:43 AM<br>
+<br>
+Edited by: ziggy on Oct 26, 2009 8:36 AM</div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        <div class="jive-message-list">
+            <div class="jive-table">
+
+                
+
+
+
+
+
+
+
+<div class="jive-messagebox">
+<table summary="Message" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr id="jive-message-3855237" class="jive-even" valign="top">
+<td class="jive-first" width="1%">
+<table width="150" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr valign="top">
+            <td style="padding: 0px;" width="1%">
+                <nobr>
+                    <a href="http://forums.oracle.com/forums/profile.jspa?userID=639682" title="joe.weinstein@oracle.com">joe.weinstein@o...</a>
+                </nobr>
+            </td>
+            <td style="padding: 0px;" width="99%">
+                
+                <img class="jive-status-level-image" src="thread.jspa_files/02-double-bronze.gif" title="oracle.statuslevel.journeyman" alt="" border="0"><br>
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<br>
+
+
+
+            <span class="jive-description">
+
+
+            
+            <span class="bidi">Posts:</span>
+            560
+            <br>
+
+            
+            
+                <span class="bidi">Registered:</span>
+                06/02/08
+            
+
+            </span>
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td class="jive-last" width="99%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td width="1%">
+    
+</td>
+<td width="97%">
+
+                    <span class="jive-subject">
+                    <a name="3855237"></a>
+                    Re: ClassCastException in while dealing with BLOBs  JBOSS
+                    </span>
+
+    <br>
+
+    
+                    <span class="jive-description">
+                    Posted:
+                    Oct 26, 2009 8:27 AM
+
+                    
+                        &nbsp;
+                        <nobr>
+                            <a href="http://forums.oracle.com/forums/message.jspa?messageID=3854102#3854102" title="in response to: ziggy"><img src="thread.jspa_files/up-10x10.gif" alt="in response to: ziggy" title="in response to: ziggy" width="10" border="0" height="10"></a>
+                            
+                            in response to: <a href="http://forums.oracle.com/forums/message.jspa?messageID=3854102#3854102" title="Go to message">ziggy</a>
+                            </nobr>
+                                
+
+                        
+
+                    </span>
+</td>
+
+    <td class="jive-rating-buttons" width="1%" nowrap="nowrap">
+
+        
+
+    </td>
+
+<td width="1%">
+
+<div class="jive-buttons">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+
+
+
+
+
+
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/abuse%21default.jspa?messageID=3855237" title="Click to report abuse..."><img src="thread.jspa_files/warn-16x16.gif" alt="Click to report abuse..." width="16" border="0" height="16"></a>
+</td>
+
+
+
+
+
+
+<td>&nbsp;</td>
+<td class="jive-icon">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=3855237" title="Click to reply to this thread"><img src="thread.jspa_files/reply-16x16.gif" alt="Click to reply to this thread" width="16" border="0" height="16"></a>
+</td>
+<td class="jive-icon-label">
+    <a href="http://forums.oracle.com/forums/post%21reply.jspa?messageID=3855237" title="Click to reply to this thread">Reply</a>
+</td>
+
+
+</tr>
+</tbody></table>
+</div>
+
+</td>
+</tr>
+
+<tr>
+    <td colspan="4">
+		<table class="jive-message-body-wrapper" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+			<td>
+                <div class="jive-message-body">Yes, that is correct.</div>
+			</td>
+		</tr>
+		</tbody></table>
+    </td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+            </div>
+        </div>
+
+        
+
+        
+
+    <div class="jive-message-list-footer">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td width="1%" nowrap="nowrap">
+
+                        <span class="jive-paginator-bottom">
+                        
+
+                                
+
+                                <nobr>
+                                    <span class="bidi">
+                                        Pages:
+                                    </span>
+                                    <span class="bidi">
+                                        2
+                                    </span>
+                                
+
+                                    <span class="jive-paginator bidi">
+                                    [
+                                    
+
+                                    
+                                        
+                                            <a href="http://forums.oracle.com/forums/thread.jspa?threadID=279238&amp;start=0&amp;tstart=0" class="jive-current">1</a>
+                                         
+
+                                    
+                                        
+                                            <a href="http://forums.oracle.com/forums/thread.jspa?threadID=279238&amp;start=15&amp;tstart=0" class="">2</a>
+                                         
+
+                                    
+
+                                    
+
+                                        
+                                        | <a href="http://forums.oracle.com/forums/thread.jspa?threadID=279238&amp;start=15&amp;tstart=0">Next</a>
+
+                                    
+                                    ]
+                                    </span>
+
+                                
+                                </nobr>
+
+                            
+                        </span>
+
+                    </td>
+                    <td width="98%" align="center">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                            <tbody><tr>
+                                <td>
+                                    <a href="http://forums.oracle.com/forums/forum.jspa?forumID=99"><img src="thread.jspa_files/arrow-left-16x16.gif" alt="Back to Thread List" width="16" border="0" height="16" hspace="6"></a>
+                                </td>
+                                <td>
+                                    
+                                    <a href="http://forums.oracle.com/forums/forum.jspa?forumID=99">Back to Thread List</a>
+
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                    <td width="1%" nowrap="nowrap">
+
+                        
+                            
+                        
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    </div></td>
+    <td width="1%">
+
+        
+
+
+
+
+
+
+
+<div class="jive-portlet-box">
+<table width="200" border="0" cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th colspan="2">
+                
+                    <a href="http://forums.oracle.com/forums/help.jspa#questions"><img src="thread.jspa_files/help-16x16.gif" alt="" width="16" align="right" border="0" height="16"></a>
+                    Legend
+                
+            </th>
+        </tr>
+    </thead>
+
+
+
+
+    
+
+        <tbody class="jive-status-legend-points">
+
+            
+                <tr>
+                    <td width="1%">
+                       <img src="thread.jspa_files/05-gold.gif" title="Guru" alt="Guru" border="0">
+                    </td>
+                    <td width="99%">
+
+                        Guru : 2500
+
+                        
+
+                            - 1000000
+
+                        
+
+                        pts
+                    </td>
+                </tr>
+
+            
+                <tr>
+                    <td width="1%">
+                       <img src="thread.jspa_files/04-double-silver.gif" title="Expert" alt="Expert" border="0">
+                    </td>
+                    <td width="99%">
+
+                        Expert : 1000
+
+                        
+
+                            - 2499
+
+                        
+
+                        pts
+                    </td>
+                </tr>
+
+            
+                <tr>
+                    <td width="1%">
+                       <img src="thread.jspa_files/03-silver.gif" title="Pro" alt="Pro" border="0">
+                    </td>
+                    <td width="99%">
+
+                        Pro : 500
+
+                        
+
+                            - 999
+
+                        
+
+                        pts
+                    </td>
+                </tr>
+
+            
+                <tr>
+                    <td width="1%">
+                       <img src="thread.jspa_files/02-double-bronze.gif" title="Journeyman" alt="Journeyman" border="0">
+                    </td>
+                    <td width="99%">
+
+                        Journeyman : 200
+
+                        
+
+                            - 499
+
+                        
+
+                        pts
+                    </td>
+                </tr>
+
+            
+                <tr>
+                    <td width="1%">
+                       <img src="thread.jspa_files/01-bronze.gif" title="Newbie" alt="Newbie" border="0">
+                    </td>
+                    <td width="99%">
+
+                        Newbie : 0
+
+                        
+
+                            - 199
+
+                        
+
+                        pts
+                    </td>
+                </tr>
+
+            
+
+        </tbody>
+
+    
+
+    
+
+        <tbody class="jive-status-legend-groups">
+
+            
+                <tr>
+                    <td class="jive-first-row" width="1%">
+                        <img src="thread.jspa_files/ace_director_gold.jpg" title="Oracle ACE Director" alt="" border="0">
+                    </td>
+                    <td class="jive-first-row" width="99%">
+                        Oracle ACE Director
+                    </td>
+                </tr>
+
+            
+                <tr>
+                    <td class="" width="1%">
+                        <img src="thread.jspa_files/customer_aces_black.jpg" title="Oracle ACE Member" alt="" border="0">
+                    </td>
+                    <td class="" width="99%">
+                        Oracle ACE Member
+                    </td>
+                </tr>
+
+            
+                <tr>
+                    <td class="" width="1%">
+                        <img src="thread.jspa_files/Oracle_aces_red.jpg" title="Oracle Employee ACE" alt="" border="0">
+                    </td>
+                    <td class="" width="99%">
+                        Oracle Employee ACE
+                    </td>
+                </tr>
+
+            
+
+        </tbody>
+
+    
+
+    
+
+    <tbody class="jive-status-legend-points">
+        <tr>
+            <td class="jive-first-row" width="1%">
+                <img src="thread.jspa_files/answer-helpful-16x16.gif" title="5 points" alt="" border="0">
+            </td>
+            <td class="jive-first-row" width="99%">
+                
+                Helpful Answer
+                
+                    
+                    (5 pts)
+                
+            </td>
+        </tr>
+        <tr>
+            <td width="1%">
+                <img src="thread.jspa_files/answer-correct-16x16.gif" title="10 points" alt="" border="0">
+            </td>
+            <td width="99%">
+                
+                Correct Answer
+                 
+                    
+                    (10 pts)
+                
+            </td>
+        </tr>
+    </tbody>                                                                    
+
+
+
+
+
+</table>
+</div>
+
+
+
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+    
+    <br>
+    <a href="http://forums.oracle.com/forums/rss.jspa?feed=rss/rssmessages.jspa?threadID=279238" title="Point your RSS reader here for a feed of the latest messages in this thread"><img src="thread.jspa_files/feed-icon-16x16.gif" alt="Point your RSS reader here for a feed of the latest messages in all forums" width="16" border="0" height="16"></a> <br><br>
+    
+
+    
+    
+
+
+
+    </div>
+
+		<br><br>
+
+	 
+<div id="jive-footer">
+	<div class="greybarhomebot"><!--footer--></div>
+	         <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			<tbody><tr>
+				<td width="46%">
+				<a href="http://www.oracle.com/corporate/index.html"><img src="thread.jspa_files/info_company.gif" alt="Oracle Is The Information Company" width="234" border="0" height="11"></a></td>
+				
+      <td width="54%" align="right"><a href="http://www.oracle.com/corporate/index.html" class="legalese">About 
+        Oracle</a> <span class="legalese">|</span> <a href="http://www.oracle.com/rss/index.html"> <img src="thread.jspa_files/feed-icon-14x14.jpg" alt="Oracle RSS Feeds" style="margin-bottom: 1px;" width="14" align="absmiddle" border="0" height="14"></a> 
+        <span class="legalese">|</span> <a href="http://www.oracle.com/corporate/employment/index.html" class="legalese">Careers</a> <span class="legalese">|</span> <a href="http://www.oracle.com/corporate/contact/index.html" class="legalese">Contact 
+        Us</a> <span class="legalese">|</span> <a href="http://www.oracle.com/sitemaps/sitemaps.html" class="legalese">Site Maps</a> <span class="legalese">|</span> <a href="http://www.oracle.com/html/copyright.html" class="legalese">Legal 
+        Notices</a> <span class="legalese">|</span> <a href="http://www.oracle.com/html/terms.html" class="legalese">Terms of Use</a> <span class="legalese">|</span> <a href="http://www.oracle.com/html/privacy.html" class="legalese">Your Privacy Rights</a></td>
+			</tr>
+			<tr><td colspan="2">
+	</td></tr>
+	</tbody></table>
+	
+	<!--/Footer-->
+<!-- SiteCatalyst code -->
+<script language="JavaScript" src="thread.jspa_files/s_code_forums.js"></script>
+<script language="JavaScript" src="thread.jspa_files/s_code.js"></script>
+
+<!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+<!--  Below code will send the info to Omniture server -->
+<script language="javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+ 
+<!-- End SiteCatalyst code --></div>
+
+<!--Compress Removed-->
+<!-- Template file is from PORTAL -->
+</div>
+
+</body></html>

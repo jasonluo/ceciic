@@ -1,0 +1,19 @@
+<!DOCTYPE databases PUBLIC "-//EXOLAB/Castor JDO Configuration DTD Version 1.0//EN"
+                           "http://castor.exolab.org/jdo-conf.dtd">
+<database name="jts" engine="hsql" >
+ <driver class-name="org.hsqldb.jdbcDriver" url="jdbc:hsqldb:file:${ojts.dir}/data/jts">
+    <param name="user"    value="sa" />
+    <param name="password" value="" />
+  </driver>
+  <mapping href="castor/mapping.xml" />
+</database>
+<!--
+ <driver class-name="org.hsqldb.jdbcDriver" url="jdbc:hsqldb:hsql://localhost/jts">
+<database name="test" engine="hsqldb" >
+    <data-source class-name="org.postgresql.jdbc2.optional.PoolingDataSource">
+        <params server-name="localhost" database-name="castor_examples" port-number="5432" user="test" password="test" />
+    </data-source>
+
+  <mapping href="mapping.xml" />
+</database>
+-->

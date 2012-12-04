@@ -1,0 +1,53 @@
+
+https://blogs.rividium.com/post/Extracting-private-key-from-Java-Keystore.aspx
+
+=========Using OpenSSL to extarct prublic/private key from p12 (pfx) file =========
+
+http://sycure.wordpress.com/2008/05/15/tips-using-openssl-to-extract-private-key-pem-file-from-pfx-personal-information-exchange/
+If you want to extract private key from a pfx file and write it to PEM file
+>>openssl.exe pkcs12 -in publicAndprivate.pfx -nocerts -out privateKey.pem
+If you want to extract the certificate file (the signed public key) from the pfx file
+>>openssl.exe pkcs12 -in publicAndprivate.pfx -clcerts -nokeys -out publicCert.pem
+To remove the password from the private key file.
+>> openssl.exe rsa -in privateKey.pem -out private.pem
+This is required as, at the time of exporting privateKey, 
+you have added a password to the private key to secure it. 
+If you left the password with it, it will keep asking the password as any application tries 
+to access it.
+
+===== Using oepnssl to generate key store from pem file ========
+http://www.agentbob.info/agentbob/79-AB.html
+
+1. download Open ssl file -> 
+2. get a p12  (pfx) file
+3. generate private key pem file -> openssl.exe pkcs12 -in testfafsa.p12 -nocerts -out privateKey.pem
+4. generate public cert file -> openssl.exe pkcs12 -in testfafsa.p12 -clcerts -nokeys -out publicCert.pem
+5. generate key der file -> openssl pkcs8 -topk8 -nocrypt -in privateKey.pem -inform PEM -out privateKey.der -outform DER
+6. ** manually remove unwanted public certificate from publicCert.pem
+7. generate cert der file-> openssl x509 -in publicCert.pem -inform PEM -out publicCert.der -outform DER
+8. Use ImportKey.java to genertae public key store file with ker.der and cert.der files as input. 
+	This is done using java. generated pks file will have a password and alias to be used later.
+9. PkiTest.java demonstrate how to read private key from jks file
+10 PkiTest.java demonstrate how to read public certificate from jks file.
+
+
+       
+    
+testfafsa.p12 -> p12 file form client. password:testfafsa
+testfafsa.arm -> public cert file in der format. 
+
+privateKey.pem -> from testfafsa.p12 using openssl
+privateKey.der -> from privateKey.pem using openssl
+
+publicCert.pem -> from testfafsa.p12 using openssl
+publicCert2.pem -> from publicCert.pem manually remove extra stuff
+publicCert.der -> from publicCert.pem using openssl
+
+keystore.ImportKey -> from publicCert.der and privateKey.der using ImportKey.java
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<configExtensions>
+		<configExtension>xml</configExtension>
+	</configExtensions>
+	<configs>
+		<config>resources/services-context.xml</config>
+		<config>resources/beanRefContext.xml</config>
+	</configs>
+	<configSets>
+		<configSet>
+			<name>Services Config</name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>resources/services-context.xml</config>
+			</configs>
+		</configSet>
+	</configSets>
+</beansProjectDescription>

@@ -1,0 +1,34 @@
+;; adapt this to the directory where the current file is located
+;; and set a link from ~/.clisprc to this file
+(setq *lisp-devel-root*   "/home/cs/project-workspace/lisp/")
+
+;; see http://weitz.de/asdf-install/
+
+(setq *asdf-root*         "/usr/share/common-lisp/source/asdf/")
+(setq *defsystem-root*    "/usr/share/common-lisp/source/defsystem/")
+
+;;(setq *asdf-install-root* (concatenate 'string *lisp-devel-root* "lib/asdf-install/"))
+(setq *clocc-root*        (concatenate 'string *lisp-devel-root* "lib/clocc/"))
+
+#-:mk-defsystem (load (concatenate 'string *defsystem-root*    "defsystem"))
+;;#-:asdf-install (load (concatenate 'string *asdf-install-root* "load-asdf-install"))
+
+(mk:add-registry-location (concatenate 'string *lisp-devel-root* "asd/"))
+(pushnew (concatenate 'string *lisp-devel-root* "asd/") asdf:*central-registry* :test #'equal)
+
+(load (concatenate 'string *clocc-root* "clocc"))
+
+(dolist (l '("clocc:src;port;" "clocc:src;cllib;" "clocc:src;ext;queues;"
+             "clocc:src;port;configuration;" "clocc:src;port;environment;"
+             "clocc:src;ext;union-find;" "clocc:src;tools;metering;"
+             "clocc:src;f2cl;" "clocc:src;f2cl;packages;"
+             "clocc:src;screamer;"
+             ))
+  (mk:add-registry-location (translate-logical-pathname l)))
+
+(defvar *cssb-root*       (concatenate 'string *lisp-devel-root* "src/"))
+(setf (logical-pathname-translations "cssb")
+      `(("**;*" ,(concatenate 'string *cssb-root* "**/*"))))
+
+;; your starting point:
+;; (asdf:oos 'asdf:load-op 'cssb-extlib)

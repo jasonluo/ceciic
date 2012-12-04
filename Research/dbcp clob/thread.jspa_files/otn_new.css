@@ -1,0 +1,505 @@
+/* MASTER FONT FACES */
+BODY,H1,H2,H3,H4 {font-family:arial,helvetica,sans-serif;}
+
+/* MASTER FONT SIZES */
+H1 {font-size:18px;}
+H2 {font-size:16px;}
+H3 {font-size:14px;}
+H4 {font-size:12px;}
+BODY {font-size:12px;}
+
+/* GENERAL STYLES */
+H1,H2,H3,H4 {margin-bottom:1px;}
+H1,H2,H3,H4 {font-weight:bold;}
+H1,H2,H3,H4 {color:#000;}
+
+/* CURRENT TEXT STYLES */
+.betastuff { font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #000000; text-decoration: none }
+
+/* used to remove double space issue in pre tags*/
+.jive-message-body pre br { display:none; }
+
+.bodylink {font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 14px; color: #000000;}  
+a:link {color:#000;text-decoration:underline;}
+a:visited {color:#999;text-decoration:underline;}
+
+A:visited.bodylink {color:#999999;  text-decoration:underline;}  
+A:hover.bodylink {color:#FF0000; text-decoration:underline;} 
+A:link.bodylink {color:black; text-decoration:underline;}
+
+.bodylinkwhite {font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 14px; color: #ffffff;}  
+A:visited.bodylinkwhite {color:white;  text-decoration:none;}  
+A:hover.bodylinkwhite {color:#cccccc; text-decoration:underline;} 
+A:link.bodylinkwhite {color:white; text-decoration:none;}
+
+.boldbodylink {font-weight: bold; font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 14px; color: #000000;}  
+A:visited.boldbodylink {color:#999999;  text-decoration:underline;}  
+A:hover.boldbodylink {color:#FF0000; text-decoration:underline;} 
+A:link.boldbodylink {color:black; text-decoration:underline;}
+
+.boldbodylinkwhite {font-weight: bold; font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 14px; color: #ffffff;}  
+A:visited.boldbodylinkwhite {color:#ffffff;  text-decoration:underline;}  
+A:hover.boldbodylinkwhite {color:#FF0000; text-decoration:underline;} 
+A:link.boldbodylinkwhite {color:white; text-decoration:underline;}
+
+.bodycopy  { color: #000000; font-size: 12px; font-family: Arial, Helvetica, sans-serif; line-height: 14px; text-decoration: none; visited: #000000 }
+
+.boldbodycopy {font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 14px; font-weight: bold; color: #000000 ; text-decoration: none; visited: #000000;}
+
+.boldbodycopy2 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 14px; font-weight: bold; color: #999999 ; text-decoration: none; visited: #999999;}
+
+.boldbodycopy3 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 14px; font-weight: bold; color: #666666 ; text-decoration: none; visited: #666666;}
+
+.directorytext {font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 17px; color: #000000; text-decoration: none; visited: #000000;}
+
+.gradient {filter:progid:DXImageTransform.Microsoft.Gradient(startColorstr='#DDDDDD', endColorstr='#FFFFFF', gradientType='0'); }
+
+.headline {font-family: arial black, impact, arial, verdana, sans-serif; font-size: 28px; color: #000000 ; text-decoration: none; visited: #000000; letter-spacing: -1px; wrap-option: hard-wrap; line-height: 38px; text-decoration: none; visited: #000000}
+
+.italicbodycopy {font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 14px; font-style: italic; color: #000000 ; text-decoration: none; visited: #000000;}
+
+.ITALICiBodycopy {font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 14px; font-style: italic; color: #000000 ; text-decoration: none; visited: #000000;}
+
+.legalese {font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #000000; text-decoration: none; visited: #000000;}
+a:link.legalese {color:#000;text-decoration:none;}
+a:visited.legalese {color:#000;text-decoration:none;}
+a:hover.legalese {color:#FF0000;text-decoration:underline;}
+
+.navhead {font-family: Arial, Helvetica, Sans-serif; font-size: 11px; font-style: italic; font-weight: bold; color: #000000; text-decoration: none; visited: #000000;}
+
+.navheader {FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #336699; FONT-FAMILY: Arial, Helvetica, sans-serif}
+
+.navlink {font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 14px; color: #000000;}   
+A:visited.navlink { color:#000000;  text-decoration:none;} 
+A:hover.navlink {color:#FF0000; text-decoration:underline;}    
+A:link.navlink { color:black;  text-decoration:none;}
+
+.parahead1 {font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; color: #000000; text-decoration: none; visited: #000000;}
+
+.parahead1Itali {font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-style: italic; font-weight: bold; color: #000000; text-decoration: none; visited: #000000;}
+
+.parahead2 {font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; color: #666666; text-decoration: none; visited: #666666;}
+
+.parahead2Itali {font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-style: italic; font-weight: bold; color: #666666; text-decoration: none; visited: #666666;}
+
+.portletTitle {font-family: Arial, Helvetica, Sans-serif; font-size: 11px; font-weight: bold;  color: #000000; text-decoration: none; visited: #000000;}
+A:visited.portletTitle { color:#000000;  text-decoration:none;} 
+A:hover.portletTitle {color:#FF0000; text-decoration:underline;}    
+A:link.portletTitle { color:black;  text-decoration:none;}
+
+.profile {font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #000; text-decoration: none; visited: #999999;}
+
+.tablink {font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #000000; text-decoration: none; visited: #000000;}
+
+.TD {background-image: url(/admin/images/ocom/content_background.gif); background-repeat: no-repeat;}
+
+.textA {font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 14px; color: #000000; text-decoration: none; visited: #000000;}
+A:visited.textA { color:#000000;  text-decoration:underline;} 
+A:hover.textA{color:#FF0000; text-decoration:underline;}    
+A:link.textA { color:black;  text-decoration:underline;}
+
+.textB {font-family: Arial, Helvetica, Sans-serif; font-size: 11px; font-weight: bold; color: #000000; text-decoration: none; visited: #000000;}
+
+.textC {font-family: Arial, Helvetica, Sans-serif; font-size: 11px; font-weight: bold; color: #999999; text-decoration: none; visited: #999999;}
+
+.topstoryhead {font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; color: #000000; text-decoration: none; visited: #000000;}
+
+.h1 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 17px; color: #ff0000;}
+
+.directorytext2 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 17px; color: #000000;}   
+A:visited.directorytext2 { color:#000000;  text-decoration:none;} 
+A:hover.directorytext2{color:#FF0000; text-decoration:underline;}    
+A:link.directorytext2 { color:black;  text-decoration:none;}
+
+.textBnav {font-family: Arial, Helvetica, Sans-serif; font-size: 11px; font-weight: bold; color: #000000; text-decoration: none; visited: #000000;}
+A:visited.textBnav { color:#000000;  text-decoration:none;} 
+A:hover.textBnav {color:#FF0000; text-decoration:underline;}    
+A:link.textBnav { color:black;  text-decoration:none;}
+
+.textCnav {font-family: Arial, Helvetica, Sans-serif; font-size: 11px; font-weight: bold; color: #999999; text-decoration: none; visited: #999999;}
+A:visited.textCnav { color:#999999;  text-decoration:none;} 
+A:hover.textCnav {color:#FF0000; text-decoration:underline;}    
+A:link.textCnav { color:#999999;  text-decoration:none;}
+
+.imgborder {border: 1px solid #000000;}
+
+.tborder {border: 1px solid #CCCCCC;}
+
+.navborder {border-left: 1px solid #666666; border-right: 1px solid #666666; border-bottom: 1px solid #666666;}
+
+.imgborder_on { 
+  border: 1px solid #000000; }
+
+.imgborder_off { 
+  border: 0px; }
+  
+
+
+.rightNavHeadLine {	font-family: "Arial";
+	font-size: 14px;
+	font-style: normal;
+	line-height: 20px;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: capitalize;
+	color: #000000;
+	text-decoration: none;
+	letter-spacing: -.02em;
+ } 
+ .rightNavHeadLineWhite {	font-family: "Arial";
+	font-size: 14px;
+	font-style: normal;
+	line-height: 20px;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: capitalize;
+	color: #ffffff;
+	text-decoration: none;
+	letter-spacing: -.02em;
+ } 
+ 
+ 	.rightNavSubHeadLine {font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 14px; color: #000000; text-decoration:none;}  
+	a.rightNavSubHeadLine:hover {color:#FF0000; text-decoration:underline;} 
+	a.rightNavSubHeadLine:link {color:#000000; text-decoration:none;}
+ 
+ 
+ .navTitle {font-family: Arial, sans-serif; font-size: 12px; color: #FF0000; text-decoration:none; font-weight:bold; line-height:16px; margin-left:10px;  } 
+	a.navTitle:link {color:#FF0000; text-decoration:none;}
+	a.navTitle:visited {color:#FF0000; text-decoration:none;}
+	a.navTitle:hover {color:#FF0000; text-decoration:underline;}
+a.subnavlink {font-family:  Arial, sans-serif; font-size: 11px; color: #000000; text-decoration:none; font-weight:400; line-height:16px; margin-left:10px;  }  
+	a.subnavlink:link {color:black; text-decoration:none;}
+	a.subnavlink:visited {color:#000;text-decoration:none;}
+	a.subnavlink:hover {color:#FF0000; text-decoration:none;}
+	
+	.mainHeadLine {	font-family: "Arial Narrow", "Arial";
+	font-size: 30px;
+	font-style: normal;
+	line-height: 33px;
+	font-weight: 300;
+	font-variant: normal;
+	text-transform: capitalize;
+	color: #000000;
+	text-decoration: none;
+	letter-spacing: -.03em;
+ }   
+
+#banner {
+	background:#fff;
+	height:75px;
+	border-bottom:1px solid #CCC;
+	margin:0px 10px 0px 10px;
+	}
+#banner-forum {
+	background:#fff;
+	height:75px;
+	border-bottom:1px solid #CCC;
+	margin:0px 0px 0px 0px;
+	}
+	#bannerMid {
+	background:#fff;
+	width:535px;
+	height:50px;
+	}
+		
+a.headlink {font-family: Arial, sans-serif; font-size: 10px; color: #000000; text-decoration:none; font-weight:400; line-height:33px; }  
+	a.headlink:link {color:black; text-decoration:none;}
+	a.headlink:hover {color:#FF0000; text-decoration:none;}
+
+	a.Bheadlink {font-family: Arial, sans-serif; font-size: 10px; color: #000000; text-decoration:none; font-weight:400; }  
+	a.Bheadlink:link {color:black; text-decoration:none;}
+    a.Bheadlink:hover {color:#FF0000; text-decoration:none;}
+	
+
+	.loclink {font-family: Arial, sans-serif; font-size: 10px; color: #FF0000; text-decoration:none; border-top:18px solid #FF0000; line-height:33px; } 
+	
+	.padBox {
+	padding:0px 0px 5px 20px;
+ } 
+ 
+ .mainBkg{ background-image:url(http://www.oracleimg.com/admin/images/otn/otn_home2.jpg); background-repeat:no-repeat;
+
+	 }
+ .searchBox {
+	
+    margin:0px 10px 0px 20px;
+	}
+
+ .navsection {
+	border-right:1px solid #CCCCCC;
+	
+ 	}  
+ .navsectionmain {
+	border-right:1px solid #CCCCCC;
+	
+ 	}  
+ #leftnav {
+border-right: 1px solid #cccccc; margin:0px 10px 0px 10px;
+border-bottom: 1px solid #cccccc; margin:0px 10px 0px 10px; 
+
+	 }
+	 
+	 #main {
+		background:#fff;
+		border-bottom:1px solid #CCC;
+margin:0px 10px 0px 10px;
+		}
+ #footer {
+		border-top:1px solid #CCC;
+		background:#fff;
+		
+		}
+		.navPadBox {
+	padding-right: 10px;
+	
+ } 
+
+		.footerPadBoxLeft {
+	padding-right: 1px; padding-bottom: 0px;
+	
+ } 
+  .footerDivider {font-family: Arial, Helvetica, sans-serif; font-size: 11px;
+}
+.padMid {
+	padding:0px 20px 0px 10px;
+ 	} 
+#navTop{
+	border-top:1px solid #cccccc;
+	border-bottom:1px solid #cccccc;
+	}
+	#navTopMain{
+	border-top:1px solid #cccccc;
+	border-bottom:1px solid #cccccc;
+	margin-left: 10px;
+	
+	
+	}
+	#navTopMainOBE{
+	border-top:1px solid #cccccc;
+	border-bottom:1px solid #cccccc;
+	margin-left: 10px;
+
+	
+	}
+	#navBottomTop{
+	border-right:1px solid #cccccc;
+	padding: 0px 5px 0px 0px;
+	}
+	#navBottomTopMain{
+	border-right:1px solid #cccccc;
+	padding: 4px 5px 0px 0px;
+	margin-right:2px;
+	}
+	.clsNode {
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 10px; font-weight:700; color: #000000; 
+	padding-top:5px; text-decoration: none;
+	border-bottom: 1px solid #999999;
+	width:150px;
+	}
+	a.bannerlink {font-family:  Arial, sans-serif; font-size: 9px; color: #666666; text-decoration:none; font-weight:400;  }  
+	a.bannerlink:link {color:#666666; text-decoration:none;}
+	a.bannerlink:hover {color:#FF0000; text-decoration:none;}
+
+.navborder1 {
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	}
+.navbodylink {font-weight: bold; font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 14px; color: #000000;}  
+A:visited.navbodylink {color:#000000;  text-decoration:none;}  
+A:hover.navbodylink {color:#FF0000; text-decoration:none;} 
+A:link.navbodylink {color:black; text-decoration:none;}
+
+.subnavlinkpipe {font-size:11px;}
+a.subnavlinkpipe:link {color:#000; text-decoration:none;}
+a.subnavlinkpipe:visited {color:#000; text-decoration:none;}
+a.subnavlinkpipe:hover {color:#FF0000; text-decoration:underline;}
+
+.greybarhomebot{background: #DCDCDC;height: 7px; border-top: #D1CFCF solid 1px; margin-top: 7px;}
+#marginTop{
+	margin-left: 10px;
+	}
+	#rssTop{
+	border-top:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	padding: 0px 5px 0px 0px;
+	}
+	#navOTNBottom{
+	border-bottom:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	}	
+	
+
+/* otn horizontal nav styles */	
+.horznavContainer {background:url(http://www.oracleimg.com/admin/images/horznav_rptbg.gif) repeat-x;width:99%;height:31;}
+.dropdown ul
+{
+	list-style:none;
+	padding:0;
+	margin:0;
+	width:100%;
+}
+.dropdown li
+{
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #a7a7a7;
+	border-bottom-color: #a7a7a7;
+	border-left-color: #a7a7a7;
+	text-indent:5px;
+    text-decoration:none;
+}
+.dropdown a
+{
+	display:block;
+	position:relative;
+	padding:6px 0px 6px 5px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	text-decoration:none;
+	color:#dddddd;
+	overflow: hidden;
+}
+
+.dropdown li a:link
+{
+	display:block;
+	position:relative;
+	background-position: 4px;
+    text-decoration:none;
+    color:#dddddd;
+}
+
+.dropdown li a:visited
+{
+	display:block;
+	position:relative;
+	background-position: 4px;
+    text-decoration:none;
+    color:#dddddd;
+}
+
+.dropdown li a:hover
+{
+	display:block;
+	position:relative;
+	background-color:#a7a7a7;
+	background-position: 4px;
+    text-decoration:none;
+    color:#000000;
+}
+
+
+.dropdown{background-color:#6f6f6f; top:31px; position:absolute;display:none;}
+.mouseoverContainer {position: relative;width: 100%;}
+.rpt_off{
+	background-image:url(http://www.oracleimg.com/admin/images/horznav_bg.gif);
+	background-repeat:no-repeat;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	padding:10px 10px 0 8px;
+	border:none;
+    text-decoration:none;
+    height:21px;
+    color:#000000;
+    white-space:nowrap;
+}
+
+.rpt_off a:link{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	text-decoration:none;
+	color:#000000;
+	white-space: no-wrap;
+}  
+
+.rpt_off a:visited{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	text-decoration:none;
+	color:#000000;
+    white-space:nowrap;
+}  
+
+.rpt_off a:hover{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	text-decoration:none;
+	color:#dddddd;
+    white-space:nowrap;
+}  
+
+.rpt_on {
+	background-color:#6f6f6f;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	padding-top:8px;
+	color:#dddddd;
+	border-top:solid red 2px;
+	border-left:none;
+	border-right:none;
+    text-decoration:none;
+    height:21px;
+    white-space:nowrap;
+}
+
+.rpt_on a:link {
+	background-color:#6f6f6f;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	padding:8px 10px 0 8px;
+	color:#dddddd;
+	border-top:solid red 2px;
+	border-left:none;
+	border-right:none;
+	text-decoration:none;
+    white-space:nowrap;
+}
+
+.rpt_on a:visited {
+	background-color:#6f6f6f;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	padding:8px 10px 0 8px;
+	color:#dddddd;
+	border-top:solid red 2px;
+	border-left:none;
+	border-right:none;
+	text-decoration:none;
+    white-space:nowrap;
+}
+
+.rpt_on a:hover {
+	background-color:#6f6f6f;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	padding:8px 10px 0 8px;
+	color:#ffffff;
+	border-top:solid red 2px;
+	border-left:none;
+	border-right:none;
+	text-decoration:none;
+    white-space:nowrap;
+} 
+
+
+.header_bg{background-image:url(http://www.oracleimg.com/admin/images/horznav_rptbg.gif); background-repeat:repeat-x; height:29px; padding-bottom:4px;vertical-align:top;}
+.pvebbodyContainer {background:url(http://www.oracleimg.com/admin/images/horznav_shadow_rpt.gif) repeat-x; background-color: #ffffff; width:99%;height:20px;}
+.pvebbodylink {background-color: #dcdcdc; font-weight: bold; font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height: 14px; color: #666666; text-decoration:none;}
+.pvebbodylink img {margin:0 3px;} 
+.pvebbodylink a:link {color:#666666; text-decoration:none;margin-right:6px;}
+.pvebbodylink a:visited {color:#666666;  text-decoration:none;margin-right:6px;} 
+.pvebbodylink a:hover {color:#FF0000; text-decoration:none;margin-right:6px;} 		

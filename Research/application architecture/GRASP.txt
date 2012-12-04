@@ -1,0 +1,2 @@
+GRASP Principle:
+http://javadepend.wordpress.com/2011/10/26/spring-the-art-of-using-grasp-patterns/

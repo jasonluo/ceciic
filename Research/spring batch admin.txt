@@ -1,0 +1,17 @@
+
+Admin bolog:
+http://blog.springsource.com/2010/02/15/practical-use-of-spring-batch-and-spring-integration/
+
+Spring Integration:
+http://blog.springsource.com/2009/02/13/982/
+http://static.springsource.org/spring-batch-admin/trunk/spring-batch-integration/
+
+war file:
+https://s3browse.springsource.com/browse/maven.springframework.org/milestone/org/springframework/batch/spring-batch-admin-sample/1.0.0.M2/
+
+
+Patterns:
+http://www.eaipatterns.com/
+
+Spring integration:
+http://static.springsource.org/spring-integration/reference/htmlsingle/spring-integration-reference.html#overview

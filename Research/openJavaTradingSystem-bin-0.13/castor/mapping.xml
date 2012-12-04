@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN" "http://castor.exolab.org/mapping.dtd">
+<mapping>
+  <class name="net.sf.ojts.jdo.Unit" identity="id">
+    <map-to table="Unit" xml="Unit" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="name" type="string">
+      <sql name="name" />
+      <bind-xml name="name" />
+    </field>
+    <field name="propertyTypeLink" type="net.sf.ojts.jdo.PropertyType">
+      <sql name="PropertyType_id" />
+      <bind-xml name="propertyTypeLink" reference="true" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.DataItem" key-generator="MAX" identity="id">
+    <map-to table="DataItem" xml="DataItem" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="time" type="date">
+      <sql name="time" type="timestamp" />
+      <bind-xml name="time" />
+    </field>
+    <field name="subject" type="net.sf.ojts.jdo.subject.Subject">
+      <sql name="Subject_id" />
+      <bind-xml name="subject" reference="true" />
+    </field>
+    <field name="source" type="net.sf.ojts.jdo.ObserverDataSourceConfiguration">
+      <sql name="ObserverDataSourceConfiguration_id" />
+      <bind-xml name="source" reference="true" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.TimeDataItem" extends="net.sf.ojts.jdo.DataItem">
+    <map-to table="TimeDataItem" xml="TimeDataItem" />
+    <field name="time" type="date">
+      <sql name="time" type="timestamp" />
+      <bind-xml name="time" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.StringDataItem" extends="net.sf.ojts.jdo.DataItem">
+    <map-to table="StringDataItem" xml="StringDataItem" />
+    <field name="value" type="string">
+      <sql name="value" />
+      <bind-xml name="value" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.PropertyType" identity="id">
+    <map-to table="PropertyType" xml="PropertyType" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="name" type="string">
+      <sql name="name" />
+      <bind-xml name="name" />
+    </field>
+    <field name="description" type="string">
+      <sql name="description" />
+      <bind-xml name="description" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.Property" identity="id">
+    <map-to table="Property" xml="Property" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="type" type="net.sf.ojts.jdo.PropertyType">
+      <sql name="PropertyType_id" />
+      <bind-xml name="type" reference="true" />
+    </field>
+    <field name="name" type="string">
+      <sql name="name" />
+      <bind-xml name="name" />
+    </field>
+    <field name="description" type="string">
+      <sql name="description" />
+      <bind-xml name="description" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.ObserverDataSourceConfiguration" identity="id">
+    <map-to table="ObserverDataSourceConfiguration" xml="ObserverDataSourceConfiguration" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="property" type="net.sf.ojts.jdo.Property">
+      <sql name="Property_id" />
+      <bind-xml name="property" reference="true" />
+    </field>
+    <field name="observedAt" type="net.sf.ojts.jdo.subject.MarketPlace">
+      <sql name="MarketPlace_id" />
+      <bind-xml name="observedAt" reference="true" />
+    </field>
+    <field name="observerDataSource" type="net.sf.ojts.jdo.DataSource">
+      <sql name="DataSource_id" />
+      <bind-xml name="observerDataSource" reference="true" />
+    </field>
+    <field name="unit" type="net.sf.ojts.jdo.Unit">
+      <sql name="Unit_id" />
+      <bind-xml name="unit" reference="true" />
+    </field>
+    <field name="colu" type="string">
+      <sql name="colu" />
+      <bind-xml name="colu" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.IntDataItem" extends="net.sf.ojts.jdo.DataItem">
+    <map-to table="IntDataItem" xml="IntDataItem" />
+    <field name="value" type="integer">
+      <sql name="value" />
+      <bind-xml name="value" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.DoubleDataItem" extends="net.sf.ojts.jdo.DataItem">
+    <map-to table="DoubleDataItem" xml="DoubleDataItem" />
+    <field name="value" type="double">
+      <sql name="value" />
+      <bind-xml name="value" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.DataSourceType" identity="id">
+    <map-to table="DataSourceType" xml="DataSourceType" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="name" type="string">
+      <sql name="name" />
+      <bind-xml name="name" />
+    </field>
+    <field name="description" type="string">
+      <sql name="description" />
+      <bind-xml name="description" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.DataSource" identity="id">
+    <map-to table="DataSource" xml="DataSource" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="type" type="net.sf.ojts.jdo.DataSourceType">
+      <sql name="DataSourceType_id" />
+      <bind-xml name="type" reference="true" />
+    </field>
+    <field name="url" type="string">
+      <sql name="url" />
+      <bind-xml name="url" />
+    </field>
+    <field name="description" type="string">
+      <sql name="description" />
+      <bind-xml name="description" />
+    </field>
+    <field name="observerLink" type="net.sf.ojts.jdo.subject.Observer">
+      <sql name="Observer_id" />
+      <bind-xml name="observerLink" reference="true" />
+    </field>
+    <field name="handlerClassName" type="string">
+      <sql name="handlerClassName" />
+      <bind-xml name="handlerClassName" />
+    </field>
+    <field name="dataLagInDays" type="integer">
+      <sql name="dataLagInDays" />
+      <bind-xml name="dataLagInDays" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.DataInputRegistry" key-generator="MAX" identity="id">
+    <map-to table="DataInputRegistry" xml="DataInputRegistry" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="observer" type="string">
+      <sql name="observer" />
+      <bind-xml name="observer" />
+    </field>
+    <field name="startDate" type="date">
+      <sql name="startDate" type="timestamp" />
+      <bind-xml name="startDate" />
+    </field>
+    <field name="endDate" type="date">
+      <sql name="endDate" type="timestamp" />
+      <bind-xml name="endDate" />
+    </field>
+    <field name="subject" type="string">
+      <sql name="subject" />
+      <bind-xml name="subject" />
+    </field>
+    <field name="market" type="string">
+      <sql name="market" />
+      <bind-xml name="market" />
+    </field>
+    <field name="whenDate" type="date">
+      <sql name="whenDate" type="timestamp" />
+      <bind-xml name="whenDate" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.BooleanDataItem" extends="net.sf.ojts.jdo.DataItem">
+    <map-to table="BooleanDataItem" xml="BooleanDataItem" />
+    <field name="value" type="boolean">
+      <sql name="value" />
+      <bind-xml name="value" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.AliasType" identity="id">
+    <map-to table="AliasType" xml="AliasType" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="name" type="string">
+      <sql name="name" />
+      <bind-xml name="name" />
+    </field>
+    <field name="observerLink" type="net.sf.ojts.jdo.subject.Observer">
+      <sql name="Observer_id" />
+      <bind-xml name="observerLink" reference="true" />
+    </field>
+    <field name="description" type="string">
+      <sql name="description" />
+      <bind-xml name="description" />
+    </field>
+    <field name="urlSource" type="string">
+      <sql name="urlSource" />
+      <bind-xml name="urlSource" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.Alias" identity="id">
+    <map-to table="Alias" xml="Alias" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="subject" type="net.sf.ojts.jdo.subject.Subject">
+      <sql name="Subject_id" />
+      <bind-xml name="subject" reference="true" />
+    </field>
+    <field name="type" type="net.sf.ojts.jdo.AliasType">
+      <sql name="AliasType_id" />
+      <bind-xml name="type" reference="true" />
+    </field>
+    <field name="market" type="net.sf.ojts.jdo.subject.MarketPlace">
+      <sql name="MarketPlace_id" />
+      <bind-xml name="market" reference="true" />
+    </field>
+    <field name="alias" type="string">
+      <sql name="alias" />
+      <bind-xml name="alias" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.conversion.TypeConversion" identity="id">
+    <map-to table="TypeConversion" xml="TypeConversion" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="from" type="net.sf.ojts.jdo.Unit">
+      <sql name="Unit_from" />
+      <bind-xml name="from" reference="true" />
+    </field>
+    <field name="to" type="net.sf.ojts.jdo.Unit">
+      <sql name="Unit_to" />
+      <bind-xml name="to" reference="true" />
+    </field>
+    <field name="typeId" type="string">
+      <sql name="typeId" />
+      <bind-xml name="typeId" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.conversion.CurrencyConversion" extends="net.sf.ojts.jdo.conversion.TypeConversion">
+    <map-to table="CurConversion" xml="CurrencyConversion" />
+    <field name="currencyPair" type="net.sf.ojts.jdo.subject.CurrencyPair">
+      <sql name="CurPair_id" />
+      <bind-xml name="currencyPair" reference="true" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.conversion.ConstantConversion" extends="net.sf.ojts.jdo.conversion.TypeConversion">
+    <map-to table="ConstantConversion" xml="ConstantConversion" />
+    <field name="factor" type="double">
+      <sql name="factor" />
+      <bind-xml name="factor" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.portfolio.Position" key-generator="MAXOrKeep" identity="id">
+    <map-to table="PPosition" xml="Position" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="subject" type="net.sf.ojts.jdo.subject.SecurityPaper">
+      <sql name="SecurityPaper" />
+      <bind-xml name="subject" reference="true" />
+    </field>
+    <field name="quantity" type="double">
+      <sql name="quantity" />
+      <bind-xml name="quantity" />
+    </field>
+    <field name="comment" type="string">
+      <sql name="comment" />
+      <bind-xml name="comment" />
+    </field>
+    <field name="boughtAt" type="net.sf.ojts.jdo.subject.MarketPlace">
+      <sql name="MP_buy" />
+      <bind-xml name="boughtAt" reference="true" />
+    </field>
+    <field name="open" type="date">
+      <sql name="openDate" type="timestamp" />
+      <bind-xml name="open" />
+    </field>
+    <field name="openPrice" type="double">
+      <sql name="openPrice" />
+      <bind-xml name="openPrice" />
+    </field>
+    <field name="openCharges" type="double">
+      <sql name="openCharges" />
+      <bind-xml name="openCharges" />
+    </field>
+    <field name="openPriceCurrency" type="net.sf.ojts.jdo.Unit">
+      <sql name="UT_buy" />
+      <bind-xml name="openPriceCurrency" reference="true" />
+    </field>
+    <field name="soldAt" type="net.sf.ojts.jdo.subject.MarketPlace">
+      <sql name="MP_sell" />
+      <bind-xml name="soldAt" reference="true" />
+    </field>
+    <field name="close" type="date">
+      <sql name="closeDate" type="timestamp" />
+      <bind-xml name="close" />
+    </field>
+    <field name="closePrice" type="double">
+      <sql name="closePrice" />
+      <bind-xml name="closePrice" />
+    </field>
+    <field name="closeCharges" type="double">
+      <sql name="closeCharges" />
+      <bind-xml name="closeCharges" />
+    </field>
+    <field name="closePriceCurrency" type="net.sf.ojts.jdo.Unit">
+      <sql name="UT_sell" />
+      <bind-xml name="closePriceCurrency" reference="true" />
+    </field>
+    <field name="portfolios" collection="collection" lazy="true" type="net.sf.ojts.jdo.subject.Portfolio">
+      <sql name="Portfolio_id" many-table="PorPos" many-key="PPosition_id" dirty="check" />
+      <bind-xml name="portfolios" />
+    </field>
+    <field name="preferredDataSource" type="net.sf.ojts.jdo.DataSource">
+      <sql name="DataSource_id" />
+      <bind-xml name="preferredDataSource" reference="true" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.readercache.RCDataItem" key-generator="MAX" identity="id">
+    <map-to table="RCDataItem" xml="RCDataItem" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="date" type="date">
+      <sql name="date" type="timestamp" />
+      <bind-xml name="date" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.readercache.RCDoubleDataItem" extends="net.sf.ojts.jdo.readercache.RCDataItem">
+    <map-to table="RCDoubleDataItem" xml="RCDoubleDataItem" />
+    <field name="value" type="double">
+      <sql name="value" />
+      <bind-xml name="value" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.readercache.RCDataItemContainer" key-generator="MAX" identity="id">
+    <map-to table="RCDataItemContainer" xml="RCDataItemContainer" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="securityPaperISIN" type="string">
+      <sql name="securityPaperISIN" />
+      <bind-xml name="securityPaperISIN" />
+    </field>
+    <field name="marketPlaceName" type="string">
+      <sql name="marketPlaceName" />
+      <bind-xml name="marketPlaceName" />
+    </field>
+    <field name="propertyName" type="string">
+      <sql name="propertyName" />
+      <bind-xml name="propertyName" />
+    </field>
+    <field name="unit" type="string">
+      <sql name="unit" />
+      <bind-xml name="unit" />
+    </field>
+    <field name="dataItems" collection="collection" type="net.sf.ojts.jdo.readercache.RCDataItem">
+      <sql name="RCDataItem_id" dirty="check" />
+      <bind-xml name="dataItems" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.readercache.RCCacheFile" key-generator="MAX" identity="id">
+    <map-to table="RCCacheFile" xml="RCCacheFile" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="subjectName" type="string">
+      <sql name="subjectName" />
+      <bind-xml name="subjectName" />
+    </field>
+    <field name="observerName" type="string">
+      <sql name="observerName" />
+      <bind-xml name="observerName" />
+    </field>
+    <field name="dataSourceTypeName" type="string">
+      <sql name="dataSourceTypeName" />
+      <bind-xml name="dataSourceTypeName" />
+    </field>
+    <field name="marketPlaceName" type="string">
+      <sql name="marketPlaceName" />
+      <bind-xml name="marketPlaceName" />
+    </field>
+    <field name="from" type="date">
+      <sql name="from" type="timestamp" />
+      <bind-xml name="from" />
+    </field>
+    <field name="to" type="date">
+      <sql name="to" type="timestamp" />
+      <bind-xml name="to" />
+    </field>
+    <field name="readdate" type="date">
+      <sql name="readdate" type="timestamp" />
+      <bind-xml name="readdate" />
+    </field>
+    <field name="rCContainer" collection="collection" type="net.sf.ojts.jdo.readercache.RCDataItemContainer">
+      <sql name="RCDataItemContainer_id" dirty="check" />
+      <bind-xml name="rCContainer" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.subject.Subject" key-generator="MAXOrKeep" identity="id">
+    <map-to table="Subject" xml="Subject" />
+    <field name="id" type="integer">
+      <sql name="id" />
+      <bind-xml name="id" />
+    </field>
+    <field name="name" type="string">
+      <sql name="name" />
+      <bind-xml name="name" />
+    </field>
+    <field name="description" type="string">
+      <sql name="description" />
+      <bind-xml name="description" />
+    </field>
+    <field name="urlSources" type="string">
+      <sql name="urlSources" />
+      <bind-xml name="urlSources" />
+    </field>
+    <field name="typeId" type="string">
+      <sql name="typeId" />
+      <bind-xml name="typeId" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.subject.SecurityPaper" extends="net.sf.ojts.jdo.subject.Subject">
+    <map-to table="SecurityPaper" xml="SecurityPaper" />
+    <field name="defaultCurrency" type="net.sf.ojts.jdo.Unit" direct="true">
+      <sql name="Unit_id" />
+      <bind-xml name="defaultCurrency" reference="true" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.subject.Share" extends="net.sf.ojts.jdo.subject.SecurityPaper">
+    <map-to table="Share" xml="Share" />
+  </class>
+  <class name="net.sf.ojts.jdo.subject.Portfolio" extends="net.sf.ojts.jdo.subject.SecurityPaper">
+    <map-to table="Portfolio" xml="Portfolio" />
+    <field name="positions" collection="collection" lazy="true" type="net.sf.ojts.jdo.portfolio.Position">
+      <sql name="PPosition_id" many-table="PorPos" many-key="Portfolio_id" dirty="check" />
+      <bind-xml name="positions" />
+    </field>
+  </class>
+  <class name="net.sf.ojts.jdo.subject.Observer" extends="net.sf.ojts.jdo.subject.Subject">
+    <map-to table="Observer" xml="Observer" />
+  </class>
+  <class name="net.sf.ojts.jdo.subject.MarketPlace" extends="net.sf.ojts.jdo.subject.Subject">
+    <map-to table="MarketPlace" xml="MarketPlace" />
+  </class>
+  <class name="net.sf.ojts.jdo.subject.Fund" extends="net.sf.ojts.jdo.subject.SecurityPaper">
+    <map-to table="Fund" xml="Fund" />
+  </class>
+  <class name="net.sf.ojts.jdo.subject.CurrencyPair" extends="net.sf.ojts.jdo.subject.SecurityPaper">
+    <map-to table="CurrencyPair" xml="CurrencyPair" />
+    <field name="from" type="net.sf.ojts.jdo.Unit">
+      <sql name="Unit_from" />
+      <bind-xml name="from" reference="true" />
+    </field>
+    <field name="to" type="net.sf.ojts.jdo.Unit">
+      <sql name="Unit_to" />
+      <bind-xml name="to" reference="true" />
+    </field>
+  </class>
+</mapping>
+

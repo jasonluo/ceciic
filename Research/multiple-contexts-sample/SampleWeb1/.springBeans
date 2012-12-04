@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<configExtensions>
+		<configExtension>xml</configExtension>
+	</configExtensions>
+	<configs>
+		<config>WebContent/WEB-INF/applicationContext.xml</config>
+	</configs>
+	<configSets>
+		<configSet>
+			<name>Web1 Config</name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>/SampleJava/resources/services-context.xml</config>
+				<config>WebContent/WEB-INF/applicationContext.xml</config>
+			</configs>
+		</configSet>
+	</configSets>
+</beansProjectDescription>

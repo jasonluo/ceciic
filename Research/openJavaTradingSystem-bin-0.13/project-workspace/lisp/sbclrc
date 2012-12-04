@@ -1,0 +1,8 @@
+;; adapt this to the directory where the current file is located
+;; and set a link from ~/.sbclrc to this file
+(defvar *lisp-devel-root*   "/home/cs/project-workspace/lisp/")
+
+;; see http://weitz.de/asdf-install/
+
+(defvar *asdf-root*         "/usr/share/common-lisp/source/asdf/")
+(pushnew (concatenate 'string *lisp-devel-root* "asd/") asdf:*central-registry* :test #'equal)

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<PropertyType><id>1</id><name>DATETIME</name><description>The datetime at which an observation was made.</description></PropertyType>
+<PropertyType><id>2</id><name>PRICE</name><description>The price of a given equity in a given currency</description></PropertyType>
+<PropertyType><id>3</id><name>VOLUME</name><description>Integer number of any kind of transactions.</description></PropertyType>
+<PropertyType><id>4</id><name>CONVERSION</name><description>Double number which serves to convert from one Unit to another Unit.</description></PropertyType>
+<PropertyType><id>5</id><name>PERCENTAGE</name><description>Double number expressing a percentage.</description></PropertyType>
+<PropertyType><id>6</id><name>PROBABILITY</name><description>Double number between 0.0 and 1.0.</description></PropertyType>
+<PropertyType><id>7</id><name>FACTOR</name><description>Double number to be multiplied with another value.</description></PropertyType>
+<PropertyType><id>8</id><name>VALUE</name><description>Double number without units.</description></PropertyType>
+
+<Property><id>1</id><type>2</type><name>MIN-DAY-PRICE</name><description>The minimum price of an equity for a given day in a given currency.</description></Property>
+<Property><id>2</id><type>2</type><name>MAX-DAY-PRICE</name><description>The maximum price of an equity for a given day in a given currency.</description></Property>
+<Property><id>3</id><type>2</type><name>OPENING-DAY-PRICE</name><description>The opening price of an equity for a given day in a given currency.</description></Property>
+<Property><id>4</id><type>2</type><name>CLOSING-DAY-PRICE</name><description>The closing price of an equity for a given day in a given currency.</description></Property>
+<Property><id>5</id><type>3</type><name>TRADING-DAY-VOLUME</name><description>The traded volume for a given day.</description></Property>
+
+<Property><id>6</id><type>7</type><name>DAILY-RELATIVE-CLOSING</name><description>The factor to multiply the previous day value to get today's value. This is calculated in the SecurityPaper default currency.</description></Property>
+<Property><id>7</id><type>7</type><name>DAILY-RELATIVE-CLOSING-LOGARITHM-BASE-5PC</name><description>Same as DAILY-RELATIVE-CLOSING but in log scale to the base 1.05</description></Property>
+
+<Unit><id>1</id><propertyTypeLink>2</propertyTypeLink><name>EUR</name></Unit>
+<Unit><id>2</id><propertyTypeLink>2</propertyTypeLink><name>USD</name></Unit>
+<Unit><id>3</id><propertyTypeLink>1</propertyTypeLink><name>D-MMM-YY</name></Unit>
+<Unit><id>4</id><propertyTypeLink>3</propertyTypeLink><name>integer</name></Unit>
+<Unit><id>5</id><propertyTypeLink>4</propertyTypeLink><name>conversion-factor</name></Unit>
+<Unit><id>6</id><propertyTypeLink>7</propertyTypeLink><name>factor</name></Unit>
+<Unit><id>7</id><propertyTypeLink>7</propertyTypeLink><name>logf</name></Unit>
+<Unit><id>8</id><propertyTypeLink>5</propertyTypeLink><name>%</name></Unit>
+
+
+<Share><id>1</id><name>DE0007500001</name><description>ThyssenKrupp AG Inhaber-Aktien O.N.</description><urlSources>http://www.thyssenkrupp.de/</urlSources><defaultCurrency>1</defaultCurrency></Share>
+<Share><id>2</id><name>DE0008001009</name><description>Deutsche Postbank AG Namens-Aktien O.N.</description><urlSources>http://www.postbank.de/</urlSources><defaultCurrency>1</defaultCurrency></Share>
+<Share><id>3</id><name>DE0006622400</name><description>Mobilcom AG Inhaber-Aktien O.N.</description><urlSources>http://www.mobilcom.de/</urlSources><defaultCurrency>1</defaultCurrency></Share>
+<Share><id>10</id><name>EE0000001063</name><description>Hansapank Ltd. Registered Shares EK 10</description><urlSources>http://w.hansa.ee/est/</urlSources><defaultCurrency>1</defaultCurrency></Share>
+<Share><id>11</id><name>FI0009000665</name><description>M-Real Corp. Registered Shares</description><urlSources>http://www.m-real.com/wps/portal</urlSources><defaultCurrency>1</defaultCurrency></Share>
+<Fund><id>12</id><name>LU0130728842</name><description>P.F.Eastern Europe P</description><urlSources>http://www.pictetfunds.com/</urlSources><defaultCurrency>1</defaultCurrency></Fund>
+<Fund><id>13</id><name>LU0029865408</name><description>Templeton Latin America Fund A DIS</description><urlSources>http://www.franklintempleton.de/index.jsp</urlSources><defaultCurrency>2</defaultCurrency></Fund>
+
+<CurrencyPair><id>50</id><name>USD/EUR</name><description>USD to EUR conversion rate</description><urlSources>http://waehrungen.onvista.de/snapshot.html?ID_CURRENCY_FROM=USD&amp;ID_CURRENCY_TO=EUR</urlSources><from>2</from><to>1</to></CurrencyPair>
+<CurrencyPair><id>51</id><name>EUR/USD</name><description>EUR to USD conversion rate</description><urlSources>http://waehrungen.onvista.de/snapshot.html?ID_CURRENCY_FROM=EUR&amp;ID_CURRENCY_TO=USD</urlSources><from>1</from><to>2</to></CurrencyPair>
+
+<CurrencyConversion><id>1</id><from>1</from><to>2</to><currencyPair>50</currencyPair></CurrencyConversion>
+
+<MarketPlace><id>4</id><name>XETRA</name><description>Fully automated trading system of the german stock exchange in Frankfurt.</description><urlSources>http://www.deutsche-boerse.com/</urlSources></MarketPlace>
+<MarketPlace><id>7</id><name>UNDEFINED</name><description>Use this market place if it is not clear from where the data comes from.</description><urlSources></urlSources></MarketPlace>
+
+<Observer><id>5</id><name>yahoo</name><description>Finance information portal.</description><urlSources>http://finance.yahoo.com/ http://de.finance.yahoo.com/ http://fr.finance.yahoo.com/</urlSources></Observer>
+<Observer><id>6</id><name>onvista</name><description>Finance information portal.</description><urlSources>http://www.onvista.de/</urlSources></Observer>
+
+<AliasType><id>1</id><observerLink>5</observerLink><name>yahoo aliases</name><description>Yahoo Symbols</description><urlSource>http://finance.yahoo.com/l</urlSource></AliasType>
+<AliasType><id>2</id><observerLink>6</observerLink><name>onvista id notation</name><description>OnVista ID_Notation values</description><urlSource>No</urlSource></AliasType>
+
+<Alias><id>1</id><type>1</type><subject>1</subject><market>4</market><alias>tka.de</alias></Alias>
+<Alias><id>2</id><type>1</type><subject>2</subject><market>4</market><alias>dpb.de</alias></Alias>
+
+<Alias><id>10</id><type>2</type><subject>10</subject><market>7</market><alias>13526</alias></Alias>
+<Alias><id>11</id><type>2</type><subject>11</subject><market>7</market><alias>1544705</alias></Alias>
+
+<Alias><id>12</id><type>2</type><subject>12</subject><market>7</market><alias>3668375</alias></Alias>
+<Alias><id>13</id><type>2</type><subject>13</subject><market>7</market><alias>3225149</alias></Alias>
+
+<DataSourceType><id>1</id><name>csv</name><description>Comma Separated Values File.</description></DataSourceType>
+<DataSourceType><id>2</id><name>htmlshare</name><description>HTML Table open, min, max, close</description></DataSourceType>
+<DataSourceType><id>3</id><name>htmlfund</name><description>HTML Table close</description></DataSourceType>
+<DataSourceType><id>4</id><name>htmlcurrency</name><description>HTML Table open, min, max, close</description></DataSourceType>
+
+
+<DataSource><id>1</id><type>1</type><observerLink>5</observerLink><url>http://ichart.yahoo.com/table.csv?a=|SMS|&amp;b=|SDS|&amp;c=|SYYYYS|&amp;d=|EME|&amp;e=|EDE|&amp;f=|EYYYYE|&amp;s=|YahooSYM|&amp;y=0&amp;g=d&amp;g=d&amp;ignore=.csv</url><description>Yahoo Historical Prices in CSV Format (Date, Opening, Max, Min, Closeing, Volume, Adj. Close*)</description><handlerClassName>net.sf.ojts.datainput.impl.YahooCSVDataInputHandler</handlerClassName><dataLagInDays>10</dataLagInDays></DataSource>
+
+
+<ObserverDataSourceConfiguration><id>1</id><observerDataSource>1</observerDataSource><observedAt>4</observedAt><property>1</property><unit>1</unit><colu>3</colu></ObserverDataSourceConfiguration>
+<ObserverDataSourceConfiguration><id>2</id><observerDataSource>1</observerDataSource><observedAt>4</observedAt><property>2</property><unit>1</unit><colu>2</colu></ObserverDataSourceConfiguration>
+<ObserverDataSourceConfiguration><id>3</id><observerDataSource>1</observerDataSource><observedAt>4</observedAt><property>3</property><unit>1</unit><colu>1</colu></ObserverDataSourceConfiguration>
+<ObserverDataSourceConfiguration><id>4</id><observerDataSource>1</observerDataSource><observedAt>4</observedAt><property>4</property><unit>1</unit><colu>4</colu></ObserverDataSourceConfiguration>
+<ObserverDataSourceConfiguration><id>5</id><observerDataSource>1</observerDataSource><observedAt>4</observedAt><property>5</property><unit>4</unit><colu>5</colu></ObserverDataSourceConfiguration>
+
+<DataSource><id>2</id><type>2</type><observerLink>6</observerLink><url>http://aktien.onvista.de/kurshistorie.html?ID_NOTATION=|ID|&amp;RANGE=|LM|M</url><description>OnVista Historical Prices in HTML Format (Date, Opening, Min, Max, Closeing)</description><handlerClassName>net.sf.ojts.datainput.impl.OnVistaHTMLDataInputHandler</handlerClassName><dataLagInDays>1</dataLagInDays></DataSource>
+
+<ObserverDataSourceConfiguration><id>6</id><observerDataSource>2</observerDataSource><observedAt>7</observedAt><property>1</property><!--<unit>1</unit>--><colu>2</colu></ObserverDataSourceConfiguration>
+<ObserverDataSourceConfiguration><id>7</id><observerDataSource>2</observerDataSource><observedAt>7</observedAt><property>2</property><!--<unit>1</unit>--><colu>3</colu></ObserverDataSourceConfiguration>
+<ObserverDataSourceConfiguration><id>8</id><observerDataSource>2</observerDataSource><observedAt>7</observedAt><property>3</property><!--<unit>1</unit>--><colu>1</colu></ObserverDataSourceConfiguration>
+<ObserverDataSourceConfiguration><id>9</id><observerDataSource>2</observerDataSource><observedAt>7</observedAt><property>4</property><!--<unit>1</unit>--><colu>4</colu></ObserverDataSourceConfiguration>
+
+<DataSource><id>3</id><type>3</type><observerLink>6</observerLink><url>http://fonds.onvista.de/kurshistorie.html?ID_NOTATION=|ID|&amp;RANGE=|LM|M</url><description>OnVista Historical Prices in HTML Format (Closeing)</description><handlerClassName>net.sf.ojts.datainput.impl.OnVistaHTMLDataInputHandler</handlerClassName><dataLagInDays>3</dataLagInDays></DataSource>
+
+<ObserverDataSourceConfiguration><id>10</id><observerDataSource>3</observerDataSource><observedAt>7</observedAt><property>4</property><!--<unit>1</unit>--><colu>1</colu></ObserverDataSourceConfiguration>
+
+
+<DataSource><id>4</id><type>4</type><observerLink>6</observerLink><url>http://waehrungen.onvista.de/kursliste.html?ID_CURRENCY_FROM=|CF|&amp;ID_CURRENCY_TO=|CT|&amp;RANGE=|LM|M</url><description>OnVista Historical Currency Conversion Rates in HTML Format (Date, Opening, Min, Max, Closeing)</description><handlerClassName>net.sf.ojts.datainput.impl.OnVistaHTMLDataInputHandler</handlerClassName><dataLagInDays>3</dataLagInDays></DataSource>
+
+<ObserverDataSourceConfiguration><id>11</id><observerDataSource>4</observerDataSource><observedAt>7</observedAt><property>1</property><unit>5</unit><colu>2</colu></ObserverDataSourceConfiguration>
+<ObserverDataSourceConfiguration><id>12</id><observerDataSource>4</observerDataSource><observedAt>7</observedAt><property>2</property><unit>5</unit><colu>3</colu></ObserverDataSourceConfiguration>
+<ObserverDataSourceConfiguration><id>13</id><observerDataSource>4</observerDataSource><observedAt>7</observedAt><property>3</property><unit>5</unit><colu>1</colu></ObserverDataSourceConfiguration>
+<ObserverDataSourceConfiguration><id>14</id><observerDataSource>4</observerDataSource><observedAt>7</observedAt><property>4</property><unit>5</unit><colu>4</colu></ObserverDataSourceConfiguration>
+
+
+</root>

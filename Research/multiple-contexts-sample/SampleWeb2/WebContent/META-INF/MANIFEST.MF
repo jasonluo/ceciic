@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Class-Path: SampleJava.jar 
+ spring-beans.jar 
+ spring-context.jar 
+ spring-core.jar 
+ spring-web.jar 
+ commons-logging.jar
+
