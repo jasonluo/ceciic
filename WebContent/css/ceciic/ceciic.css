@@ -181,3 +181,9 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 #jtw_widget1 div:first-child {
 	display: none;
 }
+
+.slideshow{
+	position:absolute;
+	left:10px;
+	top:150px;
+}

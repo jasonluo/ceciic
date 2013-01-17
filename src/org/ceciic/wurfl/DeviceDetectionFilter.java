@@ -13,13 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.mobile.device.wurfl.WurflDevice;
+//import org.springframework.mobile.device.wurfl.WurflDevice;
 
 import net.sourceforge.wurfl.core.web.ServletContextWURFLHolder;
 import net.sourceforge.wurfl.core.web.WurflWebConstants;
 
 import net.sourceforge.wurfl.core.Device;
 import net.sourceforge.wurfl.core.MarkUp;
+import net.sourceforge.wurfl.core.WURFLHolder;
 import net.sourceforge.wurfl.core.WURFLManager;
 
 public class DeviceDetectionFilter implements Filter, WurflWebConstants{
@@ -37,7 +38,7 @@ public class DeviceDetectionFilter implements Filter, WurflWebConstants{
 		
 		HttpServletRequest httpRquest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
-		ServletContextWURFLHolder wurflHolder = (ServletContextWURFLHolder) httpRquest.getSession().getServletContext().getAttribute(WURFL_HOLDER_KEY);
+		WURFLHolder wurflHolder = (WURFLHolder) httpRquest.getSession().getServletContext().getAttribute(WURFL_HOLDER_KEY);//getAttribute(WURFLHolder.class.getName());
 
 		WURFLManager wurfl =  wurflHolder.getWURFLManager();
 		Device device = wurfl.getDeviceForRequest(httpRquest);
